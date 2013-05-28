@@ -1,26 +1,32 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package pe.edu.cibertec.gch.modelo;
 
 /**
- * Tipo de busqueda realizada
+ *
+ * @author JAVA_MJ
  */
 public enum TipoBusqueda {
-    NoDeterminada(0),
-    Completa(1),
-    Parcial(2);
+    Completa(0),
+    Parcial(1),
+    NoDefinido(2);
+    
     private int codigo;
-
-    private TipoBusqueda(int codigo) {
+    
+    TipoBusqueda(int codigo) {
         this.codigo = codigo;
     }
-
-    public static TipoBusqueda obtenerSegun(int codigo) {
+    
+    public static TipoBusqueda obtenerPorCodigo(int codigo) {
         switch(codigo) {
-            case 1:
-                return Completa;
-            case 2:
-                return Parcial;
-            default:
-                return NoDeterminada;
+            case 0 : return Completa;
+                
+            case 1 : return Parcial;
+                
+            default : return NoDefinido;
         }
     }
+
 }

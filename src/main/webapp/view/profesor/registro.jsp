@@ -1,18 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Registro de Profesor">
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
     <form action="registrarProfesor" method="post">
-        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
-            <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error.value}</li>
-                </c:forEach>
-            </ul>
-        </div>
         <fieldset>
             <legend>Sistema</legend>
             <div>
@@ -56,23 +48,24 @@
                 </label>
                 <input type="date" name="fechaNacimiento" id="fechaNacimiento" required />
             </div>
-            <div class="multiopciones">
+            <div>
                 <span>Sexo</span>
-                <input type="radio" name="sexo" id="masculino" value="m" />
                 <label for="masculino">Masculino</label>
-                <input type="radio" name="sexo" id="femenino" value="f" />
+                <input type="radio" name="sexo" id="masculino" value="m" />
                 <label for="femenino">Femenino</label>
+                <input type="radio" name="sexo" id="femenino" value="f" />
             </div>
             <div>
-                <label for="estado">
-                    Estado del Profesor
+                <label for="estadoCivil">
+                    Estado Civil
                 </label>
-                <select name="estado" id="estado">
+                <select name="estadoCivil" id="estadoCivil">
                     <option value="">-- Seleccione --</option>
-                    <option value="1">Activo</option>
-                    <option value="2">Inactivo</option>
-                    <option value="3">NoDeterminado</option>
-                    <option value="4">Vacaciones</option>
+                    <option value="1">Solter@</option>
+                    <option value="2">Casad@</option>
+                    <option value="3">Viud@</option>
+                    <option value="4">Divorciad@</option>
+                    <option value="5">Conviviente</option>
                 </select>
             </div>
         </fieldset>

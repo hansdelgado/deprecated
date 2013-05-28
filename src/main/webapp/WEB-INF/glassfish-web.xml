@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
 <glassfish-web-app error-url="">
+  <context-root>/gchweb</context-root>
   <resource-ref>
     <res-ref-name>dsgch</res-ref-name>
     <jndi-name>ds/gch</jndi-name>
@@ -9,8 +10,8 @@
     <res-ref-name>sesionEmail</res-ref-name>
     <jndi-name>sesionEmail</jndi-name>
     <default-resource-principal>
-      <name>paolo</name>
-      <password>1234</password>
+      <name>hans</name>
+      <password>123</password>
     </default-resource-principal>
   </resource-ref>
   <class-loader delegate="true"/>

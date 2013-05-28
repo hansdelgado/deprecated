@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.cibertec.gch.gestores.GestorProfesor;
+import pe.edu.cibertec.gch.logica.GestorProfesor;
 import pe.edu.cibertec.gch.modelo.EstadoProfesor;
 import pe.edu.cibertec.gch.modelo.Genero;
 import pe.edu.cibertec.gch.modelo.Profesor;

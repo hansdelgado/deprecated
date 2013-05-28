@@ -5,14 +5,7 @@
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="buscarProfesores">
-        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
-            <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error.value}</li>
-                </c:forEach>
-            </ul>
-        </div>
+    <form action="listarProfesores">
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>
@@ -32,15 +25,6 @@
                     Apellido Materno
                 </label>
                 <input type="search" name="apellidoMaterno" id="apellidoMaterno" maxlength="50" />
-            </div>
-            <div>
-                <label for="tipoBusqueda">
-                    Tipo de busqueda
-                </label>
-                <select name="tipoBusqueda" id="tipoBusqueda">
-                    <option value="2">Parcial</option>
-                    <option value="1">Completa</option>
-                </select>
             </div>
         </fieldset>
         <button><span>Buscar</span></button>

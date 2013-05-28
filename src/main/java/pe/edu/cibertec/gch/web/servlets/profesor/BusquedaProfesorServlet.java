@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.cibertec.gch.gestores.GestorProfesor;
+import pe.edu.cibertec.gch.logica.GestorProfesor;
 import pe.edu.cibertec.gch.modelo.Profesor;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
@@ -27,7 +27,7 @@ public class BusquedaProfesorServlet extends HttpServlet {
                 textoApellidoMaterno = req.getParameter("apellidoMaterno"),
                 textoTipoBusqueda = req.getParameter("tipoBusqueda");
         // segun el tipo de codigo obtenemos el tipo de busqueda
-        TipoBusqueda tipoBusqueda = TipoBusqueda.obtenerSegun(Integer.parseInt(textoTipoBusqueda));
+        TipoBusqueda tipoBusqueda = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(textoTipoBusqueda));
         // trae los profesores en la fuente de datos
         List<Profesor> profesores = gestorProfesor.listarSegun(textoNombres,
                 textoApellidoPaterno, textoApellidoMaterno, tipoBusqueda);

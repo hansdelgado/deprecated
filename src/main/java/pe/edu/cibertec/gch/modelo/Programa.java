@@ -15,8 +15,26 @@ public class Programa {
     private Moneda moneda;
     private double precio;
     private EstadoActividad estado;
-    private Date inicio;
+    private Date fechaInicial;
+    private int duracion;
 
+    public Date getFechaInicial() {
+        return fechaInicial;
+    }
+
+    public void setFechaInicial(Date fechaInicial) {
+        this.fechaInicial = fechaInicial;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+   
     public String getCodigo() {
         return codigo;
     }
@@ -79,13 +97,5 @@ public class Programa {
 
     public void setEstado(EstadoActividad estado) {
         this.estado = estado;
-    }
-
-    public Date getInicio() {
-        return inicio;
-    }
-
-    public void setInicio(Date inicio) {
-        this.inicio = inicio;
     }
 }

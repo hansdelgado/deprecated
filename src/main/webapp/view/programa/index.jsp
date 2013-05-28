@@ -5,15 +5,30 @@
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="listarProgramas">
+    <form action="buscarProgramas">
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>
-                <label for="nombre">
-                    Nombre
+                <label for="titulo">
+                    Titulo
                 </label>
-                <input type="search" name="nombre" id="nombre" maxlength="50" />
+                <input type="search" name="titulo" id="titulo" maxlength="50" />
             </div>
+             <div>
+                <label for="descripcion">
+                    Descripci&oacute;n
+                </label>
+                <input type="search" name="descripcion" id="descripcion" maxlength="50" />
+            </div>
+            <div>
+                <label for="tipoBusqueda">
+                    Tipo Busqueda
+                </label>
+                <select name="tipoBusqueda">
+                    <option value="0">Completa</option>
+                    <option value="1">Parcial</option>
+                </select>
+            </div>            
         </fieldset>
         <button><span>Buscar</span></button>
     </form>
@@ -32,12 +47,14 @@
         <ul id="resultadoConsulta">
             <li class="cabeceraConsulta">
                 <span>Codigo</span>
-                <span>Nombre</span>
+                <span>Titulo</span>
+                <span>Descripcion</span>
             </li>
-            <c:forEach var="programa" items="${requestScope.programas}" >
+            <c:forEach var="programa" items="${requestScope.programa}" >
                 <li>
                     <span>${programa.codigo}</span>
-                    <span>${programa.nombre}</span>
+                    <span>${programa.titulo}</span>
+                    <span>${programa.descripcion}</span>
                 </li>
             </c:forEach>
         </ul>
