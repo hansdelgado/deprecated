@@ -6,6 +6,7 @@
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
+    //okok
     <form action="buscarLaboratorio">
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
