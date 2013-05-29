@@ -5,15 +5,30 @@
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="listarCursos">
+<form action="buscarCurso">
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>
+                <label for="codigo">
+                    Codigo
+                </label>
+                <input type="search" name="codigo" id="codigo" maxlength="50" />
+            </div>
+             <div>
                 <label for="nombre">
                     Nombre
                 </label>
                 <input type="search" name="nombre" id="nombre" maxlength="50" />
             </div>
+            <div>
+                <label for="tipoBusqueda">
+                    Tipo Busqueda
+                </label>
+                <select name="tipoBusqueda">
+                    <option value="0">Completa</option>
+                    <option value="1">Parcial</option>
+                </select>
+            </div> 
         </fieldset>
         <button><span>Buscar</span></button>
     </form>
