@@ -46,7 +46,7 @@ public class RegistroProfesorServlet extends HttpServlet {
                 .conReferencia(referencia)
                 .conFechaNacimiento(cal.getTime())
                 .conSexo(Genero.obtenerSegun(sexo))
-                .conEstado(EstadoProfesor.obtenerSegun(estado));
+                .conEstado(EstadoProfesor.Activo);
 
         gestorProfesor.registrar(nuevoProfesor);
         resp.sendRedirect("listarProfesores");
