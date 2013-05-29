@@ -41,6 +41,7 @@ public class CursoInputValidadorFilter implements Filter {
         }
 
         Map<String, String> errores = new HashMap<>();
+        int key=0;
         request.removeAttribute("errores");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -51,7 +52,7 @@ public class CursoInputValidadorFilter implements Filter {
         
         if(textoBusquedaCodigoCurso.matches("[[^A-Za-z0-9.@_-~#]+]")){
             String msjError ="Se ingreso caracteres especiales";
-            int key=0;
+            
             key++;
             String keyError="CUR"+key;
             errores.put(keyError, msjError);
