@@ -18,7 +18,7 @@
             <legend>Datos del Programa</legend>
             <div>
                 <label for="titulo">Titulo</label>
-                <input type="text" id="titulo" name="titulo" required maxlength="50" />
+                <input type="text" id="titulo" name="titulo"  maxlength="50" />
             </div>
             <div>
                 <label for="descripcion">Descripci&oacute;n</label>
