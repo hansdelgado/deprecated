@@ -5,25 +5,28 @@
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="listarHorarios">
+    <form action="buscarHorarios">
         <fieldset>
-            <legend>Hora limite de inicio (horas)</legend>
+            <legend>Datos de búsqueda</legend>
             <div>
-                <label for="luegode">
-                    Luego de la(s)
+                <label for="descripcion">
+                    Descripción
                 </label>
-                <input type="range" min="6" max="23" name="luegode" id="luegode" maxlength="2" />
+                <input type="text" name="descripcion" id="descripcion" />
             </div>
         </fieldset>
         <fieldset>
-            <legend>Hora limite de fin (horas)</legend>
             <div>
-                <label for="antesde">
-                    Antes de la(s)
+                <label for="tipoBusqueda">
+                    Tipo Búsqueda
                 </label>
-                <input type="range" min="6" max="23" name="antesde" id="antesde" maxlength="50" />
+                <select name="tipoBusqueda" id="tipoBusqueda">
+                    <option value="0">Completa</option>
+                    <option value="1">Parcial</option>
+                </select>
             </div>
         </fieldset>
+        
         <button><span>Buscar</span></button>
     </form>
     <div>
