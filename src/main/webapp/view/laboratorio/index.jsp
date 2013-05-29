@@ -1,11 +1,3 @@
- private String codigo;
-    private String nombre;
-    private String descripcion;
-    private String local;
-    private String pabellon;
-    private String salon;
-    private int capacidad;
-    private EstadoLaboratorio estado;
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
