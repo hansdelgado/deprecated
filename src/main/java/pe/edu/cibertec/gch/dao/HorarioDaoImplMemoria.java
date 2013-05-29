@@ -1,8 +1,10 @@
 package pe.edu.cibertec.gch.dao;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import pe.edu.cibertec.gch.modelo.Horario;
+import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
 /**
  *
@@ -10,7 +12,7 @@ import pe.edu.cibertec.gch.modelo.Horario;
  */
 public class HorarioDaoImplMemoria implements HorarioDao {
 
-    private static ArrayList<Horario> horarios = new ArrayList<Horario>();
+    private static ArrayList<Horario> horarios = new ArrayList<>();
     
     
     static {
@@ -24,7 +26,7 @@ public class HorarioDaoImplMemoria implements HorarioDao {
         horarios.add(horario);
         horario = new Horario();
         horario.setCodigo("003");
-        horario.setDescripcion("NocheI");
+        horario.setDescripcion("Noche");
         horarios.add(horario);
     }
 
@@ -48,7 +50,28 @@ public class HorarioDaoImplMemoria implements HorarioDao {
         horarios.add(entidad);
     }
     
-    protected void borrarTodos() {
+    public void borrarTodos() {
         horarios.clear();
+    }
+
+    @Override
+    public List<Horario> obtenerSegun(String descripcion, TipoBusqueda tipoBusqueda) {
+        List<Horario> listaHorarios;
+        if (tipoBusqueda.equals(TipoBusqueda.Completa)) {
+            listaHorarios = listarTodos();
+        } else {
+            listaHorarios = obtenerSegun(descripcion);
+        }
+        return listaHorarios;
+    }
+    
+    private List<Horario> obtenerSegun(String descripcion) {
+        List<Horario> listaHorarios = new LinkedList<>();
+        for (Horario horario : horarios) {
+            if (horario.getDescripcion().contains(descripcion)) {
+                listaHorarios.add(horario);
+            }
+        }
+        return listaHorarios;
     }
 }

@@ -1,10 +1,12 @@
 package pe.edu.cibertec.gch.dao;
 
+import java.util.List;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import pe.edu.cibertec.gch.modelo.Horario;
+import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
 /**
  *
@@ -23,7 +25,7 @@ public class HorarioDaoImplMemoriaTest {
     @After
     public void limpiar() {
         // limpieza posterior a todas las pruebas
-        ((HorarioDaoImplMemoria) horarioDao).borrarTodos();
+        horarioDao.borrarTodos();
     }
 
     @Test
@@ -35,12 +37,30 @@ public class HorarioDaoImplMemoriaTest {
                 setDescripcion("Madrugada");
             }
         };
-        ((HorarioDaoImplMemoria) horarioDao).borrarTodos();
+        horarioDao.borrarTodos();
         // ejecucion
         horarioDao.registrar(horario);
         // verificacion
         assertEquals(1, horarioDao.listarTodos().size());
         
+    }
+    
+    @Test
+    public void cuandoBusquedaEsExitosa() {
+        final String descripcion = "Madrugada";
+        // preparacion adicional
+        Horario horario = new Horario() {
+            {
+                setCodigo("123");
+                setDescripcion(descripcion);
+            }
+        };
+        horarioDao.borrarTodos();
+        // ejecucion
+        horarioDao.registrar(horario);
+        List<Horario> obtenerSegun = horarioDao.obtenerSegun(descripcion, TipoBusqueda.Completa);
+        // verificacion
+        assertEquals(1, obtenerSegun.size());
     }
     
 }
