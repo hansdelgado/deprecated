@@ -17,6 +17,7 @@ import java.util.LinkedList;
  */
 public class GestorCurso implements GestorBase<Curso>{
      private static ArrayList<Curso> listaCursos = new ArrayList<Curso>();
+     //LOOK AT MY CHANGE
     @Override
     public void registrar(Curso curso) {
         listaCursos.add(curso);
