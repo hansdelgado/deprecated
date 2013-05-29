@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import pe.edu.cibertec.gch.modelo.Curso;
 import pe.edu.cibertec.gch.modelo.EstadoActividad;
+import pe.edu.cibertec.gch.modelo.TipoBusqueda;
+import java.util.LinkedList;
 
 /**
  *
@@ -36,6 +38,24 @@ public class GestorCurso implements GestorBase<Curso>{
         return listaCursos.get(listaCursos.indexOf(curso));
     }
     
+    public List<Curso> listarSegun(String codigo, String nombre, TipoBusqueda tipoBusquedaEnum) {
+        List<Curso> resultado = new LinkedList();
+        for (Curso curso : listaCursos) {
+            switch(tipoBusquedaEnum) {
+                case Completa : 
+                    resultado.add(curso);
+                    break;
+                case Parcial :
+                    if(!codigo.isEmpty() && codigo.equalsIgnoreCase(curso.getCodigo()) ||
+                            !nombre.isEmpty() && nombre.equalsIgnoreCase(curso.getNombre()))
+                    {
+                        resultado.add(curso);
+                    }
+                    break;
+            }
+        }
+        return resultado;
+    }
     protected void borrarTodos() {
         listaCursos.clear();
     }
