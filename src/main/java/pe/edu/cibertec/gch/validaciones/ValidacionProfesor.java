@@ -61,7 +61,7 @@ public class ValidacionProfesor extends Validacion {
 
     private void validarRegistro(String textoRegistroProfesorCodigo, Map<String, String> errores, String textoRegistroProfesorNombres, String textoRegistroProfesorApellidoPaterno, String textoRegistroProfesorApellidoMaterno, String textoRegistroProfesorDireccion, String textoRegistroProfesorReferencia, String textoRegistroProfesorFechaNacimiento, String textoRegistroProfesorSexo, String textoRegistroProfesorEstadoProfesor) {
         // por cada parametro, validar
-        if (textoRegistroProfesorCodigo.isEmpty() || !textoRegistroProfesorCodigo.matches("\\w{5,6}")) {
+        if (textoRegistroProfesorCodigo.isEmpty() || !textoRegistroProfesorCodigo.matches("\\w{5,8}")) {
             errores.put("codigo", "El codigo es obligatorio y debe tener cinco o seis caracteres");
         }
         if (textoRegistroProfesorNombres.isEmpty() || textoRegistroProfesorNombres.length() > 50) {
@@ -92,7 +92,7 @@ public class ValidacionProfesor extends Validacion {
                 LOG.warning("Error al convertir la fecha de nacimiento del profesor");
                 errores.put("fechaNacimiento", "La fecha de nacimiento no es v&aacute;lida");
             }
-        }
+        } 
         if (null != textoRegistroProfesorSexo && !textoRegistroProfesorSexo.isEmpty() && !textoRegistroProfesorSexo.matches("m|f")) {
             errores.put("sexo", "El g&eacute;nero indicado no es v&aacute;lido");
         }

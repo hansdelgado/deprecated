@@ -25,12 +25,9 @@ public class ValidacionInputFilter implements Filter {
 
     private static final Logger LOG = Logger.getLogger(ValidacionInputFilter.class.getName());
     private FilterConfig filterConfig = null;
-
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain)
+    
+  private void doBeforeProcessing(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-
         HttpServletRequest req = (HttpServletRequest) request;
         req.removeAttribute("errores");
         request.setCharacterEncoding("UTF-8");
@@ -38,12 +35,19 @@ public class ValidacionInputFilter implements Filter {
 
         ValidacionFactory factory = new ValidacionFactory();
         Validacion validacion = factory.obtenerSegun(req);
-        if(validacion == null) {
-            chain.doFilter(request, response);
-        } else {
+        if(validacion != null) {
            validacion.validar(req);
            hacerReenvioA(validacion.getErrores(), chain, request, response, req, validacion.getPaginaReenvio());
         }
+    }        
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain)
+            throws IOException, ServletException {
+        doBeforeProcessing(request, response, chain);
+        chain.doFilter(request, response);
+        //doAfterProcessing(request, response);
     }
 
     @Override
