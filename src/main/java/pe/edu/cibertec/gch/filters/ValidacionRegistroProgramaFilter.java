@@ -5,17 +5,17 @@
 package pe.edu.cibertec.gch.filters;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.lang.String;
+import java.util.Enumeration;
+import java.util.HashMap;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import pe.edu.cibertec.gch.exception.ProgramaSinDatoObligatorio;
 
 /**
  *
@@ -23,21 +23,38 @@ import pe.edu.cibertec.gch.exception.ProgramaSinDatoObligatorio;
  */
 @WebFilter(filterName = "ValidacionRegistroProgramaFilter", urlPatterns = {"/registrarPrograma"})
 public class ValidacionRegistroProgramaFilter implements Filter {
-    
+
     private static final boolean debug = true;
-    // The filter configuration object we are associated with.  If
-    // this value is null, this filter instance is not currently
-    // configured. 
     private FilterConfig filterConfig = null;
-    
+
     public ValidacionRegistroProgramaFilter() {
-    }    
-    
-    private void doBeforeProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException, ProgramaSinDatoObligatorio {
-        if (debug) {
-            log("ValidacionRegistroProgramaFilter:DoBeforeProcessing");
+    }
+
+    public void doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain)
+            throws IOException, ServletException {
+
+        HashMap<String, String> errores = validarPrograma(request);
+
+        if (errores.size() > 0) {
+            // envimos de regreso los errores y los datos ingresados.
+            request.setAttribute("errores", errores.values());
+
+            for (String name : request.getParameterMap().keySet()) {
+                request.setAttribute(name, request.getParameter(name));
+            }
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/programa/registro.jsp");
+            requestDispatcher.forward(request, response);
+        } else {
+            // dejamos pasar los datos al servlet
+            chain.doFilter(request, response);
         }
+    }
+
+    private HashMap<String, String> validarPrograma(ServletRequest request) {
+
+        HashMap<String, String> errores = new HashMap<String, String>();
 
         final String codigo = request.getParameter("codigo"),
                 titulo = request.getParameter("titulo"),
@@ -48,202 +65,70 @@ public class ValidacionRegistroProgramaFilter implements Filter {
                 fecha = request.getParameter("fecha"),
                 duracion = request.getParameter("duracion"),
                 precio = request.getParameter("precio");
-        
-      
-            
-            if (titulo.equals("")){
-                
-                System.out.print("El Programa no tiene titulo, es campo obligatorio");
-                
-            throw new ProgramaSinDatoObligatorio("El Programa no tiene titulo, es campo obligatorio");
-             
-            }
-       
-    }    
-    
-    private void doAfterProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
-        if (debug) {
-            log("ValidacionRegistroProgramaFilter:DoAfterProcessing");
-        }
 
-        // Write code here to process the request and/or response after
-        // the rest of the filter chain is invoked.
-
-        // For example, a logging filter might log the attributes on the
-        // request object after the request has been processed. 
-	/*
-         for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
-         String name = (String)en.nextElement();
-         Object value = request.getAttribute(name);
-         log("attribute: " + name + "=" + value.toString());
-
-         }
-         */
-
-        // For example, a filter might append something to the response.
-	/*
-         PrintWriter respOut = new PrintWriter(response.getWriter());
-         respOut.println("<P><B>This has been appended by an intrusive filter.</B>");
-         */
-    }
-
-    /**
-     *
-     * @param request The servlet request we are processing
-     * @param response The servlet response we are creating
-     * @param chain The filter chain we are processing
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet error occurs
-     */
-    public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain)
-            throws IOException, ServletException {
-        
-        if (debug) {
-            log("ValidacionRegistroProgramaFilter:doFilter()");
-        }
-        
-        Throwable problema = null;
+        // realizamos algunas validaciones 
         try {
-        doBeforeProcessing(request, response);
-        } catch (Throwable t) {
-                        problema = t;
-            t.printStackTrace();
+            Integer.parseInt(codigo);
+        } catch (NumberFormatException nfe) {
+            errores.put("codigo", "el codigo debe contener solo numeros");
         }
-        
-        
-        Throwable problem = null;
+
         try {
-            chain.doFilter(request, response);
-        } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
-            problem = t;
-            t.printStackTrace();
+            if (Integer.parseInt(duracion) > 140) {
+                errores.put("duracion", "la duracion maxima es de 140");
+            }
+        } catch (NumberFormatException nfe) {
+            errores.put("duracion", "la duracion debe contener solo numeros");
         }
-        
-        doAfterProcessing(request, response);
 
-        // If there was a problem, we want to rethrow it if it is
-        // a known type, otherwise log it.
-        if (problem != null) {
-            if (problem instanceof ServletException) {
-                throw (ServletException) problem;
+        try {
+            if (Double.parseDouble(precio) > 5000) {
+                errores.put("precio", "el precio maximo es 5000 soles");
             }
-            if (problem instanceof IOException) {
-                throw (IOException) problem;
-            }
-            sendProcessingError(problem, response);
+        } catch (NumberFormatException nfe) {
+            errores.put("precio", "el precio debe contener solo numeros");
         }
-        
-                if (problema != null) {
-            if (problema instanceof ServletException) {
-                throw (ServletException) problema;
-            }
-            if (problema instanceof IOException) {
-                throw (IOException) problema;
-            }
-            sendProcessingError(problema, response);
+
+        if (titulo.length() > 10) {
+            errores.put("titulo", "el titulo no debe ser mayor a 10 caracteres");
         }
- 
+        if (descripcion.length() > 10) {
+            errores.put("descripcion", "el descripcion no debe ser mayor a 10 caracteres");
+        }
+        if (objetivos.length() > 10) {
+            errores.put("objetivos", "objetivos puede tener hasta 10 caracteres");
+        }
+        if (requisitos.length() > 10) {
+            errores.put("requisitos", "requisitos puede tener hasta 10 caracteres");
+        }
+
+        if (titulo.isEmpty()) {
+            errores.put("titulo", "el titulo no debe estar vacio");
+        }
+        if (descripcion.isEmpty()) {
+            errores.put("descripcion", "descripcion no debe estar vacio");
+        }
+        if (objetivos.isEmpty()) {
+            errores.put("objetivos", "los objetivos no debe estar vacio");
+        }
+        if (requisitos.isEmpty()) {
+            errores.put("requisitos", "requisitos no debe estar vacio");
+        }
+
+        if (!fecha.matches("\\d{1,4}[/-]\\d{1,2}[/-]\\d{1,4}")) {
+            errores.put("requisitos", "la fecha ingresada no cumple con el formato. (ejemplo 12/05/2013) ");
+        }
+
+        return errores;
     }
 
-    /**
-     * Return the filter configuration object for this filter.
-     */
-    public FilterConfig getFilterConfig() {
-        return (this.filterConfig);
-    }
-
-    /**
-     * Set the filter configuration object for this filter.
-     *
-     * @param filterConfig The filter configuration object
-     */
-    public void setFilterConfig(FilterConfig filterConfig) {
-        this.filterConfig = filterConfig;
-    }
-
-    /**
-     * Destroy method for this filter
-     */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
-        if (filterConfig != null) {
-            if (debug) {                
-                log("ValidacionRegistroProgramaFilter:Initializing filter");
-            }
-        }
-    }
-
-    /**
-     * Return a String representation of this object.
-     */
-    @Override
-    public String toString() {
-        if (filterConfig == null) {
-            return ("ValidacionRegistroProgramaFilter()");
-        }
-        StringBuffer sb = new StringBuffer("ValidacionRegistroProgramaFilter(");
-        sb.append(filterConfig);
-        sb.append(")");
-        return (sb.toString());
-    }
-    
-    private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
-        if (stackTrace != null && !stackTrace.equals("")) {
-            try {
-                response.setContentType("text/html");
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
-                pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
-
-                // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
-                pw.print("</pre></body>\n</html>"); //NOI18N
-                pw.close();
-                ps.close();
-                response.getOutputStream().close();
-            } catch (Exception ex) {
-            }
-        } else {
-            try {
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                t.printStackTrace(ps);
-                ps.close();
-                response.getOutputStream().close();
-            } catch (Exception ex) {
-            }
-        }
-    }
-    
-    public static String getStackTrace(Throwable t) {
-        String stackTrace = null;
-        try {
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            t.printStackTrace(pw);
-            pw.close();
-            sw.close();
-            stackTrace = sw.getBuffer().toString();
-        } catch (Exception ex) {
-        }
-        return stackTrace;
-    }
-    
-    public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
     }
 }
