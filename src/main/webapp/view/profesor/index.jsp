@@ -5,7 +5,7 @@
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="listarProfesores">
+    <form action="buscarProfesores">
         <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
             <ul>
                 <c:forEach var="error" items="${requestScope.errores}">
@@ -33,6 +33,15 @@
                 </label>
                 <input type="search" name="apellidoMaterno" id="apellidoMaterno" maxlength="50" />
             </div>
+            <div>
+                <label for="tipoBusqueda">
+                    Tipo Busqueda
+                </label>
+                <select name="tipoBusqueda">
+                    <option value="0">Completa</option>
+                    <option value="1">Parcial</option>
+                </select>
+            </div>              
         </fieldset>
         <button><span>Buscar</span></button>
     </form>
