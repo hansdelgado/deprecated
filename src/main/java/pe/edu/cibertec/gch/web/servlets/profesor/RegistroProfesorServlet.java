@@ -11,8 +11,6 @@ import pe.edu.cibertec.gch.logica.GestorProfesor;
 import pe.edu.cibertec.gch.modelo.EstadoProfesor;
 import pe.edu.cibertec.gch.modelo.Genero;
 import pe.edu.cibertec.gch.modelo.Profesor;
-import pe.edu.cibertec.gch.notificaciones.GestorNotificaciones;
-import pe.edu.cibertec.gch.notificaciones.NotificacionEvento;
 
 /**
  * Servlet para registrar un profesor.
