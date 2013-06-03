@@ -1,12 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pe.edu.cibertec.gch.filters;
 
 import java.io.IOException;
-import java.lang.String;
-import java.util.Enumeration;
 import java.util.HashMap;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -19,7 +13,7 @@ import javax.servlet.annotation.WebFilter;
 
 /**
  *
- * @author JAVA_MJ
+ * @author grupoPrograma
  */
 @WebFilter(filterName = "ValidacionRegistroProgramaFilter", urlPatterns = {"/registrarPrograma"})
 public class ValidacionRegistroProgramaFilter implements Filter {
@@ -30,6 +24,7 @@ public class ValidacionRegistroProgramaFilter implements Filter {
     public ValidacionRegistroProgramaFilter() {
     }
 
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
@@ -54,7 +49,7 @@ public class ValidacionRegistroProgramaFilter implements Filter {
 
     private HashMap<String, String> validarPrograma(ServletRequest request) {
 
-        HashMap<String, String> errores = new HashMap<String, String>();
+        HashMap<String, String> errores = new HashMap<>();
 
         final String codigo = request.getParameter("codigo"),
                 titulo = request.getParameter("titulo"),
@@ -125,9 +120,6 @@ public class ValidacionRegistroProgramaFilter implements Filter {
     public void destroy() {
     }
 
-    /**
-     * Init method for this filter
-     */
     public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
     }
