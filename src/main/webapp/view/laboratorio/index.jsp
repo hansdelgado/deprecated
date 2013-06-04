@@ -1,12 +1,3 @@
- private String codigo;
-    private String nombre;
-    private String descripcion;
-    private String local;
-    private String pabellon;
-    private String salon;
-    private int capacidad;
-    private EstadoLaboratorio estado;
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
@@ -14,7 +5,7 @@
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="buscarLaboratorio">
+    <form action="buscarLaboratorios">
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>

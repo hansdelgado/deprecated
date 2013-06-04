@@ -1,10 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Registro de Laboratorio">
-    <div class="informacion">
-        <span>${mensaje}</span>
-    </div>
+
     <form action="registrarLaboratorio" method="post">
+        <div class="informacion">
+            <span>${mensaje}</span>
+        </div>
         <fieldset>
             <legend>Sistema</legend>
             <div>
@@ -40,9 +41,9 @@
                 <label for="capacidad">Capacidad</label>
                 <input type="text" id="capacidad" name="capacidad" required maxlength="50" />
             </div>
-            
+
         </fieldset>
-       
+
         <button>Registrar</button>
     </form>
 </gch:base>
