@@ -4,15 +4,13 @@
 <gch:base titulo="Registro de Programa">
     <div class="informacion">
         <span>${mensaje}</span>
-        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
-            <c:if test="${not empty requestScope.errores}">
-                <ul>
-                    <c:forEach var="error" items="${requestScope.errores}">
-                        <li>${error}</li>
-                    </c:forEach>
-                </ul>
-            </c:if>
-        </div>
+        <c:if test="${not empty requestScope.errores}">
+            <ul>
+                <c:forEach var="error" items="${requestScope.errores}">
+                    <li>${error}</li>
+                </c:forEach>
+            </ul>
+        </c:if>
     </div>
     <form action="registrarPrograma" method="post">
         <fieldset>
