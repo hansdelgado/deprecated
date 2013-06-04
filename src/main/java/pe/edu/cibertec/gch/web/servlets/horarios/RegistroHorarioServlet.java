@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.dao.HorarioDao;
+import pe.edu.cibertec.gch.modelo.EstadoActividad;
 import pe.edu.cibertec.gch.modelo.Horario;
 
 /**
@@ -22,12 +23,17 @@ public class RegistroHorarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String codigo = req.getParameter("codigo"),
-                descripcion = req.getParameter("descripcion");
+                descripcion = req.getParameter("descripcion"),
+                inicio = req.getParameter("inicio"),
+                fin = req.getParameter("fin"),
+                estado = req.getParameter("estado");
         
         Horario nuevoHorario = new Horario();
         nuevoHorario.setCodigo(codigo);
         nuevoHorario.setDescripcion(descripcion);
-
+        nuevoHorario.setMomentoInicio(Integer.parseInt(inicio));
+        nuevoHorario.setMomentoFin(Integer.parseInt(fin));
+        nuevoHorario.setEstado(estado.equals("1") ? EstadoActividad.Valido : EstadoActividad.Obsoleto);
         horarioDao.registrar(nuevoHorario);
         resp.sendRedirect("listarHorarios");
     }

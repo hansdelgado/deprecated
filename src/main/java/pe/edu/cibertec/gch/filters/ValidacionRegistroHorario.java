@@ -1,9 +1,6 @@
 package pe.edu.cibertec.gch.filters;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.Filter;
@@ -22,18 +19,17 @@ import javax.servlet.annotation.WebFilter;
 public class ValidacionRegistroHorario implements Filter {
     
     private static final boolean debug = true;
-    // The filter configuration object we are associated with.  If
-    // this value is null, this filter instance is not currently
-    // configured. 
     private FilterConfig filterConfig = null;
     
     public ValidacionRegistroHorario() {
     }    
     
-    private void doBeforeProcessing(ServletRequest request, ServletResponse response)
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain)
             throws IOException, ServletException {
         if (debug) {
-            log("ValidacionRegistroHorario:DoBeforeProcessing");
+            log("ValidacionRegistroHorario:doFilter()");
         }
         request.removeAttribute("errores");
         Map<String, String> errores = new HashMap<>();
@@ -42,101 +38,35 @@ public class ValidacionRegistroHorario implements Filter {
         
         String codigo = request.getParameter("codigo");
         String descripcion = request.getParameter("descripcion");
+        String inicio = request.getParameter("inicio");
+        String fin = request.getParameter("fin");
+        String estado = request.getParameter("estado");
         
         if(codigo == null || codigo.length() < 3) {
-            errores.put("codigo_invalido", "Inserte un código válido (>3).");
+            errores.put("Error en el código", "Inserte un código de 3 dígitos.");
         }
-        if(descripcion == null || descripcion.length() < 10) {
-            errores.put("descripcion_invalida", "Inserte una descripción válida (>10).");
+        if(descripcion == null || descripcion.length() < 5) {
+            errores.put("Error en la descripción", "La descripción debe ser de al menos 5 caracteres.");
         }
-        
-        for (String a : errores.values()) {
-            System.out.println(a);
+        if(inicio == null || !inicio.matches("\\d{1,2}")) {
+            errores.put("Error en el momento de inicio", "El momento de inicio debe ser un número.");
         }
-        
-        if (!errores.isEmpty()){
+        if(fin == null || !fin.matches("\\d{1,2}")) {
+            errores.put("Error en el momento de fin", "El momento de fin debe ser un número.");
+        }
+        if(estado == null || estado.isEmpty()) {
+            errores.put("Error en el estado", "Debe elegir un estado de la lista desplegable..");
+        }
+        if (errores.isEmpty()){
+            chain.doFilter(request, response);
+        } else {
+            request.setAttribute("mensaje", "Han ocurrido errores al intentar registrar el nuevo horario.");
             request.setAttribute("errores", errores);
             request.getRequestDispatcher("view/horario/registro.jsp").forward(request, response);
         }
-    }    
-    
-    private void doAfterProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
-        if (debug) {
-            log("ValidacionRegistroHorario:DoAfterProcessing");
-        }
-        System.out.println("Finalizando validación");
     }
 
-    /**
-     *
-     * @param request The servlet request we are processing
-     * @param response The servlet response we are creating
-     * @param chain The filter chain we are processing
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet error occurs
-     */
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain)
-            throws IOException, ServletException {
-        if (debug) {
-            log("ValidacionRegistroHorario:doFilter()");
-        }
-        
-        doBeforeProcessing(request, response);
-        Throwable problem = null;
-        try {
-            chain.doFilter(request, response);
-        } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
-            problem = t;
-            t.printStackTrace();
-        }
-        
-        doAfterProcessing(request, response);
-
-        // If there was a problem, we want to rethrow it if it is
-        // a known type, otherwise log it.
-        if (problem != null) {
-            if (problem instanceof ServletException) {
-                throw (ServletException) problem;
-            }
-            if (problem instanceof IOException) {
-                throw (IOException) problem;
-            }
-            sendProcessingError(problem, response);
-        }
-    }
-
-    /**
-     * Return the filter configuration object for this filter.
-     */
-    public FilterConfig getFilterConfig() {
-        return (this.filterConfig);
-    }
-
-    /**
-     * Set the filter configuration object for this filter.
-     *
-     * @param filterConfig The filter configuration object
-     */
-    public void setFilterConfig(FilterConfig filterConfig) {
-        this.filterConfig = filterConfig;
-    }
-
-    /**
-     * Destroy method for this filter
-     */
-    public void destroy() {        
-    }
-
-    /**
-     * Init method for this filter
-     */
     public void init(FilterConfig filterConfig) {        
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
@@ -146,65 +76,11 @@ public class ValidacionRegistroHorario implements Filter {
         }
     }
 
-    /**
-     * Return a String representation of this object.
-     */
-    @Override
-    public String toString() {
-        if (filterConfig == null) {
-            return ("ValidacionRegistroHorario()");
-        }
-        StringBuffer sb = new StringBuffer("ValidacionRegistroHorario(");
-        sb.append(filterConfig);
-        sb.append(")");
-        return (sb.toString());
-    }
-    
-    private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
-        if (stackTrace != null && !stackTrace.equals("")) {
-            try {
-                response.setContentType("text/html");
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
-                pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
-
-                // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
-                pw.print("</pre></body>\n</html>"); //NOI18N
-                pw.close();
-                ps.close();
-                response.getOutputStream().close();
-            } catch (Exception ex) {
-            }
-        } else {
-            try {
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                t.printStackTrace(ps);
-                ps.close();
-                response.getOutputStream().close();
-            } catch (Exception ex) {
-            }
-        }
-    }
-    
-    public static String getStackTrace(Throwable t) {
-        String stackTrace = null;
-        try {
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            t.printStackTrace(pw);
-            pw.close();
-            sw.close();
-            stackTrace = sw.getBuffer().toString();
-        } catch (Exception ex) {
-        }
-        return stackTrace;
-    }
-    
     public void log(String msg) {
         filterConfig.getServletContext().log(msg);        
+    }
+
+    @Override
+    public void destroy() {
     }
 }

@@ -1,29 +1,48 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Registro de Horarios">
     <div class="informacion">
         <span>${mensaje}</span>
+        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
+            <c:if test="${not empty requestScope.errores}">
+                <ul>
+                    <c:forEach var="error" items="${requestScope.errores}">
+                        <li>${error}</li>
+                    </c:forEach>
+                </ul>
+            </c:if>
+        </div>
     </div>
     <form action="registrarHorario" method="post">
-        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
-            <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error.value}</li>
-                </c:forEach>
-            </ul>
-        </div>
         <fieldset>
             <legend>Datos</legend>
             <div>
                 <label for="codigo">
                     C&oacute;digo
                 </label>
-                <input type="text" id="codigo" name="codigo" maxlength="8" required autofocus >
+                <input type="text" id="codigo" name="codigo" maxlength="3" required autofocus >
             </div>
             <div>
                 <label for="descripcion">Descripci&oacute;n</label>
-                <input type="text" id="descripcion" name="descripcion" required maxlength="50" />
+                <input type="text" id="descripcion" name="descripcion" required maxlength="20" />
             </div>
+            <div>
+                <label for="inicio">Momento de inicio</label>
+                <input type="text" id="inicio" name="inicio" required maxlength="2" />
+            </div>
+            <div>
+                <label for="fin">Momento de fin</label>
+                <input type="text" id="fin" name="fin" required maxlength="2" />
+            </div>
+            <div>
+                <label for="estado">Estado</label>
+                <select name="estado" id="estado">
+                    <option value="">-- Seleccione --</option>
+                    <option value="1">Válido</option>
+                    <option value="2">Obsoleto</option>
+                </select>
+            </div>            
         </fieldset>
         <button>Registrar</button>
     </form>
