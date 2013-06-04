@@ -40,6 +40,8 @@ public class ListadoCursoServlet extends HttpServlet {
         req.setAttribute("cursos", cursos);
         // pinta los datos en el listado
         GchServletUtils.reenviarAModulo("curso", req, resp);
+        
+        //DFDF
     }
 
 }

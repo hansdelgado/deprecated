@@ -1,4 +1,4 @@
-package pe.edu.cibertec.gch.web.servlets;
+package pe.edu.cibertec.gch.web.servlets.programa;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,17 +6,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 
 /**
- *
- * @author Student
+ * Servlet para reenviar al registro de programa
  */
-@WebServlet(name = "ReenvioRegistroHorario", urlPatterns = {"/irRegistroHorario"})
-public class ReenvioRegistroHorarioServlet extends HttpServlet {
-    
+@WebServlet(name = "ReenvioRegistroPrograma", urlPatterns = {"/irRegistroPrograma"})
+public class ReenvioRegistroProgramaServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("view/horario/registro.jsp").forward(req, resp);
+        GchServletUtils.reenviarARegistro("programa", req, resp);
     }
-    
 }

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* holas ok */
+=======
+>>>>>>> origin/master
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
@@ -6,8 +9,12 @@
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
+<<<<<<< HEAD
     //okok
     <form action="buscarLaboratorio">
+=======
+    <form action="buscarLaboratorios">
+>>>>>>> origin/master
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>

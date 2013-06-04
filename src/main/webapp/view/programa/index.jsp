@@ -1,9 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Listado de Programas">
     <div class="informacion">
         <span>${mensaje}</span>
+        <c:if test="${not empty requestScope.errores}">
+            <ul>
+                <c:forEach var="error" items="${requestScope.errores}">
+                    <li>${error}</li>
+                </c:forEach>
+            </ul>
+        </c:if>
     </div>
     <form action="buscarProgramas">
         <fieldset>
@@ -12,21 +20,21 @@
                 <label for="titulo">
                     Titulo
                 </label>
-                <input type="search" name="titulo" id="titulo" maxlength="50" />
+                <input type="search" name="titulo" id="titulo" value="${titulo}" maxlength="50" />
             </div>
-             <div>
+            <div>
                 <label for="descripcion">
                     Descripci&oacute;n
                 </label>
-                <input type="search" name="descripcion" id="descripcion" maxlength="50" />
+                <input type="search" name="descripcion" id="descripcion" value="${descripcion}" maxlength="50" />
             </div>
             <div>
                 <label for="tipoBusqueda">
                     Tipo Busqueda
                 </label>
                 <select name="tipoBusqueda">
-                    <option value="0">Completa</option>
-                    <option value="1">Parcial</option>
+                    <option value="0" <c:if test="${tipoBusqueda == 0}">selected</c:if> >Completa</option>
+                    <option value="1" <c:if test="${tipoBusqueda == 1}">selected</c:if> >Parcial</option>
                 </select>
             </div>            
         </fieldset>

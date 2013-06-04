@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <gch:base titulo="Registro de Profesor">
     <form action="registrarProfesor" method="post">
         <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
@@ -22,11 +23,11 @@
             <legend>Datos Personales</legend>
             <div>
                 <label for="nombres">Nombres</label>
-                <input type="text" id="nombres" name="nombres" required maxlength="50" />
+                <input type="text" id="nombres" name="nombres" maxlength="50" />
             </div>
             <div>
                 <label for="apellidoPaterno">Apellido Paterno</label>
-                <input type="text" id="apellidoPaterno" name="apellidoPaterno" required maxlength="50" />
+                <input type="text" id="apellidoPaterno" name="apellidoPaterno" maxlength="50" />
             </div>
             <div>
                 <label for="apellidoMaterno">Apellido Materno</label>
@@ -37,7 +38,7 @@
             <legend>Direcci&oacute;n</legend>
             <div>
                 <label for="direccion">Direcci&oacute;n Completa</label>
-                <input type="text" id="direccion" name="direccion" required maxlength="400" />
+                <input type="text" id="direccion" name="direccion" maxlength="400" />
             </div>
             <div>
                 <label for="referencia">Referencia</label>
@@ -50,12 +51,12 @@
                 <label for="fechaNacimiento">
                     Fecha de Nacimiento
                 </label>
-                <input type="date" name="fechaNacimiento" id="fechaNacimiento" required />
+                <input type="date" name="fechaNacimiento" id="fechaNacimiento" />
             </div>
             <div>
                 <span>Sexo</span>
                 <label for="masculino">Masculino</label>
-                <input type="radio" name="sexo" id="masculino" value="m" />
+                <input type="radio" name="sexo" id="masculino"  default value="m" />
                 <label for="femenino">Femenino</label>
                 <input type="radio" name="sexo" id="femenino" value="f" />
             </div>

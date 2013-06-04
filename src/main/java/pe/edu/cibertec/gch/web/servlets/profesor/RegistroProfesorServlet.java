@@ -29,25 +29,27 @@ public class RegistroProfesorServlet extends HttpServlet {
                 direccion = req.getParameter("direccion"),
                 referencia = req.getParameter("referencia"),
                 fechaNacimiento = req.getParameter("fechaNacimiento"),
-                sexo = req.getParameter("sexo"),
-                estado = req.getParameter("estado");
-        int dia = Integer.parseInt(fechaNacimiento.substring(8)),
-                mes = Integer.parseInt(fechaNacimiento.substring(5, 7)),
-                ano = Integer.parseInt(fechaNacimiento.substring(0, 4));
-        final Calendar cal = Calendar.getInstance();
-        cal.setLenient(false);
-        cal.clear();
-        cal.set(ano, mes - 1, dia);
+                sexo = req.getParameter("sexo");
+
         Profesor nuevoProfesor = new Profesor().conCodigo(codigo)
                 .conNombres(nombres)
                 .conApellidoPaterno(apellidoPaterno)
                 .conApellidoMaterno(apellidoMaterno)
                 .conDireccion(direccion)
                 .conReferencia(referencia)
-                .conFechaNacimiento(cal.getTime())
                 .conSexo(Genero.obtenerSegun(sexo))
                 .conEstado(EstadoProfesor.Activo);
-
+        
+        if (!fechaNacimiento.isEmpty()) {
+            int dia = Integer.parseInt(fechaNacimiento.substring(8)),
+                    mes = Integer.parseInt(fechaNacimiento.substring(5, 7)),
+                    ano = Integer.parseInt(fechaNacimiento.substring(0, 4));
+            final Calendar cal = Calendar.getInstance();
+            cal.setLenient(false);
+            cal.clear();
+            cal.set(ano, mes - 1, dia);
+            nuevoProfesor = nuevoProfesor.conFechaNacimiento(cal.getTime());
+        }
         gestorProfesor.registrar(nuevoProfesor);
         resp.sendRedirect("listarProfesores");
     }
