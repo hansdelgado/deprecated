@@ -49,6 +49,7 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
         progr.clear();
     }
 
+    @Override
     public List<Programa> listarSegun(String titulo, String descripcion, TipoBusqueda tipoBusquedaEnum) {
 
         List<Programa> resultado = new LinkedList<Programa>();
@@ -67,4 +68,28 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
         }
         return resultado;
     }
-}
+    
+    @Override
+    public void modificarPorCodigo(Programa pro) {
+        
+        
+              for (Programa programan : progr) {
+            
+                   if (pro.getCodigo().equalsIgnoreCase(programan.getCodigo())) {
+                        
+                       progr.remove(programan.getCodigo());
+                       
+                    }
+               }
+              
+             progr.add(pro);  
+              
+        }
+
+        
+        }
+        
+                
+        
+    
+
