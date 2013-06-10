@@ -57,12 +57,14 @@
                 <span>Codigo</span>
                 <span>Titulo</span>
                 <span>Descripcion</span>
+                <span></span>
             </li>
             <c:forEach var="programa" items="${requestScope.programa}" >
                 <li>
                     <span>${programa.codigo}</span>
                     <span>${programa.titulo}</span>
                     <span>${programa.descripcion}</span>
+                    <a href="irActualizaPrograma">Editar</a>
                 </li>
             </c:forEach>
         </ul>
