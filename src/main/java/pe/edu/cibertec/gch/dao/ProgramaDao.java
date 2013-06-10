@@ -12,4 +12,6 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 public interface ProgramaDao extends GestorBase<Programa> {
 
     public List<Programa> listarSegun(String titulo, String descripcion, TipoBusqueda tipoBusquedaEnum);
+    
+    public void modificarPorCodigo(Programa pro);
 }
