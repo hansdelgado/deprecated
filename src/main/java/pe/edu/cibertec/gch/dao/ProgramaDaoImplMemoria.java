@@ -73,17 +73,22 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
     public void modificarPorCodigo(Programa pro) {
         
         
-              for (Programa programan : progr) {
+             for (Programa programan : progr) {
             
-                   if (pro.getCodigo().equalsIgnoreCase(programan.getCodigo())) {
+                   if (pro.getCodigo().equals(programan.getCodigo())) {// hasta aqui esta buscando para q encuentre el q existe 
+                       
+                                                                    
+                       progr.set(progr.indexOf(programan), pro); 
+                       
+                       /* no se si esta bien este codigo, si le pongo add le va agregar uno mas, 
+                        * y la idea es que actualice el q ya existe en memoria por eso le pongo set
+                        mañana lo verifico en la chamba no m acuerdo.                        
                         
-                       progr.remove(programan.getCodigo());
+                        */
                        
                     }
                }
-              
-             progr.add(pro);  
-              
+                                        
         }
 
         
