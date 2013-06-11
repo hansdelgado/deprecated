@@ -29,12 +29,17 @@ public class BuscarCursoServlet extends HttpServlet {
         
         String codigo = req.getParameter("codigo"),
                 nombre = req.getParameter("nombre"),
+                descripcion = req.getParameter("descripcion"),
+                objetivos   = req.getParameter("objetivos"),
+                requisitos = req.getParameter("requisitos"),
+                estado = req.getParameter("estado"),
                 tipoBusqueda = req.getParameter("tipoBusqueda");
+        String duracion = req.getParameter("duracion");
         
         //Segun el codigo de tipo de busqueda obtener el valor del enum.
         TipoBusqueda tipoBusquedaEnum = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(tipoBusqueda));
         
-        List<Curso> cursos = gestorCurso.listarSegun(codigo,nombre, tipoBusquedaEnum);
+        List<Curso> cursos = gestorCurso.listarSegun(codigo,nombre,descripcion,objetivos ,requisitos ,estado , duracion, tipoBusquedaEnum);
         
         req.setAttribute("cursos", cursos);
         // pinta los datos en el listado
