@@ -4,6 +4,8 @@
  */
 package pe.edu.cibertec.gch.web.servlets.laboratorio;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,6 +18,10 @@ import static org.junit.Assert.*;
  * @author Admin
  */
 public class RegistroLaboratorioServletTest {
+    private RegistroLaboratorioServlet registroLaboratorioServlet;
+    private HttpServletRequest req;
+    private HttpServletResponse resp;
+    
     
     public RegistroLaboratorioServletTest() {
     }
