@@ -14,4 +14,6 @@ public interface CursoDao extends GestorBase<Curso> {
     public List<Curso> listarSegun(String nombre, String descripcion, TipoBusqueda tipoBusquedaEnum);
     
     public void modificarPorCodigo(Curso curso);
+    
+    public Curso eliminarPorCodigoCurso(String codigo);
 }
