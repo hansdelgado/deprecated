@@ -82,6 +82,16 @@ public class Programa {
         return moneda;
     }
 
+    public String getMonedaStr() {
+        if (moneda == Moneda.NuevosSoles) {
+            return "NS";
+        } else if (moneda == Moneda.DolaresUS) {
+            return "D";
+        } else {
+            return "";
+        }
+    }
+
     public void setMoneda(Moneda moneda) {
         this.moneda = moneda;
     }
