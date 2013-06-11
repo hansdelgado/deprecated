@@ -62,16 +62,14 @@
                 </li>
                 <script type="text/javascript">
                     function confirmarEliminacion(codigo) {
-                        var mensaje = "¿Desea realmente eliminar este programa?";
-                        var URL = "irEliminarPrograma?codigo=" + codigo;
 
-                        if (!confirm(mensaje)) {
-                            return false;
+                        var mensaje = "¿Desea realmente eliminar este programa?";
+                        var url = "irEliminarPrograma?codigo=" + codigo;
+
+                        if (confirm(mensaje)) {
+                            open(url);
                         }
-                        else {
-                            open(URL);
-                            return false;
-                        }
+                        return false;
                     }
                 </script>
             <c:forEach var="programa" items="${requestScope.programa}" >
