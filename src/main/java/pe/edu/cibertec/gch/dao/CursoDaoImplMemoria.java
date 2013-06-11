@@ -49,6 +49,12 @@ public class CursoDaoImplMemoria implements CursoDao {
         Curso curso = consultarPorCodigo(codigo);
         curso.setEstado(EstadoActividad.Obsoleto);
     }
+    
+    public Curso eliminarPorCodigoCurso(String codigo) {
+        Curso curso = consultarPorCodigo(codigo);
+        curso.setEstado(EstadoActividad.Obsoleto);
+        return curso;
+    }
 
     protected void borrarTodos() {
         arrcurso.clear();
