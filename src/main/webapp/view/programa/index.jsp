@@ -4,7 +4,7 @@
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Listado de Programas">
     <div class="informacion">
-        <span>${mensaje}</span>
+        <span>${mensaje}</span><br><br>
         <c:if test="${not empty requestScope.errores}">
             <ul>
                 <c:forEach var="error" items="${requestScope.errores}">
@@ -78,7 +78,7 @@
                     <span>${programa.titulo}</span>
                     <span>${programa.descripcion}</span>
                     <span><a href="irActualizaPrograma?codigo=${programa.codigo}">Editar</a></span>
-                    <span><a onclick="confirmarEliminacion(${programa.codigo})" >Borrar</a></span>
+                    <span><a onclick="confirmarEliminacion(${programa.codigo})" style="cursor: pointer" >Borrar</a></span>
                 </li>
             </c:forEach>
         </ul>
