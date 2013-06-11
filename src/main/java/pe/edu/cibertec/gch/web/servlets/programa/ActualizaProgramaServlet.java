@@ -29,7 +29,7 @@ public class ActualizaProgramaServlet extends HttpServlet {
         
         Programa modiPrograma = new Programa();
         modiPrograma.setCodigo(req.getParameter("codigo"));
-        modiPrograma.setTitulo(req.getParameter("titulo"));
+        modiPrograma.setTitulo(req.getParameter("titulo").toUpperCase());
         modiPrograma.setDescripcion(req.getParameter("descripcion"));
         modiPrograma.setObjetivos(req.getParameter("objetivos"));
         modiPrograma.setRequisitos(req.getParameter("requisitos"));
@@ -40,7 +40,9 @@ public class ActualizaProgramaServlet extends HttpServlet {
         modiPrograma.setDuracion(Integer.parseInt(req.getParameter("duracion")));
        
         programaDao.modificarPorCodigo(modiPrograma);
-        resp.sendRedirect("listarProgramas");
+        req.setAttribute("mensaje", "Su programa fué modificado con éxito");
+        ListadoProgramaServlet listadoProgramaServlet = new ListadoProgramaServlet();
+        listadoProgramaServlet.doGet(req, resp);
     }
 
     

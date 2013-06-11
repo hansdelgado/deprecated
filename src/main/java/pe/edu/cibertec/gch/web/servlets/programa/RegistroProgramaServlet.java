@@ -40,7 +40,7 @@ public class RegistroProgramaServlet extends HttpServlet {
         nuevoPrograma.setDuracion(Integer.parseInt(req.getParameter("duracion")));
                 
         programaDao.registrar(nuevoPrograma);
-        req.setAttribute("mensaje", "su nuevo programa '" + nuevoPrograma.getTitulo() + "' fué agregado con exito");
+        req.setAttribute("mensaje", "Su nuevo programa '" + nuevoPrograma.getTitulo() + "' fué agregado con éxito");
         ListadoProgramaServlet listadoProgramaServlet = new ListadoProgramaServlet();
         listadoProgramaServlet.doGet(req, resp);
     }

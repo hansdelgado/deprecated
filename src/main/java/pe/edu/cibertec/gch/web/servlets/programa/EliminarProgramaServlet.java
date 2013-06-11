@@ -25,7 +25,7 @@ public class EliminarProgramaServlet extends HttpServlet {
         String codigo = req.getParameter("codigo");
         programaDao.eliminarPorCodigo(codigo);
         
-        req.setAttribute("mensaje", "su programa fué eliminado con exito");
+        req.setAttribute("mensaje", "Su programa fué eliminado con éxito");
         ListadoProgramaServlet listadoProgramaServlet = new ListadoProgramaServlet();
         listadoProgramaServlet.doGet(req, response);
     }
