@@ -1,5 +1,6 @@
 package pe.edu.cibertec.gch.dao;
 
+import pe.edu.cibertec.gch.dao.espec.HorarioDao;
 import java.util.List;
 import org.junit.After;
 import static org.junit.Assert.*;
@@ -19,7 +20,7 @@ public class HorarioDaoImplMemoriaTest {
     @Before
     public void prepararPruebas() {
         // preparacion primaria de pruebas
-        horarioDao = FactoryDao.getInstance().getHorarioDao();
+        horarioDao = FactoryDao.getFactory().getHorarioDao();
     }
 
     @After

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.edu.cibertec.gch.dao.FactoryDao;
-import pe.edu.cibertec.gch.dao.HorarioDao;
 import pe.edu.cibertec.gch.modelo.Horario;
 import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 
@@ -18,12 +17,12 @@ import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 @WebServlet(name = "ListadoHorarioServlet", urlPatterns = {"/listarHorarios"})
 public class ListadoHorarioServlet extends HttpServlet {
 
-    private HorarioDao gestorHorario = FactoryDao.getInstance().getHorarioDao();
+    FactoryDao factoryDao = FactoryDao.getFactory();
     
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // trae los profesores en la fuente de datos
-        List<Horario> horarios = gestorHorario.listarTodos();
+        List<Horario> horarios = factoryDao.getHorarioDao().listarTodos();
         // almacena resultado en el request
         req.setAttribute("horarios", horarios);
         // pinta los datos en el listado

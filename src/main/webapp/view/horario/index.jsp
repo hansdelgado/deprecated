@@ -44,12 +44,20 @@
         <ul id="resultadoConsulta">
             <li class="cabeceraConsulta">
                 <span>Codigo</span>
-                <span>Descripcion</span>
+                <span>Descripción</span>
+                <span>Inicio</span>
+                <span>Fin</span>
+                <span>Estado</span>
             </li>
             <c:forEach var="horario" items="${requestScope.horarios}" >
                 <li>
                     <span>${horario.codigo}</span>
                     <span>${horario.descripcion}</span>
+                    <span>${horario.momentoInicio}</span>
+                    <span>${horario.momentoFin}</span>
+                    <span>${horario.estado}</span>
+                    <span><a href="irModificarHorario?codigo=<c:out value="${horario.codigo}"/>">Modificar</a></span>
+                    <span><a href="eliminarHorario?codigo=<c:out value="${horario.codigo}"/>">Eliminar</a></span>
                 </li>
             </c:forEach>
         </ul>

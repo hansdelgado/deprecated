@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pe.edu.cibertec.gch.dao.FactoryDao;
-import pe.edu.cibertec.gch.dao.HorarioDao;
 import pe.edu.cibertec.gch.modelo.EstadoActividad;
 import pe.edu.cibertec.gch.modelo.Horario;
 
@@ -18,7 +17,7 @@ import pe.edu.cibertec.gch.modelo.Horario;
 @WebServlet(name = "RegistroHorarioServlet", urlPatterns = {"/registrarHorario"})
 public class RegistroHorarioServlet extends HttpServlet {
     
-    private HorarioDao horarioDao = FactoryDao.getInstance().getHorarioDao();
+    private FactoryDao factoryDao = FactoryDao.getFactory();
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,7 +33,7 @@ public class RegistroHorarioServlet extends HttpServlet {
         nuevoHorario.setMomentoInicio(Integer.parseInt(inicio));
         nuevoHorario.setMomentoFin(Integer.parseInt(fin));
         nuevoHorario.setEstado(estado.equals("1") ? EstadoActividad.Valido : EstadoActividad.Obsoleto);
-        horarioDao.registrar(nuevoHorario);
+        factoryDao.getHorarioDao().registrar(nuevoHorario);
         resp.sendRedirect("listarHorarios");
     }
     

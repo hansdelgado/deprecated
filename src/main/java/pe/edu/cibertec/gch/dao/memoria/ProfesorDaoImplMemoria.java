@@ -1,5 +1,6 @@
-package pe.edu.cibertec.gch.dao;
+package pe.edu.cibertec.gch.dao.memoria;
 
+import pe.edu.cibertec.gch.dao.espec.ProfesorDao;
 import java.util.ArrayList;
 import java.util.List;
 import pe.edu.cibertec.gch.modelo.EstadoProfesor;
@@ -39,6 +40,11 @@ public class ProfesorDaoImplMemoria implements ProfesorDao {
 
     protected void borrarTodos() {
         profesores.clear();
+    }
+
+    @Override
+    public void modificar(Profesor entidad) {
+        
     }
     
 }

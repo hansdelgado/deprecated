@@ -56,4 +56,10 @@ public class Horario {
     public void setEstado(EstadoActividad estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Horario{" + "codigo=" + codigo + ", descripcion=" + descripcion + ", momentoInicio=" + momentoInicio + ", momentoFin=" + momentoFin + ", estado=" + estado + '}';
+    }
+    
 }

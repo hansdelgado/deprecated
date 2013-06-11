@@ -1,29 +1,26 @@
 package pe.edu.cibertec.gch.dao;
 
+import pe.edu.cibertec.gch.dao.espec.ProfesorDao;
+import pe.edu.cibertec.gch.dao.espec.HorarioDao;
+import pe.edu.cibertec.gch.dao.memoria.MemoriaFactoryDao;
+
 /**
  *
  * @author Student
  */
-public class FactoryDao {
+public abstract class FactoryDao {
     
-    private static FactoryDao instance;
+    private static FactoryDao factory = null;
     
-    private FactoryDao() {
-    }
-    
-    public static FactoryDao getInstance() {
-        if ( instance == null) {
-            instance = new FactoryDao();
+    public static FactoryDao getFactory() {
+        if ( factory == null) {
+            factory = new MemoriaFactoryDao();
         }
-        return instance;
+        return factory;
     }
     
-    public ProfesorDao getProfesorDao() {
-        return new ProfesorDaoImplMemoria();
-    }
+    public abstract ProfesorDao getProfesorDao();
     
-    public HorarioDao getHorarioDao() {
-        return new HorarioDaoImplMemoria();
-    }
+    public abstract HorarioDao getHorarioDao();
     
 }
