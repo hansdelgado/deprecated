@@ -9,7 +9,7 @@
             <ul>
                 <c:forEach var="error" items="${requestScope.errores}">
                     <li>${error}</li>
-                </c:forEach>
+                    </c:forEach>
             </ul>
         </c:if>
     </div>
@@ -35,38 +35,49 @@
                 <select name="tipoBusqueda">
                     <option value="0" <c:if test="${tipoBusqueda == 0}">selected</c:if> >Completa</option>
                     <option value="1" <c:if test="${tipoBusqueda == 1}">selected</c:if> >Parcial</option>
-                </select>
-            </div>            
-        </fieldset>
-        <button><span>Buscar</span></button>
-    </form>
-    <div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="irRegistroPrograma">
-                        Registrar nuevo programa
-                    </a>
+                    </select>
+                </div>            
+            </fieldset>
+            <button><span>Buscar</span></button>
+        </form>
+        <div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="irRegistroPrograma">
+                            Registrar nuevo programa
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <ul id="resultadoConsulta">
+                <li class="cabeceraConsulta">
+                    <span>Codigo</span>
+                    <span>Titulo</span>
+                    <span>Descripcion</span>
+                    <span>Editar</span>
+                    <span>Eliminar</span>
                 </li>
-            </ul>
-        </nav>
-    </div>
-    <div>
-        <ul id="resultadoConsulta">
-            <li class="cabeceraConsulta">
-                <span>Codigo</span>
-                <span>Titulo</span>
-                <span>Descripcion</span>
-                <span>Editar</span>
-                <span>Eliminar</span>
-            </li>
+                <script type="text/javascript">
+                    function confirmarEliminacion(codigo) {
+                        if (!confirm("¿Desea realmente eliminar este programa?")) {
+                            return false;
+                        }
+                        else {
+                            open("irEliminarPrograma?codigo="+codigo);
+                            return false;
+                        }
+                    }
+                </script>
             <c:forEach var="programa" items="${requestScope.programa}" >
                 <li>
                     <span>${programa.codigo}</span>
                     <span>${programa.titulo}</span>
                     <span>${programa.descripcion}</span>
                     <span><a href="irActualizaPrograma?codigo=${programa.codigo}">Editar</a></span>
-                    <span><a href="irEliminarPrograma?codigo=${programa.codigo}">Eliminar</a></span>
+                    <span><a onclick="confirmarEliminacion(${programa.codigo})" >Borrar</a></span>
                 </li>
             </c:forEach>
         </ul>
