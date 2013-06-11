@@ -21,6 +21,36 @@
                 <input type="search" name="nombre" id="nombre" maxlength="50" />
             </div>
             <div>
+                <label for="descripcion">
+                    Descripcion
+                </label>
+                <input type="search" name="descripcion" id="descripcion" maxlength="50" />
+            </div>
+            <div>
+                <label for="objetivos">
+                    Objetivos
+                </label>
+                <input type="search" name="objetivos" id="objetivos" maxlength="100" />
+            </div>
+            <div>
+                <label for="requisitos">
+                    Requisitos
+                </label>
+                <input type="search" name="requisitos" id="requisitos" maxlength="100" />
+            </div>
+             <div>
+                <label for="duracion">
+                    Duracion
+                </label>
+                <input type="search" name="duracion" id="requisitos" maxlength="50" />
+            </div>
+              <div>
+                <label for="estado">
+                    Estado
+                </label>
+                <input type="search" name="estado" id="estado" maxlength="50" />
+            </div>
+            <div>
                 <label for="tipoBusqueda">
                     Tipo Busqueda
                 </label>
@@ -48,11 +78,22 @@
             <li class="cabeceraConsulta">
                 <span>Codigo</span>
                 <span>Nombre</span>
+                <span>Descripcion</span>
+                <span>Objetivos</span>
+                <span>Requisitos</span>
+                <span>Duracion</span>
+                <span>Estado</span>
+                
             </li>
             <c:forEach var="curso" items="${requestScope.cursos}" >
                 <li>
                     <span>${curso.codigo}</span>
                     <span>${curso.nombre}</span>
+                     <span>${curso.descripcion}</span>
+                      <span>${curso.objetivos}</span>
+                       <span>${curso.requisitos}</span>
+                        <span>${curso.duracion}</span>
+                         <span>${curso.estado}</span>
                 </li>
             </c:forEach>
         </ul>
