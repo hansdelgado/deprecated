@@ -8,6 +8,13 @@
     </div>
 
     <form action="buscarLaboratorios">
+        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
+            <ul>
+                <c:forEach var="error" items="${requestScope.errores}">
+                    <li>${error.value}</li>
+                </c:forEach>
+            </ul>
+        </div>
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>
