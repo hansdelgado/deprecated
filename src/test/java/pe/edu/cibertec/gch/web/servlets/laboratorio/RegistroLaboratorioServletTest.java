@@ -25,17 +25,13 @@ public class RegistroLaboratorioServletTest {
     
     public RegistroLaboratorioServletTest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+
     
     @Before
     public void setUp() {
+        registroLaboratorioServlet=mock(RegistroLaboratorioServlet.class);
+        req=mock(HttpServletRequest.class);
+        resp=mock(HttpServletResponse.class);
     }
     
     @After
