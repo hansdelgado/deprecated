@@ -5,17 +5,19 @@ import java.util.HashMap;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 
 /**
  *
  * @author grupoPrograma
  */
-@WebFilter(filterName = "ValidacionRegistroProgramaFilter", urlPatterns = {"/registrarPrograma"})
+@WebFilter(filterName = "ValidacionRegistroProgramaFilter", urlPatterns = {"/registrarPrograma", "/actualizarPrograma"})
 public class ValidacionRegistroProgramaFilter implements Filter {
 
     private static final boolean debug = true;
@@ -39,8 +41,11 @@ public class ValidacionRegistroProgramaFilter implements Filter {
                 request.setAttribute(name, request.getParameter(name));
             }
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/programa/registro.jsp");
-            requestDispatcher.forward(request, response);
+            String alias = ((HttpServletRequest) request).getServletPath();
+            if (alias.equals("/actualizarPrograma")) {
+                GchServletUtils.reenviarAModificar("programa", (HttpServletRequest) request, (HttpServletResponse) response);
+            }
+            GchServletUtils.reenviarARegistro("programa", (HttpServletRequest) request, (HttpServletResponse) response);
         } else {
             // dejamos pasar los datos al servlet
             chain.doFilter(request, response);
@@ -84,17 +89,17 @@ public class ValidacionRegistroProgramaFilter implements Filter {
             errores.put("precio", "el precio debe contener solo numeros");
         }
 
-        if (titulo.length() > 10) {
-            errores.put("titulo", "el titulo no debe ser mayor a 10 caracteres");
+        if (titulo.length() > 45) {
+            errores.put("titulo", "el titulo no debe ser mayor a 45 caracteres");
         }
-        if (descripcion.length() > 10) {
-            errores.put("descripcion", "el descripcion no debe ser mayor a 10 caracteres");
+        if (descripcion.length() > 45) {
+            errores.put("descripcion", "el descripcion no debe ser mayor a 45 caracteres");
         }
-        if (objetivos.length() > 10) {
-            errores.put("objetivos", "objetivos puede tener hasta 10 caracteres");
+        if (objetivos.length() > 45) {
+            errores.put("objetivos", "objetivos puede tener hasta 45 caracteres");
         }
-        if (requisitos.length() > 10) {
-            errores.put("requisitos", "requisitos puede tener hasta 10 caracteres");
+        if (requisitos.length() > 45) {
+            errores.put("requisitos", "requisitos puede tener hasta 45 caracteres");
         }
 
         if (titulo.isEmpty()) {
@@ -108,6 +113,10 @@ public class ValidacionRegistroProgramaFilter implements Filter {
         }
         if (requisitos.isEmpty()) {
             errores.put("requisitos", "requisitos no debe estar vacio");
+        }
+        
+        if (moneda.isEmpty()) {
+            errores.put("moneda", "debe seleccionar su tipo de moneda");
         }
 
         if (!fecha.matches("\\d{1,4}[/-]\\d{1,2}[/-]\\d{1,4}")) {

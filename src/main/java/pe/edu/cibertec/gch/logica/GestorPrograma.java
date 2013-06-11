@@ -20,8 +20,8 @@ public class GestorPrograma implements GestorBase<Programa>{
     private static ArrayList<Programa> progr = new ArrayList<Programa>();
 
     @Override
-    public Programa consultarPorCodigo(final String codigo) {
-        Programa programa = new Programa() {{setCodigo(codigo);}};
+    public Programa consultarPorCodigo(String codigo) {
+        Programa programa = new Programa(codigo);
         return progr.get(progr.indexOf(programa));
     }
 

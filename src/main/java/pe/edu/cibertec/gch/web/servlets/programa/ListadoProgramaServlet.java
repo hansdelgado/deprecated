@@ -23,11 +23,8 @@ public class ListadoProgramaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
         List<Programa> programas = programaDao.listarTodos();
-
         req.setAttribute("programa", programas);
-
         GchServletUtils.reenviarAModulo("programa", req, resp);
 
     }

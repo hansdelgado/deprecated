@@ -1,16 +1,14 @@
 package pe.edu.cibertec.gch.dao;
 
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import pe.edu.cibertec.gch.modelo.EstadoActividad;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
 /**
  *
- * @author JAVA_MJ
+ * @author grupoPrograma
  */
 public class ProgramaDaoImplMemoria implements ProgramaDao {
 
@@ -18,20 +16,14 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
 
     @Override
     public Programa consultarPorCodigo(final String codigo) {
-        Programa programa = new Programa() {
-            {
-                setCodigo(codigo);
-            }
-        };
+        Programa programa = new Programa();
+        programa.setCodigo(codigo);
         return progr.get(progr.indexOf(programa));
     }
 
     @Override
     public void registrar(Programa programa) {
-
         progr.add(programa);
-        System.out.print("registroooooooo"
-                + progr.size());
     }
 
     @Override
@@ -41,14 +33,33 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
 
     @Override
     public void eliminarPorCodigo(String codigo) {
-        Programa programa = consultarPorCodigo(codigo);
-        programa.setEstado(EstadoActividad.Obsoleto);
+        
+        // // Sin eliminar.
+        // Programa programa = consultarPorCodigo(codigo);
+        // programa.setEstado(EstadoActividad.Obsoleto);
+
+        // // eliminacion mediante una busqueda propia (externa).
+        // System.out.print("ingresando a eliminar");
+        // int index = 0;
+        // for (Programa prg : progr) {
+        //     if (prg.getCodigo().compareToIgnoreCase(codigo) == 0) {
+        //         System.out.print("Encontrado");
+        //         progr.remove(index);
+        //         break;
+        //     }
+        //     index++;
+        // }
+        
+        // eliminación mediante busqueda interna.
+        progr.remove(new Programa(codigo));
+
     }
 
     protected void borrarTodos() {
         progr.clear();
     }
 
+    @Override
     public List<Programa> listarSegun(String titulo, String descripcion, TipoBusqueda tipoBusquedaEnum) {
 
         List<Programa> resultado = new LinkedList<Programa>();
@@ -66,5 +77,10 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
             }
         }
         return resultado;
+    }
+
+    @Override
+    public void modificarPorCodigo(Programa pro) {
+        progr.set(progr.indexOf(pro), pro);
     }
 }

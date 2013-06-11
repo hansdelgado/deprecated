@@ -1,6 +1,9 @@
 package pe.edu.cibertec.gch.modelo;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Conjunto de cursos asociados con respecto a un objetivo de ensenanza.
@@ -18,8 +21,27 @@ public class Programa {
     private Date fechaInicial;
     private int duracion;
 
-    public Date getFechaInicial() {
-        return fechaInicial;
+    public Programa() {
+    }
+
+    public Programa(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public Programa(String codigo, String titulo) {
+        this.codigo = codigo;
+        this.titulo = titulo;
+    }
+
+    public Programa(String codigo, String titulo, String descripcion) {
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+    }
+
+    public String getFechaInicial() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(fechaInicial);
     }
 
     public void setFechaInicial(Date fechaInicial) {
@@ -34,7 +56,6 @@ public class Programa {
         this.duracion = duracion;
     }
 
-   
     public String getCodigo() {
         return codigo;
     }
@@ -79,6 +100,16 @@ public class Programa {
         return moneda;
     }
 
+    public String getMonedaStr() {
+        if (moneda == Moneda.NuevosSoles) {
+            return "NS";
+        } else if (moneda == Moneda.DolaresUS) {
+            return "D";
+        } else {
+            return "";
+        }
+    }
+
     public void setMoneda(Moneda moneda) {
         this.moneda = moneda;
     }
@@ -97,5 +128,27 @@ public class Programa {
 
     public void setEstado(EstadoActividad estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.codigo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Programa other = (Programa) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        return true;
     }
 }

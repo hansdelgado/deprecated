@@ -79,11 +79,6 @@ public class ValidacionBuscarProgramaFilter implements Filter {
                 errores.put("ambos", "por lo menos debe llenar un campo en su busqueda Parcial");
             }
         }
-
-
-
-
-
         return errores;
     }
 
