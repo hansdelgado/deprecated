@@ -33,7 +33,7 @@ public class GestorLaboratorioTest {
     }
    
    @Test
-    public void cuandoBuscaExitosamente() {
+   public void cuandoBuscaExitosamente() {
         // preparacion adicional
         Laboratorio laboratorio = new Laboratorio() {
             {
