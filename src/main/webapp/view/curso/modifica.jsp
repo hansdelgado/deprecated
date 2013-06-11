@@ -4,13 +4,16 @@
 <gch:base titulo="Modificar Información de Curso">
     <div class="informacion">
         <span>${mensaje}</span>
-        <c:if test="${not empty requestScope.errores}">
-            <ul>
-                <c:forEach var="error" items="${requestScope.errores}">
-                    <li>${error}</li>
-                    </c:forEach>
-            </ul>
-        </c:if>
+        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
+           <!-- <ul>
+                <c:forEach var="error" items="">
+                    <li></li>
+                </c:forEach>
+            </ul>-->
+                <ul>
+                   <li>${errores}</li>
+                </ul>
+        </div> 
     </div>
     <form action="actualizarCurso" method="post">
         <fieldset>
@@ -23,7 +26,7 @@
             </div>
         </fieldset>
         <fieldset>
-            <legend>Datos del Programa</legend>
+            <legend>Datos del Curso</legend>
             <div>
                 <label for="titulo">nombre</label>
                 <input type="text" id="nombre" name="nombre" value="${curso.nombre}" maxlength="50"  autofocus="" />
@@ -41,7 +44,7 @@
                 <input type="text" id="requisitos" name="requisitos" value="${curso.requisitos}"  maxlength="400" />
             </div>
             <div>
-                <label for="duracion">Duraci&oacute;n del Programa</label>
+                <label for="duracion">Duraci&oacute;n </label>
                 <input type="text" id="duracion" name="duracion" value="${curso.duracion}" maxlength="400" />
             </div>
             <div>
