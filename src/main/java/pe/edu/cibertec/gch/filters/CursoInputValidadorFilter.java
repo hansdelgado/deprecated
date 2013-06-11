@@ -22,7 +22,7 @@ import javax.servlet.annotation.WebFilter;
  *
  * @author JAVA_MJ
  */
-@WebFilter(filterName = "CursoInputValidadorFilter", urlPatterns = {"/buscarCurso"})
+@WebFilter(filterName = "CursoInputValidadorFilter", urlPatterns = {"/buscarCursoTest"})
 public class CursoInputValidadorFilter implements Filter {
     
     private static final boolean debug = true;
