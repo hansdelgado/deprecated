@@ -50,11 +50,11 @@
                 </div>
                 <div>
                     <label for="precio">Precio</label>
-                    <input type="text" id="precio" name="precio" value="${programa.precio}" maxlength="400" disabled/>
+                    <input type="text" id="precio" name="precio" value="${programa.precio}" maxlength="400" />
             </div>
             <div>
                 <label for="duracion">Duraci&oacute;n del Programa</label>
-                <input type="text" id="duracion" name="duracion" value="${programa.duracion}" maxlength="400" disabled />
+                <input type="text" id="duracion" name="duracion" value="${programa.duracion}" maxlength="400" />
             </div>
             <div>
                 <label for="precio">Fecha de Inicio</label>
