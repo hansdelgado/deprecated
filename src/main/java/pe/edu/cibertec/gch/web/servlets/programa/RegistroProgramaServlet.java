@@ -31,7 +31,7 @@ public class RegistroProgramaServlet extends HttpServlet {
 
         Programa nuevoPrograma = new Programa();
         nuevoPrograma.setCodigo(req.getParameter("codigo"));
-        nuevoPrograma.setTitulo(req.getParameter("titulo"));
+        nuevoPrograma.setTitulo(req.getParameter("titulo").toUpperCase());
         nuevoPrograma.setDescripcion(req.getParameter("descripcion"));
         nuevoPrograma.setObjetivos(req.getParameter("objetivos"));
         nuevoPrograma.setRequisitos(req.getParameter("requisitos"));
@@ -40,11 +40,11 @@ public class RegistroProgramaServlet extends HttpServlet {
         nuevoPrograma.setEstado(EstadoActividad.Valido);
         nuevoPrograma.setFechaInicial(fechaToDate(req.getParameter("fecha")));
         nuevoPrograma.setDuracion(Integer.parseInt(req.getParameter("duracion")));
-
+                
         programaDao.registrar(nuevoPrograma);
         req.setAttribute("mensaje", "su nuevo programa '" + nuevoPrograma.getTitulo() + "' fué agregado con exito");
-        req.setAttribute("programa", programaDao.listarTodos());
-        GchServletUtils.reenviarAModulo("programa", req, resp);
+        ListadoProgramaServlet listadoProgramaServlet = new ListadoProgramaServlet();
+        listadoProgramaServlet.doGet(req, resp);
     }
 
     private Date fechaToDate(String fecha) {
