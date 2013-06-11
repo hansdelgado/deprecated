@@ -8,7 +8,7 @@
             <ul>
                 <c:forEach var="error" items="${requestScope.errores}">
                     <li>${error}</li>
-                </c:forEach>
+                    </c:forEach>
             </ul>
         </c:if>
     </div>
@@ -42,11 +42,15 @@
             </div>
             <div>
                 <label for="moneda">Tipo de Moneda</label>
-                <input type="text" id="moneda" name="moneda" value="${programa.moneda}" maxlength="400" disabled/>
-            </div>
-            <div>
-                <label for="precio">Precio</label>
-                <input type="text" id="precio" name="precio" value="${programa.precio}" maxlength="400" disabled/>
+                <select name="moneda">
+                    <option value="" <c:if test="${programa.monedaStr == ''}">selected</c:if> >----Seleccione----</option>
+                    <option value="NS" <c:if test="${programa.monedaStr == 'NS'}">selected</c:if> >Nuevo Soles</option>
+                    <option value="D" <c:if test="${programa.monedaStr == 'D'}">selected</c:if> >Dolares</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="precio">Precio</label>
+                    <input type="text" id="precio" name="precio" value="${programa.precio}" maxlength="400" disabled/>
             </div>
             <div>
                 <label for="duracion">Duraci&oacute;n del Programa</label>
@@ -54,7 +58,7 @@
             </div>
             <div>
                 <label for="precio">Fecha de Inicio</label>
-                <input type="date" id="fecha" name="fecha" value="${programa.fecha}" maxlength="400" disabled/>
+                <input type="date" id="fecha" name="fecha" value="${programa.fechaInicial}" maxlength="400" />
             </div>
         </fieldset>
         <button>Actualizar</button>
