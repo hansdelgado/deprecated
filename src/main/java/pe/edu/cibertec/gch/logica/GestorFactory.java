@@ -12,4 +12,8 @@ public class GestorFactory {
     public static GestorLaboratorio getGestorLaboratorio(){
         return new GestorLaboratorio();
     }
+    
+    public static GestorPrograma getGestorPrograma(){
+        return new GestorPrograma();
+    }
 }
