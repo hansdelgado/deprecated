@@ -21,6 +21,24 @@ public class Programa {
     private Date fechaInicial;
     private int duracion;
 
+    public Programa() {
+    }
+
+    public Programa(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public Programa(String codigo, String titulo) {
+        this.codigo = codigo;
+        this.titulo = titulo;
+    }
+
+    public Programa(String codigo, String titulo, String descripcion) {
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+    }
+
     public String getFechaInicial() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(fechaInicial);
