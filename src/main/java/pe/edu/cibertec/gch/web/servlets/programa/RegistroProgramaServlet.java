@@ -3,7 +3,6 @@ package pe.edu.cibertec.gch.web.servlets.programa;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,6 @@ import pe.edu.cibertec.gch.dao.ProgramaDao;
 import pe.edu.cibertec.gch.modelo.EstadoActividad;
 import pe.edu.cibertec.gch.modelo.Moneda;
 import pe.edu.cibertec.gch.modelo.Programa;
-import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 
 /**
  * Servlet para registrar un nuevo programa.
