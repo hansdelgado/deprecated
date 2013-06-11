@@ -62,11 +62,14 @@
                 </li>
                 <script type="text/javascript">
                     function confirmarEliminacion(codigo) {
-                        if (!confirm("¿Desea realmente eliminar este programa?")) {
+                        var mensaje = "¿Desea realmente eliminar este programa?";
+                        var URL = "irEliminarPrograma?codigo=" + codigo;
+
+                        if (!confirm(mensaje)) {
                             return false;
                         }
                         else {
-                            open("irEliminarPrograma?codigo="+codigo);
+                            open(URL);
                             return false;
                         }
                     }
