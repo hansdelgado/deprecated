@@ -83,6 +83,8 @@
                 <span>Requisitos</span>
                 <span>Duracion</span>
                 <span>Estado</span>
+                <span>Editar</span>
+                <span>Eliminar</span>
                 
             </li>
             <c:forEach var="curso" items="${requestScope.cursos}" >
@@ -94,6 +96,8 @@
                        <span>${curso.requisitos}</span>
                         <span>${curso.duracion}</span>
                          <span>${curso.estado}</span>
+                         <span><a href="irActualizaCurso?codigo=${curso.codigo}">Editar</a></span>
+                          <span><a href="irEliminarCurso?codigo=${curso.codigo}">Eliminar</a></span>
                 </li>
             </c:forEach>
         </ul>
