@@ -26,4 +26,8 @@ public class FactoryDao {
         return new HorarioDaoImplMemoria();
     }
     
+    public CursoDao getCursoDao(){
+        return new CursoDaoImplMemoria();
+    }
+    
 }
