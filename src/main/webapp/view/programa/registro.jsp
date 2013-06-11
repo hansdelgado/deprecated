@@ -43,11 +43,10 @@
             <div>
                 <label for="moneda">Moneda</label>
                 <select name="moneda">
-                    <option value="">----Seleccione----</option>
-                    <option value="NS">Nuevo Soles</option>
-                    <option value="D">Dolares</option>
+                    <option value="" <c:if test="${moneda == ''}">selected</c:if> >----Seleccione----</option>
+                    <option value="NS" <c:if test="${moneda == 'NS'}">selected</c:if> >Nuevo Soles</option>
+                    <option value="D" <c:if test="${moneda == 'D'}">selected</c:if> >Dolares</option>
                 </select>
-
             </div>
             <div>
                 <label for="precio">Precio</label>
