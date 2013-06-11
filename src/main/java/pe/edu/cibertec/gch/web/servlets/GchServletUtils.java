@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public final class GchServletUtils {
     private static final String BASE_MODULOS = "view/%s/index.jsp";
      private static final String BASE_REGISTRO = "view/%s/registro.jsp";
+     private static final String BASE_MODIFICA = "view/%s/modifica.jsp";
 
     private GchServletUtils() {
     }
@@ -22,6 +23,11 @@ public final class GchServletUtils {
     }
      public static void reenviarARegistro(String moduloDeseado, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paginaRedireccion = String.format(BASE_REGISTRO, moduloDeseado);
+        System.out.println(paginaRedireccion);
+        req.getRequestDispatcher(paginaRedireccion).forward(req, resp);
+    }
+     public static void reenviarAModificar(String moduloDeseado, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String paginaRedireccion = String.format(BASE_MODIFICA, moduloDeseado);
         System.out.println(paginaRedireccion);
         req.getRequestDispatcher(paginaRedireccion).forward(req, resp);
     }
