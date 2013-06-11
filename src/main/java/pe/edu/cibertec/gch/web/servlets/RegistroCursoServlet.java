@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import pe.edu.cibertec.gch.logica.GestorCurso;
 import pe.edu.cibertec.gch.modelo.Curso;
 import pe.edu.cibertec.gch.modelo.EstadoActividad;
@@ -31,6 +32,8 @@ public class RegistroCursoServlet extends HttpServlet {
                  requisitos = req.getParameter("requisitos"),
                 estado = req.getParameter("estado");
         int duracion = Integer.parseInt(req.getParameter("duracion"));
+        
+        System.out.println("Cadena:"+nombre+"-"+descripcion+"-"+objetivos+"-"+requisitos);
         
         Curso nuevoCurso = new Curso();
         nuevoCurso.setCodigo(codigo);
