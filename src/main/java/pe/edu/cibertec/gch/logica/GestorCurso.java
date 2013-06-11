@@ -39,7 +39,7 @@ public class GestorCurso implements GestorBase<Curso>{
         return listaCursos.get(listaCursos.indexOf(curso));
     }
     
-    public List<Curso> listarSegun(String codigo, String nombre, TipoBusqueda tipoBusquedaEnum) {
+    public List<Curso> listarSegun(String codigo, String nombre,String descripcion ,String objetivos,String requisitos,String estado,String duracion, TipoBusqueda tipoBusquedaEnum) {
         List<Curso> resultado = new LinkedList();
         for (Curso curso : listaCursos) {
             switch(tipoBusquedaEnum) {
@@ -48,7 +48,13 @@ public class GestorCurso implements GestorBase<Curso>{
                     break;
                 case Parcial :
                     if(!codigo.isEmpty() && codigo.equalsIgnoreCase(curso.getCodigo()) ||
-                            !nombre.isEmpty() && nombre.equalsIgnoreCase(curso.getNombre()))
+                            !nombre.isEmpty() && nombre.equalsIgnoreCase(curso.getNombre()) ||
+                            !descripcion.isEmpty() && descripcion.equalsIgnoreCase(curso.getDescripcion()) ||
+                            !objetivos.isEmpty() && objetivos.equalsIgnoreCase(curso.getObjetivos()) ||
+                            !requisitos.isEmpty() && requisitos.equalsIgnoreCase(curso.getRequisitos()) ||
+                            !estado.isEmpty() && estado.equalsIgnoreCase(String.valueOf(curso.getEstado())) ||
+                            !duracion.isEmpty() && duracion.equalsIgnoreCase(String.valueOf(curso.getDuracion()))
+                       )
                     {
                         resultado.add(curso);
                     }
