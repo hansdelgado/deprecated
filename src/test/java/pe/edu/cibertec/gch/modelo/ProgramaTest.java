@@ -1,5 +1,6 @@
 package pe.edu.cibertec.gch.modelo;
 
+import java.util.Calendar;
 import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
@@ -17,7 +18,7 @@ public class ProgramaTest {
 
     @Before
     public void setUp() {
-
+        programa = new Programa();
         programa.setCodigo("01");
         programa.setTitulo("Java");
         programa.setDescripcion("Ninguna");
@@ -38,10 +39,11 @@ public class ProgramaTest {
     @Test
     public void testSetFechaInicial() {
         // carga de datos
-        Date fecha = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.set(2013, 10, 01);
         // ejecuacion
-        programa.setFechaInicial(fecha);
+        programa.setFechaInicial(cal.getTime());
         // verificacion
-        assertSame(fecha, programa.getFechaInicial());
+        assertEquals("2013-11-01", programa.getFechaInicial());
     }
 }

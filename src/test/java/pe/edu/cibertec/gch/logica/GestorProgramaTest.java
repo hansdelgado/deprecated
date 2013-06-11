@@ -33,7 +33,6 @@ public class GestorProgramaTest {
     @Test
     public void consultarProgramaPorCodigo() {
         // carga de datos
-        gestorPrograma.borrarTodos();
         Programa p1 = new Programa("01");
         gestorPrograma.registrar(p1);
         // ejecucion y verificacion
