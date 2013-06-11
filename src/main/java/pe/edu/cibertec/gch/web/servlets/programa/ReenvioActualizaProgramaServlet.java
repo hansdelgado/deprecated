@@ -23,8 +23,16 @@ public class ReenvioActualizaProgramaServlet extends HttpServlet {
         
         String codigo = req.getParameter("codigo");
         
-        Programa progr = programaDao.consultarPorCodigo(codigo);
-        req.setAttribute("programa", progr);
+        Programa programa = programaDao.consultarPorCodigo(codigo);
+        req.setAttribute("codigo",programa.getCodigo());
+        req.setAttribute("titulo", programa.getTitulo());
+        req.setAttribute("descripcion",programa.getDescripcion());
+        req.setAttribute("objetivos",programa.getObjetivos());
+        req.setAttribute("requisitos",programa.getRequisitos());
+        req.setAttribute("moneda",programa.getMonedaStr());
+        req.setAttribute("precio",programa.getPrecio());
+        req.setAttribute("duracion",programa.getDuracion());
+        req.setAttribute("fecha",programa.getFechaInicial());
         
         GchServletUtils.reenviarAModificar("programa", req, resp);
     }
