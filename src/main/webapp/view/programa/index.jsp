@@ -64,7 +64,7 @@
                     <span>${programa.codigo}</span>
                     <span>${programa.titulo}</span>
                     <span>${programa.descripcion}</span>
-                    <a href="irActualizaPrograma">Editar</a>
+                    <a href="irActualizaPrograma?codigo=${programa.codigo}">Editar</a>
                 </li>
             </c:forEach>
         </ul>
