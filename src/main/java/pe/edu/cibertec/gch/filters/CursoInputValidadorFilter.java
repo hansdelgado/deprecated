@@ -10,19 +10,22 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
+import javax.persistence.metamodel.SetAttribute;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import org.omg.PortableServer.REQUEST_PROCESSING_POLICY_ID;
 
 /**
  *
  * @author JAVA_MJ
  */
-@WebFilter(filterName = "CursoInputValidadorFilter", urlPatterns = {"/buscarCursoTest"})
+@WebFilter(filterName = "CursoInputValidadorFilter", urlPatterns = {"/registrarCurso"})
 public class CursoInputValidadorFilter implements Filter {
     
     private static final boolean debug = true;
@@ -34,180 +37,115 @@ public class CursoInputValidadorFilter implements Filter {
     public CursoInputValidadorFilter() {
     }    
     
-    private void doBeforeProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
-        if (debug) {
-            log("CursoInputValidadorFilter:DoBeforeProcessing");
-        }
-
-        Map<String, String> errores = new HashMap<>();
-        int key=0;
-        request.removeAttribute("errores");
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
-        System.out.println("valida curso");
-        String textoBusquedaCodigoCurso = request.getParameter("nombres"),
-        textoBusquedaNombreCurso = request.getParameter("apellidoPaterno");
-        
-        if(textoBusquedaCodigoCurso.matches("[[^A-Za-z0-9.@_-~#]+]")){
-            String msjError ="Se ingreso caracteres especiales";
-            
-            key++;
-            String keyError="CUR"+key;
-            errores.put(keyError, msjError);
-        }
-        
-        request.setAttribute("errores", errores);
-        request.getRequestDispatcher("view/profesor/registro.jsp").forward(request, response);
-    }    
-    
-    private void doAfterProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
-        if (debug) {
-            log("CursoInputValidadorFilter:DoAfterProcessing");
-        }
-        System.out.println("Salio del Curso");
-    }
-
-    /**
-     *
-     * @param request The servlet request we are processing
-     * @param response The servlet response we are creating
-     * @param chain The filter chain we are processing
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet error occurs
-     */
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
-        if (debug) {
-            log("CursoInputValidadorFilter:doFilter()");
-        }
-        
-        doBeforeProcessing(request, response);
-        
-        Throwable problem = null;
-        try {
-            chain.doFilter(request, response);
-        } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
-            problem = t;
-            t.printStackTrace();
-        }
-        
-        doAfterProcessing(request, response);
 
-        // If there was a problem, we want to rethrow it if it is
-        // a known type, otherwise log it.
-        if (problem != null) {
-            if (problem instanceof ServletException) {
-                throw (ServletException) problem;
+        HashMap<String, String> errores = validadorFilterCurso(request);
+
+        if (errores.size() > 0) {
+            // envimos de regreso los errores y los datos ingresados.
+            System.out.println("----------"+errores);
+            request.setAttribute("errores", errores.values());
+
+            for (String name : request.getParameterMap().keySet()) {
+                request.setAttribute(name, request.getParameter(name));
             }
-            if (problem instanceof IOException) {
-                throw (IOException) problem;
-            }
-            sendProcessingError(problem, response);
-        }
-    }
 
-    /**
-     * Return the filter configuration object for this filter.
-     */
-    public FilterConfig getFilterConfig() {
-        return (this.filterConfig);
-    }
-
-    /**
-     * Set the filter configuration object for this filter.
-     *
-     * @param filterConfig The filter configuration object
-     */
-    public void setFilterConfig(FilterConfig filterConfig) {
-        this.filterConfig = filterConfig;
-    }
-
-    /**
-     * Destroy method for this filter
-     */
-    public void destroy() {        
-    }
-
-    /**
-     * Init method for this filter
-     */
-    public void init(FilterConfig filterConfig) {        
-        this.filterConfig = filterConfig;
-        if (filterConfig != null) {
-            if (debug) {                
-                log("CursoInputValidadorFilter:Initializing filter");
-            }
-        }
-    }
-
-    /**
-     * Return a String representation of this object.
-     */
-    @Override
-    public String toString() {
-        if (filterConfig == null) {
-            return ("CursoInputValidadorFilter()");
-        }
-        StringBuffer sb = new StringBuffer("CursoInputValidadorFilter(");
-        sb.append(filterConfig);
-        sb.append(")");
-        return (sb.toString());
-    }
-    
-    private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
-        if (stackTrace != null && !stackTrace.equals("")) {
-            try {
-                response.setContentType("text/html");
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
-                pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
-
-                // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
-                pw.print("</pre></body>\n</html>"); //NOI18N
-                pw.close();
-                ps.close();
-                response.getOutputStream().close();
-            } catch (Exception ex) {
-            }
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/curso/registro.jsp");
+            requestDispatcher.forward(request, response);
         } else {
-            try {
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                t.printStackTrace(ps);
-                ps.close();
-                response.getOutputStream().close();
-            } catch (Exception ex) {
-            }
+            chain.doFilter(request, response);
         }
     }
     
-    public static String getStackTrace(Throwable t) {
-        String stackTrace = null;
+    private HashMap<String,String> validadorFilterCurso (ServletRequest req){
+    
+        HashMap<String,String> errorIngreso = new HashMap<>();
+       
+        
+        final String codigo = req.getParameter("codigo"),
+               nombre = req.getParameter("nombre"),
+               descripcion = req.getParameter("descripcion"),
+               objetivos = req.getParameter("objetivos"),
+               requisitos = req.getParameter("requisitos"),
+               referencia = req.getParameter("referencia"),
+               estado = req.getParameter("estado"),
+               duracion = req.getParameter("duracion");
+        
         try {
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            t.printStackTrace(pw);
-            pw.close();
-            sw.close();
-            stackTrace = sw.getBuffer().toString();
-        } catch (Exception ex) {
+            Integer.parseInt(codigo);
+        } catch (Exception e) {
+            errorIngreso.put("codigo", "Ingresar sólo numeros en el Códido");
         }
-        return stackTrace;
+        try {
+            Integer.parseInt(duracion);
+        } catch (Exception e) {
+            errorIngreso.put("duracion", "Ingresar sólo numeros en la duración");
+        }
+        if(nombre.length()>10){
+            errorIngreso.put("nombre","Longitud Máxima del Campo Nombre: 10");
+        }
+        if(descripcion.length()>12){
+            errorIngreso.put("descripcion","Longitud Máxima del Campo Descripcion: 12");
+        }
+        if(objetivos.length()>10){
+            errorIngreso.put("objetivos","Longitud Máxima del Campo objetivos: 10");
+        }
+        if(requisitos.length()>12){
+            errorIngreso.put("requisitos","Longitud Máxima del Campo requisitos: 12");
+        }
+         if(referencia.length()>10){
+            errorIngreso.put("requisitos","Longitud Máxima del Campo requisitos: 10");
+        }
+          if(estado.length()>10){
+            errorIngreso.put("estado","Longitud Máxima del Campo estado: 10");
+        }
+          
+        if(!(estado.equalsIgnoreCase("obsoleto"))&&(!(estado.equalsIgnoreCase("Valido")))){
+            errorIngreso.put("estado","Valor válido de estado es : OBSOLETO O VALIDO ");
+        }
+        
+        if(codigo.isEmpty()){
+            errorIngreso.put("codigo","El código no debe estar vacio");
+        }
+        
+        if(nombre.isEmpty()){
+            errorIngreso.put("nombre","El nombre no debe estar vacio");
+        }
+        
+        if(descripcion.isEmpty()){
+            errorIngreso.put("descripcion","La descripcion no debe estar vacio");
+        }
+        
+        if(objetivos.isEmpty()){
+            errorIngreso.put("objetivos","El objetivo no debe estar vacio");
+        }
+        
+        if(requisitos.isEmpty()){
+            errorIngreso.put("requisitos","El requisito no debe estar vacio");
+        }
+        
+        if(referencia.isEmpty()){
+            errorIngreso.put("referencia","La referencia no debe estar vacia");
+        }
+        
+        if(estado.isEmpty()){
+            errorIngreso.put("estado","El estado no debe estar vacio");
+        }
+        
+        if(duracion.isEmpty()){
+            errorIngreso.put("duracion","La duracion no debe estar vacia");
+        }
+        
+        return errorIngreso;
     }
     
-    public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
+    public void destroy() {
+    }
+
+    public void init(FilterConfig filterConfig) {
+        this.filterConfig = filterConfig;
     }
 }
