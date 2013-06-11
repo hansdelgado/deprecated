@@ -23,14 +23,14 @@
                 <input type="text" id="descripcion" name="descripcion" required maxlength="50" />
             </div>
             <div>
-                <label for="objetivo">Objetivos:</label>
-                <input type="text" id="objetivo" name="objetivo" maxlength="50" />
+                <label for="objetivos">Objetivos:</label>
+                <input type="text" id="objetivos" name="objetivos" maxlength="50" />
             </div>
         
     
             <div>
                 <label for="requisito">Requisitos</label>
-                <input type="text" id="requisito" name="requisito" required maxlength="400" />
+                <input type="text" id="requisitos" name="requisitos" required maxlength="400" />
             </div>
             <div>
                 <label for="referencia">Referencia</label>
