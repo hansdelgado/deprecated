@@ -19,14 +19,14 @@
                 <label for="codigo">
                     C&oacute;digo
                 </label>
-                <input type="text" id="codigo" name="codigo" maxlength="8" value="${programa.codigo}" autofocus disabled>
+                <input type="text" id="codigo" name="codigo" maxlength="8" value="${programa.codigo}"  readonly  >
             </div>
         </fieldset>
         <fieldset>
             <legend>Datos del Programa</legend>
             <div>
                 <label for="titulo">Titulo</label>
-                <input type="text" id="titulo" name="titulo" value="${programa.titulo}" maxlength="50"  />
+                <input type="text" id="titulo" name="titulo" value="${programa.titulo}" maxlength="50"  autofocus="" />
             </div>
             <div>
                 <label for="descripcion">Descripci&oacute;n</label>
