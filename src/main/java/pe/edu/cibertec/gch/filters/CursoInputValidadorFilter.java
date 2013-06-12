@@ -84,6 +84,9 @@ public class CursoInputValidadorFilter implements Filter {
         } catch (Exception e) {
             errorIngreso.put("duracion", "Ingresar sólo numeros en la duración");
         }
+         if(codigo.length()>10){
+            errorIngreso.put("codigo","Longitud Máxima del Campo codigo: 10");
+        }
         if(nombre.length()>10){
             errorIngreso.put("nombre","Longitud Máxima del Campo Nombre: 10");
         }
