@@ -17,6 +17,7 @@ import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
  */
 @WebServlet(name = "ReenvioEliminaCursoServlet", urlPatterns = {"/irEliminarCurso"})
 public class ReenvioEliminaCursoServlet extends HttpServlet {
+    
      private CursoDao cursoDao = FactoryDao.getInstance().getCursoDao();
 
     @Override
@@ -25,7 +26,6 @@ public class ReenvioEliminaCursoServlet extends HttpServlet {
         try {
              String codigo = req.getParameter("codigo");
              Curso curso = cursoDao.eliminarPorCodigoCurso(codigo);
-             //req.setAttribute("curso", curso);
              resp.sendRedirect("listarCursos");
         
              GchServletUtils.reenviarAEliminar("curso", req, resp);
