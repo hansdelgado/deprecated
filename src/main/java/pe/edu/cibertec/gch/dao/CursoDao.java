@@ -11,7 +11,8 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
  */
 public interface CursoDao extends GestorBase<Curso> {
 
-    public List<Curso> listarSegun(String nombre, String descripcion, TipoBusqueda tipoBusquedaEnum);
+    public List<Curso> listarSegun(String codigo, String nombre,String descripcion,String objetivos, String requisitos, String estado, String duracion, TipoBusqueda tipoBusquedaEnum);
+    //codigo,nombre,descripcion,objetivos ,requisitos ,estado , duracion, tipoBusquedaEnum
     
     public void modificarPorCodigo(Curso curso);
     
