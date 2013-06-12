@@ -27,7 +27,7 @@ public class FactoryDao {
     }
     
     public CursoDao getCursoDao(){
-        return new CursoDaoImplMemoria();
+        return new CursoDaoImplements();
     }
     
 }
