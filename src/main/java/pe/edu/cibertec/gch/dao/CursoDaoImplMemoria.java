@@ -61,8 +61,8 @@ public class CursoDaoImplMemoria implements CursoDao {
     }
 
     @Override
-    public List<Curso> listarSegun(String nombre, String descripcion, TipoBusqueda tipoBusquedaEnum) {
-
+    public List<Curso> listarSegun(String codigo, String nombre,String descripcion,String objetivos, String requisitos, String estado, String duracion, TipoBusqueda tipoBusquedaEnum){
+//listarSegun(String nombre,String descripcion,String objetivos, String requisitos, String estado, String duracion, TipoBusqueda tipoBusquedaEnum);
         List<Curso> resultado = new LinkedList<Curso>();
         for (Curso cursos : arrcurso) {
             switch (tipoBusquedaEnum) {
