@@ -13,7 +13,7 @@
             </ul>
         </c:if>
     </div>
-    <form action="buscarProgramas">
+        <form method="post" action="buscarProgramas">
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>

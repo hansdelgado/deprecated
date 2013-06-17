@@ -15,7 +15,7 @@ import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 /**
  * Servlet para listar programas.
  */
-@WebServlet(name = "ListadoProgramaServlet", urlPatterns = {"/listarProgramas"})
+//@WebServlet(name = "ListadoProgramaServlet", urlPatterns = {"/listarProgramas"})
 public class ListadoProgramaServlet extends HttpServlet {
 
     private ProgramaDao programaDao = FactoryDao.getInstance().getProgramaDao();

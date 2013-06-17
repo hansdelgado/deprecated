@@ -21,7 +21,7 @@ import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
  *
  * @author JAVA_MJ
  */
-@WebServlet(name = "BuscarProgramasServlet", urlPatterns = {"/buscarProgramas"})
+//@WebServlet(name = "BuscarProgramasServlet", urlPatterns = {"/buscarProgramas"})
 public class BuscarProgramaServlet extends HttpServlet {
     
     private ProgramaDao programaDao = FactoryDao.getInstance().getProgramaDao();

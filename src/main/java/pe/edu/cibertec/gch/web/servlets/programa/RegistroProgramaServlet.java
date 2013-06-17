@@ -17,7 +17,7 @@ import pe.edu.cibertec.gch.modelo.Programa;
 /**
  * Servlet para registrar un nuevo programa.
  */
-@WebServlet(name = "RegistroProgramaServlet", urlPatterns = {"/registrarPrograma"})
+//@WebServlet(name = "RegistroProgramaServlet", urlPatterns = {"/registrarPrograma"})
 public class RegistroProgramaServlet extends HttpServlet {
 
     private ProgramaDao programaDao = FactoryDao.getInstance().getProgramaDao();

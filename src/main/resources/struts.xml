@@ -7,4 +7,7 @@
     <constant name="struts.devMode" value="true" />
     <!-- Recarga de configuraciones ante modificaciones -->
     <constant name="struts.configuration.xml.reload" value="value" />
+    
+    <!-- Inclusion de paquetes -->
+    <include file="programa.xml"  />
 </struts>
