@@ -36,7 +36,7 @@ public class ActualizaProgramaServlet extends HttpServlet {
         modiPrograma.setMoneda(moneda.equals("NS") ? Moneda.NuevosSoles : Moneda.DolaresUS);
         modiPrograma.setPrecio(Double.parseDouble(req.getParameter("precio")));
         modiPrograma.setEstado(EstadoActividad.Valido);
-        modiPrograma.setFechaInicial(fechaToDate(req.getParameter("fecha")));
+   //     modiPrograma.setFechaInicial(fechaToDate(req.getParameter("fecha")));
         modiPrograma.setDuracion(Integer.parseInt(req.getParameter("duracion")));
        
         programaDao.modificarPorCodigo(modiPrograma);

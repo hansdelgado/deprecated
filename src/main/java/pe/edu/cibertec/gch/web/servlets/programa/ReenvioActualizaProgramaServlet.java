@@ -32,7 +32,7 @@ public class ReenvioActualizaProgramaServlet extends HttpServlet {
         req.setAttribute("moneda",programa.getMonedaStr());
         req.setAttribute("precio",programa.getPrecio());
         req.setAttribute("duracion",programa.getDuracion());
-        req.setAttribute("fecha",programa.getFechaInicial());
+       req.setAttribute("fecha",programa.getFechaInicial());
         
         GchServletUtils.reenviarAModificar("programa", req, resp);
     }

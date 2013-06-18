@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <gch:base titulo="Listado de Programas">
     <div class="informacion">
@@ -13,7 +13,7 @@
             </ul>
         </c:if>
     </div>
-        <form method="post" action="buscarProgramas">
+    <form method="post" action="buscarProgramas">
         <fieldset>
             <legend>Datos de B&uacute;squeda</legend>
             <div>
@@ -60,27 +60,36 @@
                     <span>Editar</span>
                     <span>Eliminar</span>
                 </li>
-                <script type="text/javascript">
-                    function confirmarEliminacion(codigo) {
 
-                        var mensaje = "¿Desea realmente eliminar este programa?";
-                        var url = "irEliminarPrograma?codigo=" + codigo;
-
-                        if (confirm(mensaje)) {
-                            open(url);
-                        }
-                        return false;
-                    }
-                </script>
-            <c:forEach var="programa" items="${requestScope.programa}" >
+            <s:iterator var="programa" value="programas" >
                 <li>
-                    <span>${programa.codigo}</span>
-                    <span>${programa.titulo}</span>
-                    <span>${programa.descripcion}</span>
-                    <span><a href="irActualizaPrograma?codigo=${programa.codigo}">Editar</a></span>
-                    <span><a onclick="confirmarEliminacion(${programa.codigo})" style="cursor: pointer" >Borrar</a></span>
+                    <span><s:property value="codigo"></s:property></span>
+                    <span><s:property value="titulo"></s:property></span>
+                    <span><s:property value="descripcion"></s:property></span>
+
+                    <s:url  action="irActualizaPrograma.action" var="urlEditar" >
+                        <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
+                    </s:url>
+                    <span><s:a href="%{urlEditar}" >Editar</s:a></span>
+                    
+                    <s:url  action="irEliminarPrograma.action" var="urlEliminar" >
+                     <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
+                    </s:url>
+                    <span><s:a href="%{urlEliminar}" style="cursor: pointer" >Borrar</s:a></span>
                 </li>
-            </c:forEach>
+            </s:iterator>        
         </ul>
     </div>
+    <script type="text/javascript">
+            function confirmarEliminacion(codigo) {
+
+                var mensaje = "¿Desea realmente eliminar este programa?";
+                var url = "irEliminarPrograma?codigo=" + codigo;
+
+                if (confirm(mensaje)) {
+                    open(url);
+                }
+                return false;
+            }
+    </script>
 </gch:base>

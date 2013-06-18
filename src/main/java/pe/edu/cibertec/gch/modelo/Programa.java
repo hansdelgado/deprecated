@@ -39,9 +39,8 @@ public class Programa {
         this.descripcion = descripcion;
     }
 
-    public String getFechaInicial() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return dateFormat.format(fechaInicial);
+    public Date getFechaInicial() {
+        return fechaInicial;
     }
 
     public void setFechaInicial(Date fechaInicial) {
