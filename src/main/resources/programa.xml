@@ -6,7 +6,7 @@
 
 <struts>
     <package name="programa" namespace="/" extends="struts-default">
-        <action name="listarProgramas" >
+        <action name="listarProgramas" class="pe.edu.cibertec.gch.web.servlets.programa.action.Listar" >
             <result>/view/programa/index.jsp</result>
         </action>
         <action name="irRegistroPrograma" >
