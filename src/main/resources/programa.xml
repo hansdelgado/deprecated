@@ -6,18 +6,38 @@
 
 <struts>
     <package name="programa" namespace="/" extends="struts-default">
+        
         <action name="listarProgramas" class="pe.edu.cibertec.gch.web.servlets.programa.action.Listar" >
             <result>/view/programa/index.jsp</result>
         </action>
+        
         <action name="irRegistroPrograma" >
             <result>/view/programa/registro.jsp</result>
         </action>
-        <action name="buscarProgramas" >
+        
+        <action name="buscarProgramas" class="pe.edu.cibertec.gch.web.servlets.programa.action.Buscar" >
             <result>/view/programa/index.jsp</result>
         </action>
+        
         <action name="registrarPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Registrar" >
-            <result name="success">/view/programa/index.jsp</result>
+            
+            <!-- *********************************************************************************
+            * Redireccionamos a listarProgramas mediante redirect (no recomendado) 
+            * <result name="success" type="redirect" >listarProgramas.action?mensaje=${mensaje}</result>
+            ***************************************************************************************-->
+            
+            <!-- Redireccionamos a listarProgramas mediante redirectAction ( recomendado )-->
+            <result name="success" type="redirectAction" >
+                <param name="actionName">listarProgramas</param>
+                <param name="namespace">/</param>
+                <param name="mensaje">${mensaje}</param>
+            </result>
             <result name="input">/view/programa/registro.jsp</result>
+        </action>
+        
+        <action name="irEliminarPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Eliminar" >
+            <!--Redireccionamos Redireccionamos a listarProgramas mediante 'chain' --> 
+            <result name="success" type="chain">listarProgramas</result>
         </action>
     </package>
 </struts>

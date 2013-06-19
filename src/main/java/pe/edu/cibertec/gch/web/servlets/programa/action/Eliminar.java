@@ -1,33 +1,33 @@
 package pe.edu.cibertec.gch.web.servlets.programa.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.List;
 import pe.edu.cibertec.gch.dao.FactoryDao;
-import pe.edu.cibertec.gch.modelo.Programa;
 
 /**
  *
  * @author DanJoas
  */
-public class Listar extends ActionSupport {
+public class Eliminar extends ActionSupport {
 
-    private List<Programa> programas;
-    private String mensaje; // si se usa chain no es necesario declaralo
+    private String codigo;
+    private String mensaje;
 
     @Override
     public String execute() throws Exception {
+        String titulo = FactoryDao.getInstance().getProgramaDao().consultarPorCodigo(codigo).getTitulo();
+        FactoryDao.getInstance().getProgramaDao().eliminarPorCodigo(codigo);
 
-        programas = FactoryDao.getInstance().getProgramaDao().listarTodos();
+        setMensaje("el programa '" + titulo + "' se elimino correctamente");
         return SUCCESS;
     }
 
     // Metodos de acceso de los JavaBeans.
-    public List<Programa> getProgramas() {
-        return programas;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setProgramas(List<Programa> programas) {
-        this.programas = programas;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getMensaje() {

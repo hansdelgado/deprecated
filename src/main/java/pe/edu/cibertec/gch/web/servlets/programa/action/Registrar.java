@@ -14,31 +14,20 @@ public class Registrar extends ActionSupport {
 
     private List<Programa> programas;
     private Programa programa;
+    private String mensaje;
 
     @Override
     public String execute() throws Exception {
 
-
-        /*  GCH.dump("titulo", programa.getTitulo());
-         GCH.dump("descripcion", programa.getDescripcion());
-         GCH.dump("objetivo", programa.getObjetivos());
-         GCH.dump("requisito", programa.getRequisitos());
-         GCH.dump("modena", programa.getMonedaStr());
-         GCH.dump("precio", programa.getPrecio());
-         GCH.dump("duracion", programa.getDuracion());
-         GCH.dump("fechaIncial", GCH.dateToFecha(programa.getFechaInicial()));
-         */
-
+        GCH.dump("programa", programa);
         FactoryDao.getInstance().getProgramaDao().registrar(programa);
-        programas = FactoryDao.getInstance().getProgramaDao().listarTodos();
+        setMensaje("el programa '" + programa.getTitulo() + "' fue agregado correctamente");
         return SUCCESS;
     }
 
     @Override
     public void validate() {
         // realizamos algunas validaciones 
-
-
         try {
             Integer.parseInt(programa.getCodigo());
         } catch (NumberFormatException nfe) {
@@ -100,6 +89,7 @@ public class Registrar extends ActionSupport {
         }
     }
 
+    // Metodos de acceso de los JavaBeans.
     public Programa getPrograma() {
         return programa;
     }
@@ -115,6 +105,12 @@ public class Registrar extends ActionSupport {
     public void setProgramas(List<Programa> programas) {
         this.programas = programas;
     }
-    
-    
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
 }

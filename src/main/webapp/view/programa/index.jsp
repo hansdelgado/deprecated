@@ -1,10 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <gch:base titulo="Listado de Programas">
     <div class="informacion">
-        <span>${mensaje}</span><br><br>
+        <span><s:property value="mensaje" /></span><br><br>
         <c:if test="${not empty requestScope.errores}">
             <ul>
                 <c:forEach var="error" items="${requestScope.errores}">
@@ -75,7 +75,7 @@
                     <s:url  action="irEliminarPrograma.action" var="urlEliminar" >
                      <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
                     </s:url>
-                    <span><s:a href="%{urlEliminar}" style="cursor: pointer" >Borrar</s:a></span>
+                    <span><s:a href="%{urlEliminar}" onclick="if(!confirm('Â¿Desea realmente eliminar este programa?')){return false;}" style="cursor: pointer" >Borrar</s:a></span>
                 </li>
             </s:iterator>        
         </ul>

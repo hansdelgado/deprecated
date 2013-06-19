@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import pe.edu.cibertec.gch.modelo.Programa;
 
 /**
  *
@@ -42,5 +43,18 @@ public final class GCH {
         if (debug) {
             System.out.println(mensaje + " -> " + parametro + " : " + obj);
         }
+    }
+
+    public static void dump(String mensaje, Programa programa) {
+        System.out.println("==========" + mensaje + "============");
+        dump("titulo", programa.getTitulo());
+        dump("descripcion", programa.getDescripcion());
+        dump("objetivo", programa.getObjetivos());
+        dump("requisito", programa.getRequisitos());
+        dump("modena", programa.getMonedaStr());
+        dump("precio", programa.getPrecio());
+        dump("duracion", programa.getDuracion());
+        dump("fechaIncial", dateToFecha(programa.getFechaInicial()));
+        System.out.println("========FIN " + mensaje + "==============");
     }
 }

@@ -3,8 +3,7 @@
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <gch:base titulo="Registro de Programa">
-    <div class="informacion">
-        <span>${mensaje}</span><br>       
+    <div class="informacion">   
          <s:fielderror/>
     </div>
     <button onclick="cargarDatos()">Simular Carga</button>
@@ -15,26 +14,26 @@
                 <label for="codigo">
                     C&oacute;digo
                 </label>
-                <input type="text" id="codigo" name="programa.codigo" maxlength="8" value="${codigo}" autofocus >
+                <s:textfield id="codigo" name="programa.codigo" maxlength="8" autofocu="autofocus" />
             </div>
         </fieldset>
         <fieldset>
             <legend>Datos del Programa</legend>
             <div>
                 <label for="titulo">Titulo</label>
-                <input type="text" id="titulo" name="programa.titulo" value="${titulo}" maxlength="50" class="ancho" />
+                <s:textfield id="titulo" name="programa.titulo" maxlength="50" class="ancho" />
             </div>
             <div>
                 <label for="descripcion">Descripci&oacute;n</label>
-                <input type="text" id="descripcion" name="programa.descripcion" value="${descripcion}" maxlength="50" class="ancho" />
+                <s:textfield id="descripcion" name="programa.descripcion" maxlength="50" class="ancho" />
             </div>
             <div>
                 <label for="objetivos">Objetivos</label>
-                <input type="text" id="objetivos" name="programa.objetivos" value="${objetivos}" maxlength="50"  class="ancho"/>
+                <s:textfield id="objetivos" name="programa.objetivos" maxlength="50"  class="ancho"/>
             </div>
             <div>
                 <label for="requisitos">Requisitos</label>
-                <input type="text" id="requisitos" name="programa.requisitos" value="${requisitos}"  maxlength="400" class="ancho" />
+                <s:textfield id="requisitos" name="programa.requisitos"  maxlength="400" class="ancho" />
             </div>
             <div>
                 <label for="moneda">Moneda</label>
@@ -46,15 +45,16 @@
                 </div>
                 <div>
                     <label for="precio">Precio</label>
-                    <input type="text" id="precio" name="programa.precio" value="${precio}" maxlength="400" />
+                    <s:textfield id="precio" name="programa.precio"  maxlength="400" />
             </div>
             <div>
                 <label for="duracion">Duraci&oacute;n del Programa</label>
-                <input type="text" id="duracion" name="programa.duracion" value="${duracion}" maxlength="400" />
+                <s:textfield id="duracion" name="programa.duracion"  maxlength="400" />
             </div>
             <div>
                 <label for="precio">Fecha de Inicio</label>
-                <input type="date" id="fecha" name="programa.fechaInicial" value="${fecha}" maxlength="400" />
+                <input type="date" id="fecha" name="programa.fechaInicial" value="<s:property value="programa.fechaInicial"/>"  />
+                
             </div>
         </fieldset>
         <button>Registrar</button>
