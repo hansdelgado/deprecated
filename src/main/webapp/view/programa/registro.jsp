@@ -14,26 +14,26 @@
                 <label for="codigo">
                     C&oacute;digo
                 </label>
-                <s:textfield id="codigo" name="programa.codigo" maxlength="8" autofocu="autofocus" />
+                <s:textfield id="codigo" name="programa.codigo" maxlength="8" autofocus="autofocus" />
             </div>
         </fieldset>
         <fieldset>
             <legend>Datos del Programa</legend>
             <div>
                 <label for="titulo">Titulo</label>
-                <s:textfield id="titulo" name="programa.titulo" maxlength="50" class="ancho" />
+                <s:textfield id="titulo" name="programa.titulo"  maxlength="50" cssClass="ancho" />
             </div>
             <div>
                 <label for="descripcion">Descripci&oacute;n</label>
-                <s:textfield id="descripcion" name="programa.descripcion" maxlength="50" class="ancho" />
+                <s:textfield id="descripcion" name="programa.descripcion" maxlength="50" cssClass="ancho" />
             </div>
             <div>
                 <label for="objetivos">Objetivos</label>
-                <s:textfield id="objetivos" name="programa.objetivos" maxlength="50"  class="ancho"/>
+                <s:textfield id="objetivos" name="programa.objetivos" maxlength="50"  cssClass="ancho"/>
             </div>
             <div>
                 <label for="requisitos">Requisitos</label>
-                <s:textfield id="requisitos" name="programa.requisitos"  maxlength="400" class="ancho" />
+                <s:textfield id="requisitos" name="programa.requisitos"  maxlength="400" cssClass="ancho" />
             </div>
             <div>
                 <label for="moneda">Moneda</label>
