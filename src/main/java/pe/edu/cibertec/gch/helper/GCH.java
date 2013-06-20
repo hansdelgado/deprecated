@@ -29,6 +29,9 @@ public final class GCH {
     }
 
     public static String dateToFecha(Date fecha) {
+        if(fecha == null){
+            fecha = new Date();
+        }
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(fecha);
     }

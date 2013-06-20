@@ -15,6 +15,14 @@
             <result>/view/programa/registro.jsp</result>
         </action>
         
+        <action name="irActualizaPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Editar" method="mostrar" >
+            <result>/view/programa/modifica.jsp</result>
+            <result name="listado" type="redirectAction">
+                <param name="actionName">listarProgramas</param>
+                <param name="mensaje">${mensaje}</param>
+            </result>
+        </action>
+        
         <action name="buscarProgramas" class="pe.edu.cibertec.gch.web.servlets.programa.action.Buscar" >
             <!--se hace uso del interceptor validation ver el archivo : Buscar-validation.xml --> 
             <result>/view/programa/index.jsp</result>
@@ -35,6 +43,15 @@
                 <param name="mensaje">${mensaje}</param>
             </result>
             <result name="input">/view/programa/registro.jsp</result>
+        </action>
+
+        <action name="actualizarPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Editar" >
+            <result name="success" type="redirectAction" >
+                <param name="actionName">listarProgramas</param>
+                <param name="namespace">/</param>
+                <param name="mensaje">${mensaje}</param>
+            </result>
+            <result name="input">/view/programa/modifica.jsp</result>
         </action>
         
         <action name="irEliminarPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Eliminar" >

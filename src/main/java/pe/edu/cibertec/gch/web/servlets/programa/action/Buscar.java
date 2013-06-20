@@ -20,8 +20,26 @@ public class Buscar extends ActionSupport {
     @Override
     public String execute() throws Exception {
         TipoBusqueda tipoBusquedaEnum = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(getTipoBusqueda()));
-        programas = FactoryDao.getInstance().getProgramaDao().listarSegun(getTitulo(), getDescripcion(),tipoBusquedaEnum );
+        programas = FactoryDao.getInstance().getProgramaDao().listarSegun(getTitulo(), getDescripcion(), tipoBusquedaEnum);
         return SUCCESS;
+    }
+
+    @Override
+    public void validate() {
+        // realizamos algunas validaciones 
+        if (TipoBusqueda.Completa == TipoBusqueda.obtenerPorCodigo(Integer.parseInt(getTipoBusqueda()))) {
+            if (getTitulo().isEmpty()) {
+                addFieldError("titulo", "el titulo no debe estar vacio en una busqueda Completa");
+            }
+
+            if (getDescripcion().isEmpty()) {
+                addFieldError("descripcion", "descripcion no debe estar vacio en una busqueda Completa");
+            }
+        } else {
+            if (getTitulo().isEmpty() && getDescripcion().isEmpty()) {
+                addFieldError("ambos", "por lo menos debe llenar un campo en su busqueda Parcial");
+            }
+        }
     }
 
     // Metodos de acceso de los JavaBeans.

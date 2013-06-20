@@ -14,12 +14,15 @@
 
 <validators>
     <field name="titulo">
-        <field-validator type="requiredstring">
-            <message>Debe ingresar un titulo</message>
+        <field-validator type="stringlength">
+            <param name="maxLength">20</param>
+            <message>el titulo no debe ser mayor a 20 caracteres</message>
         </field-validator>
     </field>
     <field name="descripcion">
-        <field-validator type="requiredstring">
+        <field-validator type="stringlength">
+            <param name="maxLength">20</param>
+            <message>la descripcion no debe ser mayor a 20 caracteres</message>
             <message>Debe ingresar una descripcion.</message>
         </field-validator>
     </field>

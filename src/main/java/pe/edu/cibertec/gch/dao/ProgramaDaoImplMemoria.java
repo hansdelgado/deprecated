@@ -3,6 +3,7 @@ package pe.edu.cibertec.gch.dao;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import pe.edu.cibertec.gch.helper.GCH;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
@@ -18,7 +19,13 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
     public Programa consultarPorCodigo(final String codigo) {
         Programa programa = new Programa();
         programa.setCodigo(codigo);
-        return progr.get(progr.indexOf(programa));
+        try {
+            return progr.get(progr.indexOf(programa));
+        } catch (IndexOutOfBoundsException e) {
+            GCH.dump("Dao:consultarPorCodigo","no exite este programa");
+            return null;
+        }
+
     }
 
     @Override
@@ -33,7 +40,7 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
 
     @Override
     public void eliminarPorCodigo(String codigo) {
-        
+
         // // Sin eliminar.
         // Programa programa = consultarPorCodigo(codigo);
         // programa.setEstado(EstadoActividad.Obsoleto);
@@ -49,7 +56,7 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
         //     }
         //     index++;
         // }
-        
+
         // eliminación mediante busqueda interna.
         progr.remove(new Programa(codigo));
 

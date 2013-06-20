@@ -1,0 +1,13 @@
+<!DOCTYPE validators PUBLIC
+  "-//Apache Struts//XWork Validator 1.0.3//EN" 
+  "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<!--Validacion a nivel de Objeto de Dominio usando el interceptor Validation y visitor-->
+  
+<validators>
+    <field name="programa">
+        <field-validator type="visitor">
+            <message>Registro :  </message>   	
+        </field-validator>   	
+    </field>
+</validators>
