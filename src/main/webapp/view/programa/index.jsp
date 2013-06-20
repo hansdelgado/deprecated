@@ -4,6 +4,7 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <gch:base titulo="Listado de Programas">
     <div class="informacion">
+        <s:fielderror/>
         <span><s:property value="mensaje" /></span><br><br>
         <c:if test="${not empty requestScope.errores}">
             <ul>

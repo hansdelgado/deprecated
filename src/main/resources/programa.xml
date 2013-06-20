@@ -16,7 +16,9 @@
         </action>
         
         <action name="buscarProgramas" class="pe.edu.cibertec.gch.web.servlets.programa.action.Buscar" >
+            <!--se hace uso del interceptor validation ver el archivo : Buscar-validation.xml --> 
             <result>/view/programa/index.jsp</result>
+            <result name="input">/view/programa/index.jsp</result>
         </action>
         
         <action name="registrarPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Registrar" >
