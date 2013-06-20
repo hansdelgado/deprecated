@@ -38,7 +38,7 @@
         </action>
         
         <action name="irEliminarPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Eliminar" >
-            <!--Redireccionamos Redireccionamos a listarProgramas mediante 'chain' --> 
+            <!--Redireccionamos a listarProgramas mediante 'chain' --> 
             <result name="success" type="chain">listarProgramas</result>
         </action>
     </package>
