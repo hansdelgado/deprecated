@@ -2,8 +2,16 @@
   "-//Apache Struts//XWork Validator 1.0.3//EN" 
   "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 
-<!--Validacion a nivel de Accion-->
-      
+<!--Validacion a nivel de Accion usando Intercetor Validation -->
+        
+<!-- validationWorkflowStack
+    ....
+    <interceptor-ref name="params">            -| pertencen al 
+    <interceptor-ref name="conversionError"/>  -| basicStack
+    <interceptor-ref name="validation"/>
+    <interceptor-ref name="workflow"/>
+-->
+
 <validators>
     <field name="titulo">
         <field-validator type="requiredstring">
