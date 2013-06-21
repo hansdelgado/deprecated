@@ -1,11 +1,11 @@
 package pe.edu.cibertec.gch.dao;
 
-import pe.edu.cibertec.gch.dao.espec.HorarioDao;
 import java.util.List;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import pe.edu.cibertec.gch.dao.services.HorarioService;
 import pe.edu.cibertec.gch.modelo.Horario;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
@@ -15,18 +15,18 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
  */
 public class HorarioDaoImplMemoriaTest {
     
-    private HorarioDao horarioDao;
+    private HorarioService horarioService;
     
     @Before
     public void prepararPruebas() {
         // preparacion primaria de pruebas
-        horarioDao = FactoryDao.getFactory().getHorarioDao();
+        horarioService = new HorarioService();
     }
 
     @After
     public void limpiar() {
         // limpieza posterior a todas las pruebas
-        horarioDao.borrarTodos();
+        horarioService.borrarTodos();
     }
 
     @Test
@@ -38,11 +38,11 @@ public class HorarioDaoImplMemoriaTest {
                 setDescripcion("Madrugada");
             }
         };
-        horarioDao.borrarTodos();
+        horarioService.borrarTodos();
         // ejecucion
-        horarioDao.registrar(horario);
+        horarioService.registrar(horario);
         // verificacion
-        assertEquals(1, horarioDao.listarTodos().size());
+        assertEquals(1, horarioService.listarTodos().size());
         
     }
     
@@ -56,10 +56,10 @@ public class HorarioDaoImplMemoriaTest {
                 setDescripcion(descripcion);
             }
         };
-        horarioDao.borrarTodos();
+        horarioService.borrarTodos();
         // ejecucion
-        horarioDao.registrar(horario);
-        List<Horario> obtenerSegun = horarioDao.obtenerSegun(descripcion, TipoBusqueda.Completa);
+        horarioService.registrar(horario);
+        List<Horario> obtenerSegun = horarioService.obtenerSegun(descripcion, TipoBusqueda.Completa);
         // verificacion
         assertEquals(1, obtenerSegun.size());
     }

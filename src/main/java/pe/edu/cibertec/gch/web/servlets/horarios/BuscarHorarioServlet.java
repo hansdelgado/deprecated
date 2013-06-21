@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.cibertec.gch.dao.FactoryDao;
+import pe.edu.cibertec.gch.dao.services.HorarioService;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 
@@ -17,7 +17,7 @@ import pe.edu.cibertec.gch.web.servlets.GchServletUtils;
 @WebServlet(name = "BuscarHorarioServlet", urlPatterns="/buscarHorarios")
 public class BuscarHorarioServlet extends HttpServlet {
     
-    FactoryDao factoryDao = FactoryDao.getFactory();
+    private HorarioService horarioService = new HorarioService();
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class BuscarHorarioServlet extends HttpServlet {
         TipoBusqueda tipoBusquedaEnum = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(tipoBusqueda));
         
         
-        req.setAttribute("horarios", factoryDao.getHorarioDao().obtenerSegun(descripcion, tipoBusquedaEnum));
+        req.setAttribute("horarios", horarioService.obtenerSegun(descripcion, tipoBusquedaEnum));
         
         GchServletUtils.reenviarAModulo("horario", req, resp);
         
