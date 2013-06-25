@@ -5,7 +5,6 @@ import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import pe.edu.cibertec.gch.modelo.EstadoActividad;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
@@ -67,12 +66,10 @@ public class GestorProgramaTest {
     public void eliminarProgramaPorCodigo() {
         gestorPrograma.borrarTodos();
         Programa p1 = new Programa("01");
-        p1.setEstado(EstadoActividad.Valido);
         gestorPrograma.registrar(p1);
-
         gestorPrograma.eliminarPorCodigo("01");
-
-        assertEquals(EstadoActividad.Obsoleto, gestorPrograma.listarTodos().get(0).getEstado());
+        Programa programa = gestorPrograma.consultarPorCodigo("01");
+        assertNull(programa);
     }
 
     @Test

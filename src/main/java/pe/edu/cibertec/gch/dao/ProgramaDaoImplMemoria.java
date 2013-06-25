@@ -40,29 +40,11 @@ public class ProgramaDaoImplMemoria implements ProgramaDao {
 
     @Override
     public void eliminarPorCodigo(String codigo) {
-
-        // // Sin eliminar.
-        // Programa programa = consultarPorCodigo(codigo);
-        // programa.setEstado(EstadoActividad.Obsoleto);
-
-        // // eliminacion mediante una busqueda propia (externa).
-        // System.out.print("ingresando a eliminar");
-        // int index = 0;
-        // for (Programa prg : progr) {
-        //     if (prg.getCodigo().compareToIgnoreCase(codigo) == 0) {
-        //         System.out.print("Encontrado");
-        //         progr.remove(index);
-        //         break;
-        //     }
-        //     index++;
-        // }
-
-        // eliminación mediante busqueda interna.
         progr.remove(new Programa(codigo));
-
     }
 
-    protected void borrarTodos() {
+    @Override
+    public void borrarTodos() {
         progr.clear();
     }
 

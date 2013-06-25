@@ -3,6 +3,7 @@ package pe.edu.cibertec.gch.web.servlets.programa.action;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
 import pe.edu.cibertec.gch.dao.FactoryDao;
+import pe.edu.cibertec.gch.logica.GestorPrograma;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
@@ -11,7 +12,7 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
  * @author DanJoas
  */
 public class Buscar extends ActionSupport {
-
+    private GestorPrograma gestorPrograma = new GestorPrograma();
     private List<Programa> programas;
     private String titulo;
     private String descripcion;
@@ -20,7 +21,7 @@ public class Buscar extends ActionSupport {
     @Override
     public String execute() throws Exception {
         TipoBusqueda tipoBusquedaEnum = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(getTipoBusqueda()));
-        programas = FactoryDao.getInstance().getProgramaDao().listarSegun(getTitulo(), getDescripcion(), tipoBusquedaEnum);
+        programas = gestorPrograma.listarSegun(getTitulo(), getDescripcion(), tipoBusquedaEnum);
         return SUCCESS;
     }
 

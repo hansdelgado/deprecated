@@ -2,16 +2,16 @@ package pe.edu.cibertec.gch.web.servlets.programa.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
-import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.helper.GCH;
+import pe.edu.cibertec.gch.logica.GestorPrograma;
 
 /**
  *
  * @author DanJoas
  */
 public class Registrar extends ActionSupport {
-
+    private GestorPrograma gestorPrograma = new GestorPrograma();
     private List<Programa> programas;
     private Programa programa;
     private String mensaje;
@@ -20,16 +20,15 @@ public class Registrar extends ActionSupport {
     public String execute() throws Exception {
 
         GCH.dump("programa", programa);
-        FactoryDao.getInstance().getProgramaDao().registrar(programa);
+        gestorPrograma.registrar(programa);
         setMensaje(getText("mensaje.registrar"));
-        //setMensaje("el programa '" + programa.getTitulo() + "' fue agregado correctamente");
         return SUCCESS;
     }
 
     @Override
     public void validate() {
         GCH.dump("codigo", programa.getCodigo());
-        Programa p = FactoryDao.getInstance().getProgramaDao().consultarPorCodigo(programa.getCodigo());
+        Programa p = gestorPrograma.consultarPorCodigo(programa.getCodigo());
         if(p != null){ // si ya existe
             addFieldError("programa",getText("validar.codigo.duplicado"));
         }

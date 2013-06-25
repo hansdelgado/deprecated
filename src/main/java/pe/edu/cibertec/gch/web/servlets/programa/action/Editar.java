@@ -4,13 +4,14 @@ import com.opensymphony.xwork2.ActionSupport;
 import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.helper.GCH;
+import pe.edu.cibertec.gch.logica.GestorPrograma;
 
 /**
  *
  * @author DanJoas
  */
 public class Editar extends ActionSupport {
-
+    private GestorPrograma gestorPrograma = new GestorPrograma();
     private String codigo;
     private Programa programa;
     private String mensaje;
@@ -18,14 +19,14 @@ public class Editar extends ActionSupport {
     @Override
     public String execute() throws Exception {
 
-        FactoryDao.getInstance().getProgramaDao().modificarPorCodigo(getPrograma());
+        gestorPrograma.modificarPorCodigo(getPrograma());
         GCH.dump("listando programa", programa);
         setMensaje(getText("mensaje.editar"));
         return SUCCESS;
     }
 
     public String mostrar() throws Exception {
-        programa = FactoryDao.getInstance().getProgramaDao().consultarPorCodigo(getCodigo());
+        programa = gestorPrograma.consultarPorCodigo(getCodigo());
         if (programa == null) {
             setMensaje(getText("validar.programa.no.existe"));
             return "listado";
