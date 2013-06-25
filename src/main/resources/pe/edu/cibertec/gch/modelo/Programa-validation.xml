@@ -15,5 +15,34 @@
             <message>Debe ingresar una descripcion.</message>
         </field-validator>
     </field>
+    <field name="objetivos">
+        <field-validator type="requiredstring">
+            <message>Debe ingresar los objetivos.</message>
+        </field-validator>
+    </field>
+    <field name="requisitos">
+        <field-validator type="requiredstring">
+            <message>Debe ingresar una requisitos.</message>
+        </field-validator>
+    </field>
+    <field name="precio">
+        <field-validator type="double">
+            <param name="minInclusive">15</param>  
+            <param name="maxInclusive">4000</param>  
+            <message>el precio es entre %{minInclusive} y %{maxInclusive}.</message>
+        </field-validator>
+    </field>
+    <field name="duracion">
+        <field-validator type="int">
+            <param name="min">10</param>  
+            <param name="max">150</param>  
+            <message>la duracion es entre %{min} y %{max} horas.</message>
+        </field-validator>
+    </field>
+    <field name="fechaInicial">
+        <field-validator type="required">
+            <message>Debe ingresar una fecha.</message>
+        </field-validator>
+    </field>
 </validators>
 
