@@ -2,7 +2,6 @@ package pe.edu.cibertec.gch.web.servlets.programa.convertidor;
 
 import java.util.Map;
 import org.apache.struts2.util.StrutsTypeConverter;
-import pe.edu.cibertec.gch.helper.GCH;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
 /**
