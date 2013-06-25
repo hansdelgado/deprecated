@@ -8,8 +8,9 @@
     <!-- Recarga de configuraciones ante modificaciones -->
     <constant name="struts.configuration.xml.reload" value="value" />
     <!--Cambiar la extension .action-->
-    <!--<constant name="struts.action.extension" value="html" />-->   
-    
+    <constant name="struts.action.extension" value="html" />
+    <!--establecer el recurso i18n global-->   
+    <constant name="struts.custom.i18n.resources" value="global-messages" /> 	
     <!-- Inclusion de paquetes -->
     <include file="programa.xml"  />
 </struts>

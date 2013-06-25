@@ -2,7 +2,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<gch:base titulo="Listado de Programas">
+<s:text name='listado_programas' var="listado_programas"/>
+<gch:base titulo="${listado_programas}">
+    <s:url action="listarProgramas" var="urlEn" >
+        <s:param name="request_locale">en</s:param>
+    </s:url>
+    <s:url action="listarProgramas" var="urlEs" >
+        <s:param name="request_locale">es</s:param>
+    </s:url>
+    <s:a href="%{urlEn}" >English</s:a>
+    <s:a href="%{urlEs}" >Español</s:a>
     <div class="informacion">
         <s:fielderror/>
         <span><s:property value="mensaje" /></span><br><br>
@@ -14,53 +23,53 @@
             </ul>
         </c:if>
     </div>
-    <form method="post" action="buscarProgramas">
+    <s:form action="buscarProgramas" method="post">
         <fieldset>
-            <legend>Datos de B&uacute;squeda</legend>
+            <legend><s:text name="datos_de_busqueda"/></legend>
             <div>
                 <label for="titulo">
-                    Titulo
+                    <s:text name="titulo" />
                 </label>
-                <input type="search" name="titulo" id="titulo" value="${titulo}" maxlength="50" />
+                <input type="search" name="titulo" id="titulo" value="<s:property value="titulo"/>" maxlength="50" />
             </div>
             <div>
                 <label for="descripcion">
-                    Descripci&oacute;n
+                    <s:text name="descripcion" />
                 </label>
-                <input type="search" name="descripcion" id="descripcion" value="${descripcion}" maxlength="50" />
+                <input type="search" name="descripcion" id="descripcion" value="<s:property value="descripcion"/>" maxlength="50" />
             </div>
             <div>
                 <label for="tipoBusqueda">
-                    Tipo Busqueda
+                    <s:text name="tipo_busqueda"/>
                 </label>
                 <select name="tipoBusqueda">
-                    <option value="0" <c:if test="${tipoBusqueda == 0}">selected</c:if> >Completa</option>
-                    <option value="1" <c:if test="${tipoBusqueda == 1}">selected</c:if> >Parcial</option>
+                    <option value="0" <c:if test="${tipoBusqueda == 0}">selected</c:if> ><s:text name="completa"/></option>
+                    <option value="1" <c:if test="${tipoBusqueda == 1}">selected</c:if> ><s:text name="parcial"/></option>
                     </select>
                 </div>            
             </fieldset>
-            <button><span>Buscar</span></button>
-        </form>
-        <div>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="irRegistroPrograma">
-                            Registrar nuevo programa
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div>
-            <ul id="resultadoConsulta">
-                <li class="cabeceraConsulta">
-                    <span>Codigo</span>
-                    <span>Titulo</span>
-                    <span>Descripcion</span>
-                    <span>Editar</span>
-                    <span>Eliminar</span>
+            <button><span><s:text name="buscar"/></span></button>
+    </s:form>
+    <div>
+        <nav>
+            <ul>
+                <li>
+                    <s:a action="irRegistroPrograma">
+                        <s:text name="registrar_nuevo_programa"/>
+                    </s:a>
                 </li>
+            </ul>
+        </nav>
+    </div>
+    <div>
+        <ul id="resultadoConsulta">
+            <li class="cabeceraConsulta">
+                <span><s:text name="codigo"/></span>
+                <span><s:text name="titulo"/></span>
+                <span><s:text name="descripcion"/></span>
+                <span><s:text name="editar"/></span>
+                <span><s:text name="eliminar"/></span>
+            </li>
 
             <s:iterator var="programa" value="programas" >
                 <li>
@@ -68,29 +77,22 @@
                     <span><s:property value="titulo"></s:property></span>
                     <span><s:property value="descripcion"></s:property></span>
 
-                    <s:url  action="irActualizaPrograma.action" var="urlEditar" >
+                    <s:url action="irActualizaPrograma" var="urlEditar" >
                         <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
                     </s:url>
-                    <span><s:a href="%{urlEditar}" >Editar</s:a></span>
-                    
-                    <s:url  action="irEliminarPrograma.action" var="urlEliminar" >
-                     <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
+                    <span><s:a href="%{urlEditar}" ><s:text name="editar"/></s:a></span>
+
+                    <s:url action="irEliminarPrograma" var="urlEliminar" >
+                        <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
                     </s:url>
-                    <span><s:a href="%{urlEliminar}" onclick="if(!confirm('Â¿Desea realmente eliminar este programa?')){return false;}" style="cursor: pointer" >Borrar</s:a></span>
-                </li>
+                    <s:text name="confirmar_eliminar" var="confirmar_msg" />
+                    <span>
+                        <s:a href="%{urlEliminar}" onclick="if(!confirm('%{confirmar_msg}')){return false;}" style="cursor: pointer" >
+                            <s:text name="eliminar"/>
+                        </s:a>
+                    </span>
+                    </li>
             </s:iterator>        
         </ul>
     </div>
-    <script type="text/javascript">
-            function confirmarEliminacion(codigo) {
-
-                var mensaje = "¿Desea realmente eliminar este programa?";
-                var url = "irEliminarPrograma?codigo=" + codigo;
-
-                if (confirm(mensaje)) {
-                    open(url);
-                }
-                return false;
-            }
-    </script>
 </gch:base>

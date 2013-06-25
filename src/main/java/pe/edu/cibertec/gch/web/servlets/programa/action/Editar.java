@@ -20,14 +20,14 @@ public class Editar extends ActionSupport {
 
         FactoryDao.getInstance().getProgramaDao().modificarPorCodigo(getPrograma());
         GCH.dump("listando programa", programa);
-        setMensaje("el programa '" + programa.getTitulo() + "' fue editado correctamente");
+        setMensaje(getText("mensaje_editar"));
         return SUCCESS;
     }
 
     public String mostrar() throws Exception {
         programa = FactoryDao.getInstance().getProgramaDao().consultarPorCodigo(getCodigo());
         if (programa == null) {
-            setMensaje("el programa no existe");
+            setMensaje(getText("validar_programa_no_existe"));
             return "listado";
         }
         GCH.dump("listando programa", programa);

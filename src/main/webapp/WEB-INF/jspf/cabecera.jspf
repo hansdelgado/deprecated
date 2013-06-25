@@ -1,26 +1,27 @@
     <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
+    <%@taglib prefix="s" uri="/struts-tags" %>
     <header>
         <!-- Bloque de cabecera de la pagina -->
         <hgroup>
             <h1>GCH</h1>
-            <h2>Sistema de Gesti&oacute;n de Carga Horaria</h2>
+            <h2><s:text name="gch_titulo"/></h2>
         </hgroup>
         <nav>
             <ul>
                 <li>
-                    <a href="listarProfesores">Profesores</a>
+                    <a href="listarProfesores"><s:text name="profesores" /></a>
                 </li>
                 <li>
-                    <a href="listarLaboratorios">Laboratorios</a>
+                    <a href="listarLaboratorios"><s:text name="laboratorios" /></a>
                 </li>
                 <li>
-                    <a href="listarHorarios">Horarios</a>
+                    <a href="listarHorarios"><s:text name="horarios" /></a>
                 </li>
                 <li>
-                    <a href="listarProgramas">Programas</a>
+                    <s:a action="listarProgramas"><s:text name="programas" /> </s:a>
                 </li>
                 <li>
-                    <a href="listarCursos">Cursos</a>
+                    <a href="listarCursos"><s:text name="cursos" /></a>
                 </li>
             </ul>
         </nav>

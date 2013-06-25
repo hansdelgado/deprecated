@@ -10,13 +10,12 @@ import pe.edu.cibertec.gch.modelo.Programa;
  * @author DanJoas
  */
 public class Listar extends ActionSupport {
-
+    //private Map<String, Object> session;
     private List<Programa> programas;
     private String mensaje; // si se usa chain no es necesario declaralo
 
     @Override
-    public String execute() throws Exception {
-
+    public String execute() throws Exception {       
         programas = FactoryDao.getInstance().getProgramaDao().listarTodos();
         return SUCCESS;
     }

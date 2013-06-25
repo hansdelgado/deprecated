@@ -2,6 +2,7 @@ package pe.edu.cibertec.gch.web.servlets.programa.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import pe.edu.cibertec.gch.dao.FactoryDao;
+import pe.edu.cibertec.gch.modelo.Programa;
 
 /**
  *
@@ -11,13 +12,18 @@ public class Eliminar extends ActionSupport {
 
     private String codigo;
     private String mensaje;
+    private String titulo;
 
     @Override
     public String execute() throws Exception {
-        String titulo = FactoryDao.getInstance().getProgramaDao().consultarPorCodigo(codigo).getTitulo();
-        FactoryDao.getInstance().getProgramaDao().eliminarPorCodigo(codigo);
-
-        setMensaje("el programa '" + titulo + "' se elimino correctamente");
+        Programa programa = FactoryDao.getInstance().getProgramaDao().consultarPorCodigo(getCodigo());
+        if (programa == null) {
+            setMensaje(getText("validar_programa_no_existe"));
+        } else {
+            FactoryDao.getInstance().getProgramaDao().eliminarPorCodigo(getCodigo());
+            setTitulo(programa.getTitulo());
+            setMensaje(getText("mensaje_eliminar"));
+        }
         return SUCCESS;
     }
 
@@ -36,5 +42,13 @@ public class Eliminar extends ActionSupport {
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 }

@@ -21,7 +21,8 @@ public class Registrar extends ActionSupport {
 
         GCH.dump("programa", programa);
         FactoryDao.getInstance().getProgramaDao().registrar(programa);
-        setMensaje("el programa '" + programa.getTitulo() + "' fue agregado correctamente");
+        setMensaje(getText("mensaje_registrar"));
+        //setMensaje("el programa '" + programa.getTitulo() + "' fue agregado correctamente");
         return SUCCESS;
     }
 
@@ -30,7 +31,7 @@ public class Registrar extends ActionSupport {
         GCH.dump("codigo", programa.getCodigo());
         Programa p = FactoryDao.getInstance().getProgramaDao().consultarPorCodigo(programa.getCodigo());
         if(p != null){ // si ya existe
-            addFieldError("programa","ingrese el programa con un nuevo codigo");
+            addFieldError("programa",getText("validar_codigo_duplicado"));
         }
     }
 

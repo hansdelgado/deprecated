@@ -29,15 +29,15 @@ public class Buscar extends ActionSupport {
         // realizamos algunas validaciones 
         if (TipoBusqueda.Completa == TipoBusqueda.obtenerPorCodigo(Integer.parseInt(getTipoBusqueda()))) {
             if (getTitulo().isEmpty()) {
-                addFieldError("titulo", "el titulo no debe estar vacio en una busqueda Completa");
+                addFieldError("titulo", getText("validar_titulo"));
             }
 
             if (getDescripcion().isEmpty()) {
-                addFieldError("descripcion", "descripcion no debe estar vacio en una busqueda Completa");
+                addFieldError("descripcion", getText("validar_descripcion"));
             }
         } else {
             if (getTitulo().isEmpty() && getDescripcion().isEmpty()) {
-                addFieldError("ambos", "por lo menos debe llenar un campo en su busqueda Parcial");
+                addFieldError("ambos", getText("validar_tit_desc"));
             }
         }
     }

@@ -23,7 +23,6 @@
         <field-validator type="stringlength">
             <param name="maxLength">20</param>
             <message>la descripcion no debe ser mayor a 20 caracteres</message>
-            <message>Debe ingresar una descripcion.</message>
         </field-validator>
     </field>
 </validators>

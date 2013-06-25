@@ -2,63 +2,64 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<gch:base titulo="Registro de Programa">
+<s:text name='registro_programa' var="registro_programa"/>
+<gch:base titulo="${registro_programa}">
     <div class="informacion">   
          <s:fielderror/>
     </div>
-    <button onclick="cargarDatos()">Simular Carga</button>
-    <form action="registrarPrograma" method="post">
+         <button onclick="cargarDatos()"><s:text name="simular_carga"/></button>
+    <s:form action="registrarPrograma" method="post">
         <fieldset>
-            <legend>Sistema</legend>
+            <legend><s:text name="sistema" /></legend>
             <div>
                 <label for="codigo">
-                    C&oacute;digo
+                    <s:text name="codigo"/>
                 </label>
                 <input type="text" id="codigo" name="programa.codigo" value="<s:property value="programa.codigo"/>" maxlength="8" autofocus="autofocus" />
             </div>
         </fieldset>
         <fieldset>
-            <legend>Datos del Programa</legend>
+            <legend><s:text name="datos_del_programa"/></legend>
             <div>
-                <label for="titulo">Titulo</label>
+                <label for="titulo"><s:text name="titulo"/></label>
                 <input type="text"  id="titulo" name="programa.titulo" value="<s:property value="programa.titulo"/>" maxlength="50" class="ancho" />
             </div>
             <div>
-                <label for="descripcion">Descripci&oacute;n</label>
+                <label for="descripcion"><s:text name="descripcion"/></label>
                 <input type="text"  id="descripcion" name="programa.descripcion" value="<s:property value="programa.descripcion"/>" maxlength="50" class="ancho" />
             </div>
             <div>
-                <label for="objetivos">Objetivos</label>
+                <label for="objetivos"><s:text name="objetivos"/></label>
                 <input type="text" id="objetivos" name="programa.objetivos" value="<s:property value="programa.objetivos"/>"  maxlength="50"  class="ancho"/>
             </div>
             <div>
-                <label for="requisitos">Requisitos</label>
+                <label for="requisitos"><s:text name="requisitos"/></label>
                 <input type="text" id="requisitos" name="programa.requisitos" value="<s:property value="programa.requisitos"/>"  maxlength="400" class="ancho" />
             </div>
             <div>
-                <label for="moneda">Moneda</label>
+                <label for="moneda"><s:text name="moneda"/></label>
                 <select name="programa.moneda">
-                    <option value="" <c:if test="${moneda == ''}">selected</c:if> >----Seleccione----</option>
+                    <option value="" <c:if test="${moneda == ''}">selected</c:if> >----<s:text name="seleccione"/>----</option>
                     <option value="NS" <c:if test="${moneda == 'NS'}">selected</c:if> >Nuevo Soles</option>
                     <option value="D" <c:if test="${moneda == 'D'}">selected</c:if> >Dolares</option>
                     </select>
                 </div>
                 <div>
-                    <label for="precio">Precio</label>
+                    <label for="precio"><s:text name="precio"/></label>
                     <input type="text" id="precio" name="programa.precio" value="<s:property value="programa.precio"/>"  maxlength="400" />
             </div>
             <div>
-                <label for="duracion">Duraci&oacute;n del Programa</label>
+                <label for="duracion"><s:text name="duracion"/></label>
                 <input type="text" id="duracion" name="programa.duracion" value="<s:property value="programa.duracion"/>"  maxlength="400" />
             </div>
             <div>
-                <label for="fechaInicial">Fecha de Inicio</label>
+                <label for="fechaInicial"><s:text name="fecha"/></label>
                 <input type="date" id="fecha" name="programa.fechaInicial" value="<s:property value="programa.fechaInicial"/>"  />
                 
             </div>
         </fieldset>
-        <button>Registrar</button>
-    </form>
+                <button><s:text name="registrar" /></button>
+    </s:form>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script type="text/javascript">
         function cargarDatos() {
