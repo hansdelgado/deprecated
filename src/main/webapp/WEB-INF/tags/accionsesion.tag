@@ -3,5 +3,5 @@
     <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
     <%@taglib prefix="s" uri="/struts-tags" %>
     <%@attribute name="message"%>
-    <a href="iniciarSesion"><s:text name="iniciar_sesion" /></a>
+    <a href="iniciarSesion"><s:text name="gch.iniciar.sesion" /></a>
 

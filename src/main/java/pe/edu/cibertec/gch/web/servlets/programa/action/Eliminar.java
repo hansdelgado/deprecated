@@ -18,11 +18,11 @@ public class Eliminar extends ActionSupport {
     public String execute() throws Exception {
         Programa programa = FactoryDao.getInstance().getProgramaDao().consultarPorCodigo(getCodigo());
         if (programa == null) {
-            setMensaje(getText("validar_programa_no_existe"));
+            setMensaje(getText("validar.programa.no.existe"));
         } else {
             FactoryDao.getInstance().getProgramaDao().eliminarPorCodigo(getCodigo());
             setTitulo(programa.getTitulo());
-            setMensaje(getText("mensaje_eliminar"));
+            setMensaje(getText("mensaje.eliminar"));
         }
         return SUCCESS;
     }

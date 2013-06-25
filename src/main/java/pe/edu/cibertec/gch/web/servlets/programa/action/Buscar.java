@@ -29,15 +29,15 @@ public class Buscar extends ActionSupport {
         // realizamos algunas validaciones 
         if (TipoBusqueda.Completa == TipoBusqueda.obtenerPorCodigo(Integer.parseInt(getTipoBusqueda()))) {
             if (getTitulo().isEmpty()) {
-                addFieldError("titulo", getText("validar_titulo"));
+                addFieldError("titulo", getText("validar.titulo"));
             }
 
             if (getDescripcion().isEmpty()) {
-                addFieldError("descripcion", getText("validar_descripcion"));
+                addFieldError("descripcion", getText("validar.descripcion"));
             }
         } else {
             if (getTitulo().isEmpty() && getDescripcion().isEmpty()) {
-                addFieldError("ambos", getText("validar_tit_desc"));
+                addFieldError("ambos", getText("validar.ambos"));
             }
         }
     }
