@@ -1,13 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pe.edu.cibertec.gch.logica;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import pe.edu.cibertec.gch.modelo.EstadoActividad;
+import pe.edu.cibertec.gch.dao.FactoryDao;
+import pe.edu.cibertec.gch.dao.ProgramaDao;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
 
@@ -15,57 +10,39 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
  *
  * @author JAVA_MJ
  */
-public class GestorPrograma implements GestorBase<Programa>{
-    
-    private static ArrayList<Programa> progr = new ArrayList<Programa>();
+public class GestorPrograma implements GestorBase<Programa> {
+
+    private ProgramaDao programaDao = FactoryDao.getInstance().getProgramaDao();
 
     @Override
     public Programa consultarPorCodigo(String codigo) {
-        Programa programa = new Programa(codigo);
-        return progr.get(progr.indexOf(programa));
+        return programaDao.consultarPorCodigo(codigo);
     }
 
     @Override
     public void registrar(Programa programa) {
-        
-        progr.add(programa);
-        System.out.print("registroooooooo"
-               +progr.size());
+        programaDao.registrar(programa);
     }
 
     @Override
     public List<Programa> listarTodos() {
-        return progr;
+        return programaDao.listarTodos();
     }
 
     @Override
     public void eliminarPorCodigo(String codigo) {
-      Programa programa = consultarPorCodigo(codigo);
-        programa.setEstado(EstadoActividad.Obsoleto);
+        programaDao.eliminarPorCodigo(codigo);
     }
-    
-   protected void borrarTodos() {
-        progr.clear();
+
+    protected void borrarTodos() {
+        programaDao.borrarTodos();
     }
-   
-      public List<Programa> listarSegun(String titulo, String descripcion, TipoBusqueda tipoBusquedaEnum) {
-        
-          List<Programa> resultado = new LinkedList<Programa>();
-        for (Programa programas : progr) {
-            switch(tipoBusquedaEnum) {
-                case Completa : 
-                    resultado.add(programas);
-                    break;
-                case Parcial :
-                    if(!titulo.isEmpty() && titulo.equalsIgnoreCase(programas.getTitulo()) ||
-                            !descripcion.isEmpty() && descripcion.equalsIgnoreCase(programas.getDescripcion()))
-                    {
-                        resultado.add(programas);
-                    }
-                    break;
-            }
-        }
-        return resultado;
+
+    public List<Programa> listarSegun(String titulo, String descripcion, TipoBusqueda tipoBusquedaEnum) {
+        return programaDao.listarSegun(titulo, descripcion, tipoBusquedaEnum);
     }
-    
+
+    public void modificarPorCodigo(Programa programa) {
+        programaDao.modificarPorCodigo(programa);
+    }
 }
