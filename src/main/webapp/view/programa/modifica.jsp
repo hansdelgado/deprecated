@@ -39,9 +39,9 @@
             <div>
                 <label for="moneda"><s:text name="gch.moneda"/></label>
                 <select name="programa.moneda">
-                    <option value="" <c:if test="${moneda == ''}">selected</c:if> >----<s:text name="seleccione"/>----</option>
-                    <option value="NS" <c:if test="${moneda == 'NS'}">selected</c:if> >Nuevo Soles</option>
-                    <option value="D" <c:if test="${moneda == 'D'}">selected</c:if> >Dolares</option>
+                    <option value="" <s:if test="%{programa.moneda == ''}">selected</s:if> >----<s:text name="gch.seleccione"/>----</option>
+                    <option value="NS" <s:if test="%{programa.moneda == 'NS' }">selected</s:if> >Nuevo Soles</option>
+                    <option value="D" <s:if test="%{programa.moneda == 'D'}">selected</s:if> >Dolares</option>
                     </select>
                 </div>
                 <div>
