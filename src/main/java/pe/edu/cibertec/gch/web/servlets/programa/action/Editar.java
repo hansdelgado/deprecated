@@ -1,10 +1,10 @@
 package pe.edu.cibertec.gch.web.servlets.programa.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.helper.GCH;
 import pe.edu.cibertec.gch.logica.GestorPrograma;
+import pe.edu.cibertec.gch.modelo.Moneda;
 
 /**
  *
@@ -15,6 +15,7 @@ public class Editar extends ActionSupport {
     private String codigo;
     private Programa programa;
     private String mensaje;
+    private Moneda[] monedas = Moneda.values();
 
     @Override
     public String execute() throws Exception {
@@ -58,5 +59,13 @@ public class Editar extends ActionSupport {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    public Moneda[] getMonedas() {
+        return monedas;
+    }
+
+    public void setMonedas(Moneda[] monedas) {
+        this.monedas = monedas;
     }
 }
