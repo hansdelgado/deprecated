@@ -54,7 +54,7 @@ public final class GCH {
         dump("descripcion", programa.getDescripcion());
         dump("objetivo", programa.getObjetivos());
         dump("requisito", programa.getRequisitos());
-        dump("modena", programa.getMonedaStr());
+        dump("modena", programa.getMoneda());
         dump("precio", programa.getPrecio());
         dump("duracion", programa.getDuracion());
         dump("fechaIncial", dateToFecha(programa.getFechaInicial()));
