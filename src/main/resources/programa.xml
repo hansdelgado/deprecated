@@ -6,12 +6,16 @@
 
 <struts>
     <package name="programa" namespace="/" extends="struts-default">
+
         
         <action name="listarProgramas" class="pe.edu.cibertec.gch.web.servlets.programa.action.Listar" >
             <result>/view/programa/index.jsp</result>
         </action>
         
-        <action name="irRegistroPrograma" >
+        <action name="irRegistroPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Registrar" method="inicializar" >
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">inicializar</param>
+            </interceptor-ref>
             <result>/view/programa/registro.jsp</result>
         </action>
         
