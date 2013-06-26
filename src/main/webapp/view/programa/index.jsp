@@ -27,21 +27,15 @@
         <fieldset>
             <legend><s:text name="gch.datos.de.busqueda"/></legend>
             <div>
-                <label for="titulo">
-                    <s:text name="gch.titulo" />
-                </label>
-                <input type="search" name="titulo" id="titulo" value="<s:property value="titulo"/>" maxlength="50" />
+                <s:label key="gch.titulo" />
+                <s:textfield name="titulo" maxlength="50" />
             </div>
             <div>
-                <label for="descripcion">
-                    <s:text name="gch.descripcion" />
-                </label>
-                <input type="search" name="descripcion" id="descripcion" value="<s:property value="descripcion"/>" maxlength="50" />
+                <s:label key="gch.descripcion" />
+                <s:textfield name="descripcion" maxlength="50" />
             </div>
             <div>
-                <label for="tipoBusqueda">
-                    <s:text name="gch.tipo.busqueda"/>
-                </label>
+                <s:label key="gch.tipo.busqueda"/>
                 <select name="tipoBusqueda">
                     <option value="0" <c:if test="${tipoBusqueda == 0}">selected</c:if> ><s:text name="gch.completa"/></option>
                     <option value="1" <c:if test="${tipoBusqueda == 1}">selected</c:if> ><s:text name="gch.parcial"/></option>

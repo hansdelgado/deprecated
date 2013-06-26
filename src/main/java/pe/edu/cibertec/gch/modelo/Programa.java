@@ -1,7 +1,5 @@
 package pe.edu.cibertec.gch.modelo;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -97,16 +95,6 @@ public class Programa {
 
     public Moneda getMoneda() {
         return moneda;
-    }
-
-    public String getMonedaStr() {
-        if (moneda == Moneda.NuevosSoles) {
-            return "NS";
-        } else if (moneda == Moneda.DolaresUS) {
-            return "D";
-        } else {
-            return "";
-        }
     }
 
     public void setMoneda(Moneda moneda) {

@@ -2,7 +2,6 @@ package pe.edu.cibertec.gch.web.servlets.programa.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
-import pe.edu.cibertec.gch.dao.FactoryDao;
 import pe.edu.cibertec.gch.logica.GestorPrograma;
 import pe.edu.cibertec.gch.modelo.Programa;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;

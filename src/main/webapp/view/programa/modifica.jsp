@@ -12,49 +12,43 @@
         <fieldset>
             <legend><s:text name="gch.sistema" /></legend>
             <div>
-                <label for="codigo">
-                    <s:text name="gch.codigo"/>
-                </label>
-                <input type="text" id="codigo" name="programa.codigo" maxlength="8" value="<s:property value="programa.codigo"/>"  readonly  >
+                <s:label key="gch.codigo" />
+                <s:textfield name="programa.codigo" maxlength="8" readonly="readonly"  />
             </div>
         </fieldset>
         <fieldset>
             <legend><s:text name="gch.datos.del.programa"/></legend>
             <div>
-                <label for="titulo"><s:text name="gch.titulo"/></label>
-                <input type="text" id="titulo" name="programa.titulo" value="<s:property value="programa.titulo"/>" maxlength="50"  autofocus="" class="ancho" />
+                <s:label key="gch.titulo"/>
+                <s:textfield  name="programa.titulo" maxlength="50"  autofocus="" cssClass="ancho" />
             </div>
             <div>
-                <label for="descripcion"><s:text name="gch.descripcion"/></label>
-                <input type="text" id="descripcion" name="programa.descripcion" value="<s:property value="programa.descripcion"/>" maxlength="50" class="ancho"/>
+                <s:label key="gch.descripcion" />
+                <s:textfield  name="programa.descripcion" maxlength="50" cssClass="ancho" />
             </div>
             <div>
-                <label for="objetivos"><s:text name="gch.objetivos"/></label>
-                <input type="text" id="objetivos" name="programa.objetivos" value="<s:property value="programa.objetivos"/>" maxlength="50"class="ancho"/>
+                <s:label key="gch.objetivos"/>
+                <s:textfield name="programa.objetivos"  maxlength="50" cssClass="ancho"/>
             </div>
             <div>
-                <label for="requisitos"><s:text name="gch.requisitos"/></label>
-                <input type="text" id="requisitos" name="programa.requisitos" value="<s:property value="programa.requisitos"/>"  maxlength="400" class="ancho" />
+                <s:label key="gch.requisitos"/>
+                <s:textfield name="programa.requisitos" maxlength="400" cssClass="ancho" />
             </div>
             <div>
-                <label for="moneda"><s:text name="gch.moneda"/></label>
-                <select name="programa.moneda">
-                    <option value="" <s:if test="%{programa.moneda == ''}">selected</s:if> >----<s:text name="gch.seleccione"/>----</option>
-                    <option value="NS" <s:if test="%{programa.moneda == 'NS' }">selected</s:if> >Nuevo Soles</option>
-                    <option value="D" <s:if test="%{programa.moneda == 'D'}">selected</s:if> >Dolares</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="precio"><s:text name="gch.precio"/></label>
-                <input type="text" id="precio" name="programa.precio" value="<s:property value="programa.precio"/>" maxlength="400" />
+                <s:label key="gch.moneda"/>
+                <s:select name="programa.moneda" headerKey="-1" headerValue="%{getText('gch.seleccione')}" list="monedas" value="programa.moneda"  />
             </div>
             <div>
-                <label for="duracion"><s:text name="gch.duracion"/></label>
-                <input type="text" id="duracion" name="programa.duracion" value="<s:property value="programa.duracion"/>" maxlength="400" />
+                <s:label key="gch.precio"/>
+                <s:textfield name="programa.precio"  maxlength="400" />
             </div>
             <div>
-                <label for="fechaInicial"><s:text name="gch.fecha"/></label>
-                <input type="date" id="fecha" name="programa.fechaInicial" value="<s:property value="programa.fechaInicial"/>"  />
+                <s:label key="gch.duracion"/>
+                <s:textfield name="programa.duracion" maxlength="400" />
+            </div>
+            <div>
+                <s:label key="gch.fecha"/>
+                <s:textfield type="date" name="programa.fechaInicial"   />
             </div>
         </fieldset>
         <button><s:text name="gch.actualizar"/></button>
