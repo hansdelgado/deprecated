@@ -13,7 +13,7 @@
             <legend><s:text name="gch.app.sistema.solo" /></legend>
             <div>
                 <s:label key="gch.programa.codigo" />
-                <s:textfield name="programa.codigo" maxlength="8" readonly="readonly"  />
+            <input type="text" name="programa.codigo" value="<s:property value="programa.codigo"/>" maxlength="8" readonly />
             </div>
         </fieldset>
         <fieldset>
