@@ -1,6 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <gch:base titulo="Registro de Horarios">
     <div class="informacion">
         <span>${mensaje}</span>
@@ -14,36 +15,25 @@
             </c:if>
         </div>
     </div>
-    <form action="registrarHorario" method="post">
+    <s:form action="registrarHorario">
         <fieldset>
             <legend>Datos</legend>
-            <div>
-                <label for="codigo">
-                    C&oacute;digo
-                </label>
-                <input type="text" id="codigo" name="codigo" maxlength="3" required autofocus >
-            </div>
-            <div>
-                <label for="descripcion">Descripci&oacute;n</label>
-                <input type="text" id="descripcion" name="descripcion" required maxlength="20" />
-            </div>
-            <div>
-                <label for="inicio">Momento de inicio</label>
-                <input type="text" id="inicio" name="inicio" required maxlength="2" />
-            </div>
-            <div>
-                <label for="fin">Momento de fin</label>
-                <input type="text" id="fin" name="fin" required maxlength="2" />
-            </div>
-            <div>
-                <label for="estado">Estado</label>
-                <select name="estado" id="estado">
-                    <option value="">-- Seleccione --</option>
-                    <option value="1">Válido</option>
-                    <option value="2">Obsoleto</option>
-                </select>
-            </div>            
+            <s:div>
+                <s:textfield label="Código" name="horario.codigo" maxLength="3" required="true" />
+            </s:div>
+            <s:div>
+                <s:textfield label="Descripción" name="horario.descripcion" required="true" maxLength="20" />
+            </s:div>
+            <s:div>
+                <s:textfield label="Momento de inicio" name="horario.momentoInicio" required="true" maxLength="2" />
+            </s:div>
+            <s:div>
+                <s:textfield label="Momento de fin" name="horario.momentoFin" required="true" maxLength="2" />
+            </s:div>
+            <s:div>
+                <s:select label="Estado" list="estados" required="true" headerKey="-1" headerValue="-- Seleccione --" name="horarioSeleccionado" />
+            </s:div>            
         </fieldset>
-        <button>Registrar</button>
-    </form>
+                <s:submit value="Registrar" />
+    </s:form>
 </gch:base>

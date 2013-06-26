@@ -6,30 +6,20 @@
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
-    <form action="buscarHorarios">
+    <s:form action="buscarHorarios">
         <fieldset>
             <legend>Datos de búsqueda</legend>
-            <div>
-                <label for="descripcion">
-                    Descripción
-                </label>
-                <input type="text" name="descripcion" id="descripcion" />
-            </div>
+            <s:div>
+                <s:textfield label="Descripción" name="horario.descripcion" />
+            </s:div>
         </fieldset>
         <fieldset>
             <div>
-                <label for="tipoBusqueda">
-                    Tipo Búsqueda
-                </label>
-                <select name="tipoBusqueda" id="tipoBusqueda">
-                    <option value="0">Completa</option>
-                    <option value="1">Parcial</option>
-                </select>
+                <s:select label="Tipo de búsqueda" list="tiposBusqueda" required="true" name="tipoBusquedaSeleccionado" />
             </div>
         </fieldset>
-        
-        <button><span>Buscar</span></button>
-    </form>
+        <s:submit value="Buscar" />
+    </s:form>
     <div>
         <nav>
             <ul>

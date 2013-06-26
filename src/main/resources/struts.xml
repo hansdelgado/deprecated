@@ -9,13 +9,19 @@
         <action name="index">
             <result>/index.jsp</result>
         </action>
-        <action name="irRegistroHorario">
+        <action name="irRegistroHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarRegistro">
             <result>/view/horario/registro.jsp</result>
         </action>
         <action name="registrarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="registrar">
             <result type="redirectAction">listarHorarios</result>
         </action>
         <action name="listarHorarios" class="pe.edu.cibertec.gch.actions.HorarioAction" method="listar">
+            <result type="redirectAction">irIndexHorario</result>
+        </action>
+        <action name="buscarHorarios" class="pe.edu.cibertec.gch.actions.HorarioAction" method="buscar">
+            <result type="redirectAction">irIndexHorario</result>
+        </action>
+        <action name="irIndexHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarIndex">
             <result>/view/horario/index.jsp</result>
         </action>
     </package>
