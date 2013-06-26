@@ -1,4 +1,4 @@
-package pe.edu.cibertec.gch.web.servlets.programa.action;
+package pe.edu.cibertec.gch.programa.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import pe.edu.cibertec.gch.logica.GestorPrograma;
@@ -8,12 +8,11 @@ import pe.edu.cibertec.gch.modelo.Programa;
  *
  * @author DanJoas
  */
-public class Eliminar extends ActionSupport {
+public class EliminarAction extends ActionSupport {
     
     private GestorPrograma gestorPrograma = new GestorPrograma();
     private String codigo;
     private String mensaje;
-    private String titulo;
 
     @Override
     public String execute() throws Exception {
@@ -22,7 +21,6 @@ public class Eliminar extends ActionSupport {
             setMensaje(getText("validar.programa.no.existe"));
         } else {
             gestorPrograma.eliminarPorCodigo(getCodigo());
-            setTitulo(programa.getTitulo());
             setMensaje(getText("mensaje.eliminar"));
         }
         return SUCCESS;
@@ -43,13 +41,5 @@ public class Eliminar extends ActionSupport {
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 }

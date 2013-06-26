@@ -1,4 +1,4 @@
-package pe.edu.cibertec.gch.web.servlets.programa.action;
+package pe.edu.cibertec.gch.programa.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
@@ -10,7 +10,7 @@ import pe.edu.cibertec.gch.modelo.TipoBusqueda;
  *
  * @author DanJoas
  */
-public class Buscar extends ActionSupport {
+public class BuscarAction extends ActionSupport {
     private GestorPrograma gestorPrograma = new GestorPrograma();
     private List<Programa> programas;
     private String titulo;

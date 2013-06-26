@@ -8,7 +8,7 @@
         <s:fielderror/>
     </div>
     <button onclick="cargarDatos()"><s:text name="gch.simular.carga"/></button>
-    <s:form action="registrarPrograma" method="post">
+    <s:form namespace="/programa" action="registrar" method="post">
         <fieldset>
             <legend><s:text name="gch.sistema" /></legend>
             <div>

@@ -5,62 +5,65 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <package name="programa" namespace="/" extends="struts-default">
+    <package name="programa" namespace="/programa" extends="struts-default">
 
-        
-        <action name="listarProgramas" class="pe.edu.cibertec.gch.web.servlets.programa.action.Listar" >
+        <action name="listar" class="pe.edu.cibertec.gch.programa.action.ListarAction" >
             <result>/view/programa/index.jsp</result>
         </action>
         
-        <action name="irRegistroPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Registrar" method="inicializar" >
+        <action name="nuevo" class="pe.edu.cibertec.gch.programa.action.RegistrarAction" method="inicializar" >
             <interceptor-ref name="defaultStack">
                 <param name="validation.excludeMethods">inicializar</param>
             </interceptor-ref>
             <result>/view/programa/registro.jsp</result>
         </action>
         
-        <action name="irActualizaPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Editar" method="mostrar" >
-            <result>/view/programa/modifica.jsp</result>
-            <result name="listado" type="redirectAction">
-                <param name="actionName">listarProgramas</param>
-                <param name="mensaje">${mensaje}</param>
-            </result>
-        </action>
-        
-        <action name="buscarProgramas" class="pe.edu.cibertec.gch.web.servlets.programa.action.Buscar" >
-            <!--se hace uso del interceptor validation ver el archivo : Buscar-validation.xml --> 
-            <result>/view/programa/index.jsp</result>
-            <result name="input">/view/programa/index.jsp</result>
-        </action>
-        
-        <action name="registrarPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Registrar" >
+        <action name="registrar" class="pe.edu.cibertec.gch.programa.action.RegistrarAction" >
             
             <!-- *********************************************************************************
             * Redireccionamos a listarProgramas mediante redirect (no recomendado) 
-            * <result name="success" type="redirect" >listarProgramas.action?mensaje=${mensaje}</result>
+            * <result name="success" type="redirect" >listarProgramas.html?mensaje=${mensaje}</result>
             ***************************************************************************************-->
             
             <!-- Redireccionamos a listarProgramas mediante redirectAction ( recomendado )-->
             <result name="success" type="redirectAction" >
-                <param name="actionName">listarProgramas</param>
-                <param name="namespace">/</param>
+                <param name="actionName">listar</param>
+                <param name="namespace">/programa</param>
                 <param name="mensaje">${mensaje}</param>
             </result>
             <result name="input">/view/programa/registro.jsp</result>
         </action>
-
-        <action name="actualizarPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Editar" >
+        
+        <action name="editar" class="pe.edu.cibertec.gch.programa.action.EditarAction" method="mostrar" >
+            <result>/view/programa/modifica.jsp</result>
+            <result name="listado" type="redirectAction">
+                <param name="actionName">listar</param>
+                <param name="mensaje">${mensaje}</param>
+            </result>
+        </action>
+        
+        <action name="guardar" class="pe.edu.cibertec.gch.programa.action.EditarAction" >
             <result name="success" type="redirectAction" >
-                <param name="actionName">listarProgramas</param>
-                <param name="namespace">/</param>
+                <param name="actionName">listar</param>
+                <param name="namespace">/programa</param>
                 <param name="mensaje">${mensaje}</param>
             </result>
             <result name="input">/view/programa/modifica.jsp</result>
         </action>
         
-        <action name="irEliminarPrograma" class="pe.edu.cibertec.gch.web.servlets.programa.action.Eliminar" >
+        <action name="eliminar" class="pe.edu.cibertec.gch.programa.action.EliminarAction" >
             <!--Redireccionamos a listarProgramas mediante 'chain' --> 
-            <result name="success" type="chain">listarProgramas</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">listar</param>
+                <param name="namespace">/programa</param>
+                <param name="mensaje">${mensaje}</param>
+            </result>
+        </action>
+        
+        <action name="buscar" class="pe.edu.cibertec.gch.programa.action.BuscarAction" >
+            <!--se hace uso del interceptor validation ver el archivo : Buscar-validation.xml --> 
+            <result>/view/programa/index.jsp</result>
+            <result name="input">/view/programa/index.jsp</result>
         </action>
     </package>
 </struts>

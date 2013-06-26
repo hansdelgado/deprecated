@@ -18,7 +18,7 @@
                     <a href="listarHorarios"><s:text name="gch.horarios" /></a>
                 </li>
                 <li>
-                    <s:a action="listarProgramas"><s:text name="gch.programas" /> </s:a>
+                    <s:a namespace="/programa" action="listar"><s:text name="gch.programas" /> </s:a>
                 </li>
                 <li>
                     <a href="listarCursos"><s:text name="gch.cursos" /></a>

@@ -1,4 +1,4 @@
-package pe.edu.cibertec.gch.web.servlets.programa.convertidor;
+package pe.edu.cibertec.gch.programa.convertidor;
 
 import com.opensymphony.xwork2.conversion.TypeConversionException;
 import java.util.Date;

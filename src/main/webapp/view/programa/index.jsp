@@ -4,15 +4,15 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <s:text name='gch.listado.programas' var="listado_programas"/>
 <gch:base titulo="${listado_programas}">
-    <s:url action="listarProgramas" var="urlEn" >
+    <s:url namespace="/programa" action="listar" var="urlEn" >
         <s:param name="request_locale">en</s:param>
     </s:url>
-    <s:url action="listarProgramas" var="urlEs" >
+    <s:url namespace="/programa" action="listar" var="urlEs" >
         <s:param name="request_locale">es</s:param>
     </s:url>
     <s:a href="%{urlEn}" >English</s:a>
     <s:a href="%{urlEs}" >Español</s:a>
-    <div class="informacion">
+        <div class="informacion">
         <s:fielderror/>
         <span><s:property value="mensaje" /></span><br><br>
         <c:if test="${not empty requestScope.errores}">
@@ -23,7 +23,7 @@
             </ul>
         </c:if>
     </div>
-    <s:form action="buscarProgramas" method="post">
+    <s:form namespace="/programa" action="buscar" method="post">
         <fieldset>
             <legend><s:text name="gch.datos.de.busqueda"/></legend>
             <div>
@@ -48,7 +48,7 @@
         <nav>
             <ul>
                 <li>
-                    <s:a action="irRegistroPrograma">
+                    <s:a namespace="/programa" action="nuevo">
                         <s:text name="gch.registrar.nuevo.programa"/>
                     </s:a>
                 </li>
@@ -71,12 +71,12 @@
                     <span><s:property value="titulo"></s:property></span>
                     <span><s:property value="descripcion"></s:property></span>
 
-                    <s:url action="irActualizaPrograma" var="urlEditar" >
+                    <s:url namespace="/programa" action="editar" var="urlEditar" >
                         <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
                     </s:url>
-                    <span><s:a href="%{urlEditar}" ><s:text name="gch.editar"/></s:a></span>
+                    <span><s:a href="%{urlEditar}" > <s:text name="gch.editar"/> </s:a></span>
 
-                    <s:url action="irEliminarPrograma" var="urlEliminar" >
+                    <s:url namespace="/programa" action="eliminar" var="urlEliminar" >
                         <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
                     </s:url>
                     <s:text name="gch.confirmar.eliminar" var="confirmar_msg" />
@@ -85,7 +85,7 @@
                             <s:text name="gch.eliminar"/>
                         </s:a>
                     </span>
-                    </li>
+                </li>
             </s:iterator>        
         </ul>
     </div>

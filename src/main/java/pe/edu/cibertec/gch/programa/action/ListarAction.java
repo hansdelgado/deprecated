@@ -1,4 +1,4 @@
-package pe.edu.cibertec.gch.web.servlets.programa.action;
+package pe.edu.cibertec.gch.programa.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.List;
@@ -9,7 +9,7 @@ import pe.edu.cibertec.gch.modelo.Programa;
  *
  * @author DanJoas
  */
-public class Listar extends ActionSupport {
+public class ListarAction extends ActionSupport {
 
     private GestorPrograma gestorPrograma = new GestorPrograma();
     private List<Programa> programas;

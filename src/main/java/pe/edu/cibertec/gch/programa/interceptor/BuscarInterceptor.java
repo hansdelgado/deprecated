@@ -1,11 +1,11 @@
-package pe.edu.cibertec.gch.web.servlets.programa.interceptor;
+package pe.edu.cibertec.gch.programa.interceptor;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 import java.util.HashMap;
 import pe.edu.cibertec.gch.modelo.TipoBusqueda;
-import pe.edu.cibertec.gch.web.servlets.programa.action.Buscar;
+import pe.edu.cibertec.gch.programa.action.BuscarAction;
 
 /**
  *
@@ -23,7 +23,7 @@ public class BuscarInterceptor implements Interceptor {
     @Override
     public String intercept(ActionInvocation ai) throws Exception {
 
-        Buscar action = (Buscar) ai.getAction();
+        BuscarAction action = (BuscarAction) ai.getAction();
 
         HashMap<String, String> errores = new HashMap<>();
 

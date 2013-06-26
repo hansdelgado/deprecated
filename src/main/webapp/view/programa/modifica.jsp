@@ -8,7 +8,7 @@
         <span><s:property value="mensaje" /></span><br><br>
         <s:fielderror/>
     </div>
-    <s:form action="actualizarPrograma" method="post">
+    <s:form namespace="/programa" action="guardar" method="post">
         <fieldset>
             <legend><s:text name="gch.sistema" /></legend>
             <div>
