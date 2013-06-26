@@ -18,10 +18,10 @@ public class EliminarAction extends ActionSupport {
     public String execute() throws Exception {
         Programa programa = gestorPrograma.consultarPorCodigo(getCodigo());
         if (programa == null) {
-            setMensaje(getText("validar.programa.no.existe"));
+            setMensaje(getText("gch.programa.error.noexiste"));
         } else {
             gestorPrograma.eliminarPorCodigo(getCodigo());
-            setMensaje(getText("mensaje.eliminar"));
+            setMensaje(getText("gch.programa.exito.eliminar"));
         }
         return SUCCESS;
     }

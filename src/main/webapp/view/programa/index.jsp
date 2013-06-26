@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<s:text name='gch.listado.programas' var="listado_programas"/>
+<s:text name='gch.programa.listado' var="listado_programas"/>
 <gch:base titulo="${listado_programas}">
     <s:url namespace="/programa" action="listar" var="urlEn" >
         <s:param name="request_locale">en</s:param>
@@ -25,31 +25,31 @@
     </div>
     <s:form namespace="/programa" action="buscar" method="post">
         <fieldset>
-            <legend><s:text name="gch.datos.de.busqueda"/></legend>
+            <legend><s:text name="gch.app.datos.de.busqueda"/></legend>
             <div>
-                <s:label key="gch.titulo" />
+                <s:label key="gch.programa.titulo" />
                 <s:textfield name="titulo" maxlength="50" />
             </div>
             <div>
-                <s:label key="gch.descripcion" />
+                <s:label key="gch.programa.descripcion" />
                 <s:textfield name="descripcion" maxlength="50" />
             </div>
             <div>
-                <s:label key="gch.tipo.busqueda"/>
+                <s:label key="gch.programa.busqueda.tipo"/>
                 <select name="tipoBusqueda">
-                    <option value="0" <c:if test="${tipoBusqueda == 0}">selected</c:if> ><s:text name="gch.completa"/></option>
-                    <option value="1" <c:if test="${tipoBusqueda == 1}">selected</c:if> ><s:text name="gch.parcial"/></option>
+                    <option value="0" <c:if test="${tipoBusqueda == 0}">selected</c:if> ><s:text name="gch.programa.busqueda.completa"/></option>
+                    <option value="1" <c:if test="${tipoBusqueda == 1}">selected</c:if> ><s:text name="gch.programa.busqueda.parcial"/></option>
                     </select>
                 </div>            
             </fieldset>
-            <button><span><s:text name="gch.buscar"/></span></button>
+            <button><span><s:text name="gch.programa.buscar"/></span></button>
     </s:form>
     <div>
         <nav>
             <ul>
                 <li>
                     <s:a namespace="/programa" action="nuevo">
-                        <s:text name="gch.registrar.nuevo.programa"/>
+                        <s:text name="gch.programa.nuevo"/>
                     </s:a>
                 </li>
             </ul>
@@ -58,11 +58,11 @@
     <div>
         <ul id="resultadoConsulta">
             <li class="cabeceraConsulta">
-                <span><s:text name="gch.codigo"/></span>
-                <span><s:text name="gch.titulo"/></span>
-                <span><s:text name="gch.descripcion"/></span>
-                <span><s:text name="gch.editar"/></span>
-                <span><s:text name="gch.eliminar"/></span>
+                <span><s:text name="gch.programa.codigo"/></span>
+                <span><s:text name="gch.programa.titulo"/></span>
+                <span><s:text name="gch.programa.descripcion"/></span>
+                <span><s:text name="gch.programa.editar"/></span>
+                <span><s:text name="gch.programa.eliminar"/></span>
             </li>
 
             <s:iterator var="programa" value="programas" >
@@ -74,15 +74,15 @@
                     <s:url namespace="/programa" action="editar" var="urlEditar" >
                         <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
                     </s:url>
-                    <span><s:a href="%{urlEditar}" > <s:text name="gch.editar"/> </s:a></span>
+                    <span><s:a href="%{urlEditar}" > <s:text name="gch.programa.editar"/> </s:a></span>
 
                     <s:url namespace="/programa" action="eliminar" var="urlEliminar" >
                         <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
                     </s:url>
-                    <s:text name="gch.confirmar.eliminar" var="confirmar_msg" />
+                    <s:text name="gch.programa.pregunta.eliminar" var="confirmar_msg" />
                     <span>
                         <s:a href="%{urlEliminar}" onclick="if(!confirm('%{confirmar_msg}')){return false;}" style="cursor: pointer" >
-                            <s:text name="gch.eliminar"/>
+                            <s:text name="gch.programa.eliminar"/>
                         </s:a>
                     </span>
                 </li>

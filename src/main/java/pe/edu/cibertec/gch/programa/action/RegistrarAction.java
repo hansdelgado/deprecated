@@ -23,7 +23,7 @@ public class RegistrarAction extends ActionSupport {
 
         GCH.dump("programa", programa);
         gestorPrograma.registrar(programa);
-        setMensaje(getText("mensaje.registrar"));
+        setMensaje(getText("gch.programa.exito.registrar"));
         return SUCCESS;
     }
 
@@ -32,7 +32,7 @@ public class RegistrarAction extends ActionSupport {
         GCH.dump("codigo", programa.getCodigo());
         Programa p = gestorPrograma.consultarPorCodigo(programa.getCodigo());
         if(p != null){ // si ya existe
-            addFieldError("programa",getText("validar.codigo.duplicado"));
+            addFieldError("programa",getText("gch.programa.error.codigo.duplicado"));
         }
     }
     

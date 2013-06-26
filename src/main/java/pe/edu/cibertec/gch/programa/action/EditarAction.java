@@ -22,14 +22,14 @@ public class EditarAction extends ActionSupport {
 
         gestorPrograma.modificarPorCodigo(getPrograma());
         GCH.dump("listando programa", programa);
-        setMensaje(getText("mensaje.editar"));
+        setMensaje(getText("gch.programa.exito.editar"));
         return SUCCESS;
     }
 
     public String mostrar() throws Exception {
         programa = gestorPrograma.consultarPorCodigo(getCodigo());
         if (programa == null) {
-            setMensaje(getText("validar.programa.no.existe"));
+            setMensaje(getText("gch.programa.error.noexiste"));
             return "listado";
         }
         GCH.dump("listando programa", programa);

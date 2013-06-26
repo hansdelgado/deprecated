@@ -4,24 +4,24 @@
         <!-- Bloque de cabecera de la pagina -->
         <hgroup>
             <h1>GCH</h1>
-            <h2><s:text name="gch.titulo.principal"/></h2>
+            <h2><s:text name="gch.app.principal"/></h2>
         </hgroup>
         <nav>
             <ul>
                 <li>
-                    <a href="listarProfesores"><s:text name="gch.profesores" /></a>
+                    <a href="listarProfesores"><s:text name="gch.app.profesores" /></a>
                 </li>
                 <li>
-                    <a href="listarLaboratorios"><s:text name="gch.laboratorios" /></a>
+                    <a href="listarLaboratorios"><s:text name="gch.app.laboratorios" /></a>
                 </li>
                 <li>
-                    <a href="listarHorarios"><s:text name="gch.horarios" /></a>
+                    <a href="listarHorarios"><s:text name="gch.app.horarios" /></a>
                 </li>
                 <li>
-                    <s:a namespace="/programa" action="listar"><s:text name="gch.programas" /> </s:a>
+                    <s:a namespace="/programa" action="listar"><s:text name="gch.app.programas" /> </s:a>
                 </li>
                 <li>
-                    <a href="listarCursos"><s:text name="gch.cursos" /></a>
+                    <a href="listarCursos"><s:text name="gch.app.cursos" /></a>
                 </li>
             </ul>
         </nav>
