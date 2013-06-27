@@ -53,11 +53,7 @@
         
         <action name="eliminar" class="pe.edu.cibertec.gch.programa.action.EliminarAction" >
             <!--Redireccionamos a listarProgramas mediante 'chain' --> 
-            <result name="success" type="redirectAction">
-                <param name="actionName">listar</param>
-                <param name="namespace">/programa</param>
-                <param name="mensaje">${mensaje}</param>
-            </result>
+            <result name="success" type="chain">listar</result>
         </action>
         
         <action name="buscar" class="pe.edu.cibertec.gch.programa.action.BuscarAction" >
