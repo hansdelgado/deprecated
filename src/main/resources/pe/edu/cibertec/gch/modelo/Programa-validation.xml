@@ -5,6 +5,11 @@
 <!--Validacion a nivel de Objeto de Dominio usando el interceptor Validation y visitor-->
            
 <validators>
+    <field name="codigo">
+        <field-validator type="requiredstring">
+            <message key="gch.programa.error.codigo.vacio"></message>
+        </field-validator>
+    </field>
     <field name="titulo">
         <field-validator type="requiredstring">
             <message key="gch.programa.error.titulo.vacio"></message>
