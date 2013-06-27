@@ -32,7 +32,7 @@ public class RegistrarAction extends ActionSupport {
         GCH.dump("codigo", programa.getCodigo());
         Programa p = gestorPrograma.consultarPorCodigo(programa.getCodigo());
         if(p != null){ // si ya existe
-            addFieldError("programa",getText("gch.programa.error.codigo.duplicado"));
+            addFieldError("programa.codigo",getText("gch.programa.error.codigo.duplicado"));
         }
     }
     
