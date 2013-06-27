@@ -1,6 +1,5 @@
 package pe.edu.cibertec.gch.programa.action;
 
-import pe.edu.cibertec.gch.programa.action.BuscarAction;
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.StrutsTestCase;
@@ -19,14 +18,14 @@ public class BuscarActionTest extends StrutsTestCase {
         request.setParameter("descripcion", "");
         request.setParameter("tipoBusqueda", "0"); // 0 == Completa
 
-        ActionProxy actionProxy = getActionProxy("/buscarProgramas.html");
+        ActionProxy actionProxy = getActionProxy("/programa/buscar.html");
         BuscarAction buscarAction = (BuscarAction) actionProxy.getAction();
 
-        assertNotNull("The accion es nula pero no deberia ser nulo.", buscarAction);
+        assertNotNull("la accion no debe ser null", buscarAction);
         String TIPO_RESULTADO = actionProxy.execute();
         
-        assertEquals("el metodo deberia retornar " + ActionSupport.INPUT, ActionSupport.INPUT, TIPO_RESULTADO);  
-        assertTrue("No hubo problemas de validacion pero deberia haber 2 errores presentes", buscarAction.getFieldErrors().size() == 2);
+        assertEquals("el metodo no retornar INPUT", ActionSupport.INPUT, TIPO_RESULTADO);  
+        assertTrue("deberia haber 2 errores presentes", buscarAction.getFieldErrors().size() == 2);
         assertTrue("el error de titulo deberia estar presente",buscarAction.getFieldErrors().containsKey("titulo"));
         assertTrue("el error de descripcion deberia estar presente",buscarAction.getFieldErrors().containsKey("descripcion"));
     }
@@ -38,10 +37,10 @@ public class BuscarActionTest extends StrutsTestCase {
         request.setParameter("descripcion", "");
         request.setParameter("tipoBusqueda", "1"); // 1 == Parcial
 
-        ActionProxy actionProxy = getActionProxy("/buscarProgramas.html");
+        ActionProxy actionProxy = getActionProxy("/programa/buscar.html");
 
         BuscarAction buscarAction = (BuscarAction) actionProxy.getAction();
-        assertNotNull("The accion es nula pero no deberia ser nulo.", buscarAction);
+        assertNotNull("la accion no debe ser nula", buscarAction);
         
         String TIPO_RESULTADO = actionProxy.execute();
         

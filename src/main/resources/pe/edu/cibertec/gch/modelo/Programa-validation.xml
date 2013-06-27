@@ -7,41 +7,46 @@
 <validators>
     <field name="titulo">
         <field-validator type="requiredstring">
-            <message>Debe ingresar un titulo</message>
+            <message key="gch.programa.error.titulo.vacio"></message>
         </field-validator>
     </field>
     <field name="descripcion">
         <field-validator type="requiredstring">
-            <message>Debe ingresar una descripcion.</message>
+            <message key="gch.programa.error.descripcion.vacio"></message>
         </field-validator>
     </field>
     <field name="objetivos">
         <field-validator type="requiredstring">
-            <message>Debe ingresar los objetivos.</message>
+            <message key="gch.programa.error.objetivos.vacio"></message>
         </field-validator>
     </field>
     <field name="requisitos">
         <field-validator type="requiredstring">
-            <message>Debe ingresar una requisitos.</message>
+            <message key="gch.programa.error.requisitos.vacio"></message>
+        </field-validator>
+    </field>
+    <field name="moneda">
+        <field-validator type="required">
+            <message key="gch.programa.error.moneda.vacio"></message>
         </field-validator>
     </field>
     <field name="precio">
         <field-validator type="double">
             <param name="minInclusive">15</param>  
             <param name="maxInclusive">4000</param>  
-            <message>el precio es entre %{minInclusive} y %{maxInclusive}.</message>
+            <message key="gch.programa.error.precio.rango"></message>
         </field-validator>
     </field>
     <field name="duracion">
         <field-validator type="int">
             <param name="min">10</param>  
             <param name="max">150</param>  
-            <message>la duracion es entre %{min} y %{max} horas.</message>
+            <message key="gch.programa.error.precio.rango"></message>
         </field-validator>
     </field>
     <field name="fechaInicial">
         <field-validator type="required">
-            <message>Debe ingresar una fecha.</message>
+            <message key="gch.programa.error.fechainicial.vacio"></message>
         </field-validator>
     </field>
 </validators>

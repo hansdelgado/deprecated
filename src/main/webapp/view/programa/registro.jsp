@@ -36,7 +36,7 @@
             </div>
             <div>
                 <s:label key="gch.programa.moneda"/>
-                <s:select name="programa.moneda" headerKey="-1" headerValue="%{getText('gch.programa.seleccione')}" list="monedas"  />
+                <s:select name="programa.moneda" headerKey="" headerValue="%{getText('gch.programa.seleccione')}" list="monedas"  />
             </div>
             <div>
                 <s:label key="gch.programa.precio"/>
