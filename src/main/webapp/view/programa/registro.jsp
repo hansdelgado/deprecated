@@ -7,7 +7,9 @@
     <div class="informacion">   
         <s:fielderror/>
     </div>
-    <button onclick="cargarDatos()"><s:text name="gch.programa.simular.carga"/></button>
+    <div style="padding-bottom: 5px;">
+        <a onclick="cargarDatos()" id="urls"><s:text name="gch.programa.simular.carga"/></a>
+    </div>
     <s:form namespace="/programa" action="registrar" method="post">
         <fieldset>
             <legend><s:text name="gch.app.sistema.solo" /></legend>
@@ -55,15 +57,15 @@
     </s:form>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script type="text/javascript">
-        function cargarDatos() {
-            $("input[name='programa.codigo']").val("3");
-            $("input[name='programa.titulo']").val("TECNICOS INDUSTRIALES");
-            $("input[name='programa.descripcion']").val("Orientado al sector de manufactura masiva");
-            $("input[name='programa.objetivos']").val("Conocimiento electronica y electricida");
-            $("input[name='programa.requisitos']").val("Ninguno");
-            $("input[name='programa.precio']").val("3700");
-            $("input[name='programa.duracion']").val("140");
-            $("input[name='programa.fechaInicial']").val("2013-06-11");
-        }
+                function cargarDatos() {
+                    $("input[name='programa.codigo']").val("3");
+                    $("input[name='programa.titulo']").val("TECNICOS INDUSTRIALES");
+                    $("input[name='programa.descripcion']").val("Orientado al sector de manufactura masiva");
+                    $("input[name='programa.objetivos']").val("Conocimiento electronica y electricida");
+                    $("input[name='programa.requisitos']").val("Ninguno");
+                    $("input[name='programa.precio']").val("3700");
+                    $("input[name='programa.duracion']").val("140");
+                    $("input[name='programa.fechaInicial']").val("2013-06-11");
+                }
     </script>
 </gch:base>

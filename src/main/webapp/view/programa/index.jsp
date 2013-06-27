@@ -10,8 +10,8 @@
     <s:url namespace="/programa" action="listar" var="urlEs" >
         <s:param name="request_locale">es</s:param>
     </s:url>
-    <s:a href="%{urlEn}" >English</s:a>
-    <s:a href="%{urlEs}" >Español</s:a>
+    <s:a href="%{urlEn}" id="urls" >English</s:a>
+    <s:a href="%{urlEs}" id="urls" >Español</s:a>
         <div class="informacion">
         <s:fielderror/>
         <span><s:property value="mensaje" /></span><br><br>
