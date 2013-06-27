@@ -46,7 +46,7 @@
         <field-validator type="int">
             <param name="min">10</param>  
             <param name="max">150</param>  
-            <message key="gch.programa.error.precio.rango"></message>
+            <message key="gch.programa.error.duracion.rango"></message>
         </field-validator>
     </field>
     <field name="fechaInicial">
