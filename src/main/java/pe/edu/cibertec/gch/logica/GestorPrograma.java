@@ -34,7 +34,7 @@ public class GestorPrograma implements GestorBase<Programa> {
         programaDao.eliminarPorCodigo(codigo);
     }
 
-    protected void borrarTodos() {
+    public void borrarTodos() {
         programaDao.borrarTodos();
     }
 
