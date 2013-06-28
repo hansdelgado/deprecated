@@ -1,0 +1,46 @@
+<!DOCTYPE validators PUBLIC
+  "-//Apache Struts//XWork Validator 1.0.3//EN" 
+  "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+  
+<!--Validacion por metodos de Accion usando el interceptor Validation -->
+        
+<!-- validationWorkflowStack
+    ...
+    <interceptor-ref name="params">            -| pertencen al 
+    <interceptor-ref name="conversionError"/>  -| basicStack
+    <interceptor-ref name="validation"/>
+    <interceptor-ref name="workflow"/>
+-->
+
+<validators>
+    
+    <field name="usuario">
+        <field-validator type="requiredstring">
+            <message key="gch.login.error.usuario.vacio" />
+        </field-validator>
+    </field>
+    
+    <field name="clave">       
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="gch.login.error.clave.vacio" />
+        </field-validator>
+               
+        <field-validator type="fieldexpression" short-circuit="true">
+            <param name="expression">clave == reclave</param>
+            <message key="gch.login.error.clave.diferente"/>
+        </field-validator>
+                
+        <field-validator type="clave_segura" >
+            <param name="caracteres">@#</param>
+            <message key="gch.login.error.clave.insegura" />
+        </field-validator>       
+    </field>
+    
+    <field name="reclave">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message key="gch.login.error.reclave.vacio" />
+        </field-validator>
+    </field>
+    
+</validators>
+

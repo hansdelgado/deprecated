@@ -14,5 +14,6 @@
     <!--retirando marcado de tablas de Struts 2-->
     <constant name="struts.ui.theme" value="simple" />
     <!-- Inclusion de paquetes -->
+    <include file="login.xml"  />
     <include file="programa.xml"  />
 </struts>
