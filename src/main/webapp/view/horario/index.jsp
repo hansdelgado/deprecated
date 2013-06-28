@@ -41,11 +41,11 @@
             </li>
             <s:iterator value="horarios" var="horario">
                 <li>
-                    <span>${horario.codigo}</span>
-                    <span>${horario.descripcion}</span>
-                    <span>${horario.momentoInicio}</span>
-                    <span>${horario.momentoFin}</span>
-                    <span>${horario.estado}</span>
+                    <span><s:property value="codigo"/></span>
+                    <span><s:property value="descripcion"/></span>
+                    <span><s:property value="momentoInicio"/></span>
+                    <span><s:property value="momentoFin"/></span>
+                    <span><s:property value="estado"/></span>
                     <span><a href="irModificarHorario?codigo=<c:out value="${horario.codigo}"/>">Modificar</a></span>
                     <span><a href="eliminarHorario?codigo=<c:out value="${horario.codigo}"/>">Eliminar</a></span>
                 </li>

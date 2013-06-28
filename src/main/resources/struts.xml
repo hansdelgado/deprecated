@@ -16,10 +16,10 @@
             <result type="redirectAction">listarHorarios</result>
         </action>
         <action name="listarHorarios" class="pe.edu.cibertec.gch.actions.HorarioAction" method="listar">
-            <result type="redirectAction">irIndexHorario</result>
+            <result>/view/horario/index.jsp</result>
         </action>
         <action name="buscarHorarios" class="pe.edu.cibertec.gch.actions.HorarioAction" method="buscar">
-            <result type="redirectAction">irIndexHorario</result>
+            <result>/view/horario/index.jsp</result>
         </action>
         <action name="irIndexHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarIndex">
             <result>/view/horario/index.jsp</result>

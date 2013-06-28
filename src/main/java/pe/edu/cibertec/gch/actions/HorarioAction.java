@@ -81,8 +81,13 @@ public class HorarioAction extends ActionSupport {
     }
     
     public String listar() {
-        System.out.println("LISTAR HORARIOS");
         horarios = new HorarioService().listarTodos();
+        tiposBusqueda = new HashMap();
+        int i = 0;
+        for (TipoBusqueda tipoBusqueda : TipoBusqueda.values()) {
+            tiposBusqueda.put(String.valueOf(i), tipoBusqueda);
+            i++;
+        }
         return SUCCESS;
     }
     
@@ -109,11 +114,16 @@ public class HorarioAction extends ActionSupport {
     public String buscar() {
         TipoBusqueda tipoBusquedaEnum = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(tipoBusquedaSeleccionado));
         horarios = new HorarioService().obtenerSegun(horario.getDescripcion(), tipoBusquedaEnum);
+        tiposBusqueda = new HashMap();
+        int i = 0;
+        for (TipoBusqueda tipoBusqueda : TipoBusqueda.values()) {
+            tiposBusqueda.put(String.valueOf(i), tipoBusqueda);
+            i++;
+        }
         return SUCCESS;
     }
     
     public String inicializarIndex() {
-        System.out.println("INICIALIZA INDEX ---> HORARIOS: " + horarios);
         tiposBusqueda = new HashMap();
         int i = 0;
         for (TipoBusqueda tipoBusqueda : TipoBusqueda.values()) {
