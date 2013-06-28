@@ -9,9 +9,7 @@
     <s:form action="buscarHorarios">
         <fieldset>
             <legend>Datos de búsqueda</legend>
-            <s:div>
                 <s:textfield label="Descripción" name="horario.descripcion" />
-            </s:div>
         </fieldset>
         <fieldset>
             <div>

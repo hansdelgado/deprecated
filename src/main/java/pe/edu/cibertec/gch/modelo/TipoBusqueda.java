@@ -11,7 +11,7 @@ package pe.edu.cibertec.gch.modelo;
 public enum TipoBusqueda {
     Completa(0),
     Parcial(1),
-    NoDefinido(2);
+    /*NoDefinido(2)*/;
     
     private int codigo;
     
@@ -25,7 +25,7 @@ public enum TipoBusqueda {
                 
             case 1 : return Parcial;
                 
-            default : return NoDefinido;
+            default : return Completa;
         }
     }
 

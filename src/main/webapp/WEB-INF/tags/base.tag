@@ -1,10 +1,12 @@
 <%@tag description="Contiene la base del HTML para las paginas GCH"
        pageEncoding="UTF-8" %>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <%@attribute name="titulo"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <%@include file="/WEB-INF/jspf/headbasico.jspf" %>
+<s:head />
 </head>
 <body>
 <%@include file="/WEB-INF/jspf/cabecera.jspf" %>

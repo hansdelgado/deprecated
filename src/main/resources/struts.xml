@@ -5,6 +5,8 @@
 
 <struts>
     
+    <constant name="struts.devMode" value="false" />
+    
     <package name="default" extends="struts-default">
         <action name="index">
             <result>/index.jsp</result>
@@ -14,6 +16,7 @@
         </action>
         <action name="registrarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="registrar">
             <result type="redirectAction">listarHorarios</result>
+            <result name="input">/view/horario/registro.jsp</result>
         </action>
         <action name="listarHorarios" class="pe.edu.cibertec.gch.actions.HorarioAction" method="listar">
             <result>/view/horario/index.jsp</result>

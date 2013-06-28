@@ -1,5 +1,6 @@
 package pe.edu.cibertec.gch.actions;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.HashMap;
 import java.util.List;
@@ -98,6 +99,7 @@ public class HorarioAction extends ActionSupport {
             estados.put(String.valueOf(i), ea);
             i++;
         }
+        ActionContext.getContext().getSession().put("estados", estados);
         return SUCCESS;
     }
     

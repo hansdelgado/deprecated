@@ -31,7 +31,7 @@
                 <s:textfield label="Momento de fin" name="horario.momentoFin" required="true" maxLength="2" />
             </s:div>
             <s:div>
-                <s:select label="Estado" list="estados" required="true" headerKey="-1" headerValue="-- Seleccione --" name="horarioSeleccionado" />
+                <s:select label="Estado" list="%{#session.estados}" required="true" headerKey="-1" headerValue="-- Seleccione --" name="horarioSeleccionado" />
             </s:div>            
         </fieldset>
                 <s:submit value="Registrar" />
