@@ -59,12 +59,12 @@
                 <span><s:property value="descripcion"></s:property></span>
 
                 <s:url namespace="/programa" action="editar" var="urlEditar" >
-                    <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
+                    <s:param name="codigo" value="%{codigo}" />
                 </s:url>
-                <span><s:a href="%{urlEditar}" > <s:text name="gch.programa.editar"/> </s:a></span>
+                <span><s:a href="%{urlEditar}" > <s:text name="gch.programa.editar"/></s:a></span>
 
                 <s:url namespace="/programa" action="eliminar" var="urlEliminar" >
-                    <s:param name="codigo"><s:property value="codigo"></s:property></s:param>
+                    <s:param name="codigo" value="%{codigo}" />
                 </s:url>
                 <s:text name="gch.programa.pregunta.eliminar" var="confirmar_msg" />
                 <span>
