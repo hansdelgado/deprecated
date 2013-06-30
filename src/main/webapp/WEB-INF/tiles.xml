@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration
+2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+    <definition name="gch.app.plantilla.base" template="/view/plantilla/base.jsp">	      
+        <put-attribute name="gch.view.plantilla.encabezado" value="/view/plantilla/encabezado.jsp"/>
+        <put-attribute name="gch.view.plantilla.menu" value="/view/plantilla/menu.jsp"/>      
+        <put-attribute name="gch.view.plantilla.ayuda" value="/view/plantilla/ayuda.jsp"/>          
+        <put-attribute name="gch.view.plantilla.cuerpo" value="/view/plantilla/cuerpo.jsp"/>
+        <put-attribute name="gch.view.plantilla.pie" value="/view/plantilla/pie.jsp"/>                   
+    </definition>  
+    
+    <!--Modulo Login-->
+    <definition  name="gch.login.nuevo" extends="gch.app.plantilla.base">
+        <put-attribute name="gch.view.plantilla.cuerpo" value="/view/login/nuevo.jsp" />
+    </definition>
+    
+    <!-- Modulo Programa-->
+    <definition  name="gch.programa.listar" extends="gch.app.plantilla.base">
+        <put-attribute name="gch.view.plantilla.cuerpo" value="/view/programa/index.jsp" />
+    </definition>
+      
+    <definition  name="gch.programa.nuevo" extends="gch.app.plantilla.base">
+        <put-attribute name="gch.view.plantilla.cuerpo" value="/view/programa/nuevo.jsp" />
+    </definition>  
+    
+    <definition  name="gch.programa.editar" extends="gch.app.plantilla.base">
+        <put-attribute name="gch.view.plantilla.cuerpo" value="/view/programa/editar.jsp" />
+    </definition>  
+        
+</tiles-definitions>
+

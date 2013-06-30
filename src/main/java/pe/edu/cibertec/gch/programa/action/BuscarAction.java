@@ -28,15 +28,15 @@ public class BuscarAction extends ActionSupport {
     public void validate() {
         // realizamos algunas validaciones 
         if (TipoBusqueda.Completa == TipoBusqueda.obtenerPorCodigo(getTipoBusqueda())) {
-            if (getTitulo().isEmpty()) {
+            if (getTitulo() == null || getTitulo().isEmpty()  ) {
                 addFieldError("titulo", getText("gch.programa.error.titulo.vacio"));
             }
 
-            if (getDescripcion().isEmpty()) {
+            if (getDescripcion() == null || getDescripcion().isEmpty()) {
                 addFieldError("descripcion", getText("gch.programa.error.descripcion.vacio"));
             }
         } else {
-            if (getTitulo().isEmpty() && getDescripcion().isEmpty()) {
+            if (getTitulo() == null || (getTitulo().isEmpty() && getDescripcion().isEmpty())) {
                 addFieldError("ambos", getText("gch.programa.error.tituloydescripcion.vacio"));
             }
         }

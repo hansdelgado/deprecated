@@ -5,17 +5,23 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <package name="login" namespace="/login" extends="struts-default">
-        <action name="nuevo" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="nuevo" >
-            <result>/view/login/nuevo.jsp</result>
+    <package name="login" namespace="/login" extends="gch-struts-default">
+
+        <action name="principal">
+            <result type="tiles">gch.app.plantilla.base</result>
         </action>
+         
+        <action name="nuevo" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="nuevo" >
+            <result type="tiles">gch.login.nuevo</result>
+        </action>
+        
         <action name="registrar" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="registrar" >
             <result name="success" type="redirectAction">
                 <param name="actionName">nuevo</param>
                 <param name="namespace">/login</param>
                 <param name="mensaje">${mensaje}</param>
             </result>
-            <result name="input">/view/login/nuevo.jsp</result>
+            <result name="input" type="tiles">gch.login.nuevo</result>
         </action>
     </package>
 </struts>

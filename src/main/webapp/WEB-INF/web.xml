@@ -10,22 +10,15 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <!-- Fin Struts 2 -->
+    
+    <!--Tiles--> 
+    <listener>
+        <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
+    </listener>
+    <!--Fin Tiles--> 
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <resource-ref>
-        <description>jdbc:mysql://localhost:3306/gch?zeroDateTimeBehavior=convertToNull</description>
-        <res-ref-name>dsgch</res-ref-name>
-        <res-type>javax.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
-        <res-sharing-scope>Shareable</res-sharing-scope>
-    </resource-ref>
-    <resource-ref>
-        <res-ref-name>sesionEmail</res-ref-name>
-        <res-type>javax.mail.Session</res-type>
-        <res-auth>Container</res-auth>
-        <res-sharing-scope>Shareable</res-sharing-scope>
-    </resource-ref>
 </web-app>

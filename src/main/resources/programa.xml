@@ -5,17 +5,17 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <package name="programa" namespace="/programa" extends="struts-default">
-
+    <package name="programa" namespace="/programa" extends="gch-struts-default">
+        
         <action name="listar" class="pe.edu.cibertec.gch.programa.action.ListarAction" >
-            <result>/view/programa/index.jsp</result>
+            <result type="tiles">gch.programa.listar</result>          
         </action>
         
         <action name="nuevo" class="pe.edu.cibertec.gch.programa.action.RegistrarAction" method="inicializar" >
             <interceptor-ref name="defaultStack">
                 <param name="validation.excludeMethods">inicializar</param>
             </interceptor-ref>
-            <result>/view/programa/registro.jsp</result>
+            <result type="tiles">gch.programa.nuevo</result>
         </action>
         
         <action name="registrar" class="pe.edu.cibertec.gch.programa.action.RegistrarAction" >
@@ -31,11 +31,14 @@
                 <param name="namespace">/programa</param>
                 <param name="mensaje">${mensaje}</param>
             </result>
-            <result name="input">/view/programa/registro.jsp</result>
+            <result name="input" type="tiles">gch.programa.nuevo</result>
         </action>
         
         <action name="editar" class="pe.edu.cibertec.gch.programa.action.EditarAction" method="mostrar" >
-            <result>/view/programa/modifica.jsp</result>
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">mostrar</param>
+            </interceptor-ref>
+            <result type="tiles">gch.programa.editar</result>
             <result name="listado" type="redirectAction">
                 <param name="actionName">listar</param>
                 <param name="mensaje">${mensaje}</param>
@@ -48,7 +51,7 @@
                 <param name="namespace">/programa</param>
                 <param name="mensaje">${mensaje}</param>
             </result>
-            <result name="input">/view/programa/modifica.jsp</result>
+            <result name="input" type="tiles">gch.programa.editar</result>
         </action>
         
         <action name="eliminar" class="pe.edu.cibertec.gch.programa.action.EliminarAction" >
@@ -58,8 +61,8 @@
         
         <action name="buscar" class="pe.edu.cibertec.gch.programa.action.BuscarAction" >
             <!--se hace uso del interceptor validation ver el archivo : Buscar-validation.xml --> 
-            <result>/view/programa/index.jsp</result>
-            <result name="input">/view/programa/index.jsp</result>
+            <result type="tiles">gch.programa.listar</result>
+            <result name="input" type="tiles">gch.programa.listar</result>
         </action>
     </package>
 </struts>
