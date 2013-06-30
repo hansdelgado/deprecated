@@ -15,11 +15,11 @@ public class BuscarAction extends ActionSupport {
     private List<Programa> programas;
     private String titulo;
     private String descripcion;
-    private String tipoBusqueda;
+    private int tipoBusqueda;
 
     @Override
     public String execute() throws Exception {
-        TipoBusqueda tipoBusquedaEnum = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(getTipoBusqueda()));
+        TipoBusqueda tipoBusquedaEnum = TipoBusqueda.obtenerPorCodigo(getTipoBusqueda());
         programas = gestorPrograma.listarSegun(getTitulo(), getDescripcion(), tipoBusquedaEnum);
         return SUCCESS;
     }
@@ -27,7 +27,7 @@ public class BuscarAction extends ActionSupport {
     @Override
     public void validate() {
         // realizamos algunas validaciones 
-        if (TipoBusqueda.Completa == TipoBusqueda.obtenerPorCodigo(Integer.parseInt(getTipoBusqueda()))) {
+        if (TipoBusqueda.Completa == TipoBusqueda.obtenerPorCodigo(getTipoBusqueda())) {
             if (getTitulo().isEmpty()) {
                 addFieldError("titulo", getText("gch.programa.error.titulo.vacio"));
             }
@@ -67,11 +67,11 @@ public class BuscarAction extends ActionSupport {
         this.descripcion = descripcion;
     }
 
-    public String getTipoBusqueda() {
+    public int getTipoBusqueda() {
         return tipoBusqueda;
     }
 
-    public void setTipoBusqueda(String tipoBusqueda) {
+    public void setTipoBusqueda(int tipoBusqueda) {
         this.tipoBusqueda = tipoBusqueda;
     }
 }
