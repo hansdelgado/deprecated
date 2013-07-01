@@ -1,13 +1,18 @@
 package pe.edu.cibertec.gch.programa.action;
 
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
+import org.apache.struts2.interceptor.SessionAware;
+import pe.edu.cibertec.gch.helper.GCH;
 
 /**
  *
  * @author DanJoas
  */
-public class LoginAction extends ActionSupport {
+public class LoginAction extends ActionSupport implements SessionAware {
 
+    private Map session;
     private String mensaje;
     private String usuario;
     private String clave;
@@ -20,6 +25,21 @@ public class LoginAction extends ActionSupport {
     public String registrar() {
         setMensaje(getText("gch.login.exito.registrar"));
         return SUCCESS;
+    }
+
+    public String acceso() {
+        return SUCCESS;
+    }
+
+    public String ingresar() {
+        
+        if (getUsuario().equals("danjoas") && getClave().equals("123")) {
+            session.put(GCH.SESION_USUARIO, getUsuario());
+            session.put(GCH.SESION_CLAVE, getClave());
+            return SUCCESS;
+        }
+        addActionError("su usuario o clave es incorrecto");
+        return LOGIN;
     }
 
     // Metodos de acceso de los JavaBeans.
@@ -53,5 +73,10 @@ public class LoginAction extends ActionSupport {
 
     public void setReclave(String reclave) {
         this.reclave = reclave;
+    }
+
+    @Override
+    public void setSession(Map session) {
+        this.session = session;
     }
 }

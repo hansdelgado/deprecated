@@ -7,12 +7,21 @@
 <struts>
     <package name="login" namespace="/login" extends="gch-struts-default">
 
-        <action name="principal">
+        <action name="bienvenido">
+            <interceptor-ref name="autenticador" />
             <result type="tiles">gch.app.plantilla.base</result>
         </action>
          
         <action name="nuevo" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="nuevo" >
             <result type="tiles">gch.login.nuevo</result>
+        </action>
+        
+        <action name="acceso" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="acceso" >
+            <result type="tiles">gch.login.acceso</result>
+        </action>
+        
+        <action name="ingresar" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="ingresar">
+            <result type="redirectAction">bienvenido</result>           
         </action>
         
         <action name="registrar" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="registrar" >

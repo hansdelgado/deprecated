@@ -14,7 +14,15 @@
     </definition>  
     
     <!--Modulo Login-->
+    <definition  name="gch.login.acceso" extends="gch.app.plantilla.base">
+        <put-attribute name="gch.view.plantilla.menu" value=""/> 
+        <put-attribute name="gch.view.plantilla.ayuda" value=""/> 
+        <put-attribute name="gch.view.plantilla.cuerpo" value="/view/login/acceso.jsp" />
+    </definition>
+    
     <definition  name="gch.login.nuevo" extends="gch.app.plantilla.base">
+        <put-attribute name="gch.view.plantilla.menu" value=""/> 
+        <put-attribute name="gch.view.plantilla.ayuda" value=""/> 
         <put-attribute name="gch.view.plantilla.cuerpo" value="/view/login/nuevo.jsp" />
     </definition>
     

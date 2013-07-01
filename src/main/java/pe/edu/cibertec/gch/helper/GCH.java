@@ -11,9 +11,13 @@ import pe.edu.cibertec.gch.modelo.Programa;
  * @author DanJoas
  */
 public final class GCH {
+    
     // habilitar mensajes de depuracion.
-
-    final static boolean debug = true;
+    private final static boolean debug = true;
+    
+    // constantes para GCH
+    public final static String SESION_USUARIO = "GCH_SESION_USUARIO";
+    public final static String SESION_CLAVE = "GCH_SESION_CLAVE";
 
     public static Date fechaToDate(String yyyyMMdd) {
         // formato fecha : "yyyy-MM-dd"

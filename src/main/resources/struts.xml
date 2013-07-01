@@ -3,8 +3,6 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-
-
     <!-- Mensajes de depuracion visibles -->
     <constant name="struts.devMode" value="true" />
     <!-- Recarga de configuraciones ante modificaciones -->
@@ -16,11 +14,27 @@
     <!--retirando marcado de tablas de Struts 2-->
     <constant name="struts.ui.theme" value="simple" />
 
-    <!--Paquete Principal GCH reutilizable-->
+    <!--Paquete GCH Reutilizable-->
     <package name="gch-struts-default" extends="struts-default">
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>
+           
+        <interceptors>
+            <interceptor name="autenticador" class="pe.edu.cibertec.gch.programa.interceptor.AutenticadorInterceptor" />
+            
+            <interceptor-stack name="autenticadorStack">
+                <interceptor-ref name="autenticador" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>     
+
+        <global-results>
+            <result name="login"  type="redirectAction">
+                <param name="actionName">acceso</param>
+                <param name="namespace">/login</param>
+            </result>
+        </global-results>  
     </package>   
     
     <!-- Inclusion de paquetes -->

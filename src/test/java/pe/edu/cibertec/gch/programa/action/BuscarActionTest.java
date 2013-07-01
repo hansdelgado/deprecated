@@ -22,6 +22,7 @@ public class BuscarActionTest extends StrutsTestCase {
         BuscarAction buscarAction = (BuscarAction) actionProxy.getAction();
 
         assertNotNull("la accion no debe ser null", buscarAction);
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         
         assertEquals("el metodo no retornar INPUT", ActionSupport.INPUT, TIPO_RESULTADO);  
@@ -41,7 +42,7 @@ public class BuscarActionTest extends StrutsTestCase {
 
         BuscarAction buscarAction = (BuscarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser nula", buscarAction);
-        
+        actionProxy.setExecuteResult(false);       
         String TIPO_RESULTADO = actionProxy.execute();
         
         assertEquals("el metodo deberia retornar " + ActionSupport.INPUT, ActionSupport.INPUT, TIPO_RESULTADO);  

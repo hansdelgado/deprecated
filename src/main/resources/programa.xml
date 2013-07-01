@@ -7,19 +7,21 @@
 <struts>
     <package name="programa" namespace="/programa" extends="gch-struts-default">
         
+        <default-interceptor-ref name="autenticadorStack" />  
+        
         <action name="listar" class="pe.edu.cibertec.gch.programa.action.ListarAction" >
             <result type="tiles">gch.programa.listar</result>          
         </action>
         
         <action name="nuevo" class="pe.edu.cibertec.gch.programa.action.RegistrarAction" method="inicializar" >
-            <interceptor-ref name="defaultStack">
+            <interceptor-ref name="autenticadorStack">
                 <param name="validation.excludeMethods">inicializar</param>
             </interceptor-ref>
             <result type="tiles">gch.programa.nuevo</result>
         </action>
         
         <action name="registrar" class="pe.edu.cibertec.gch.programa.action.RegistrarAction" >
-            
+
             <!-- *********************************************************************************
             * Redireccionamos a listarProgramas mediante redirect (no recomendado) 
             * <result name="success" type="redirect" >listarProgramas.html?mensaje=${mensaje}</result>
@@ -35,7 +37,7 @@
         </action>
         
         <action name="editar" class="pe.edu.cibertec.gch.programa.action.EditarAction" method="mostrar" >
-            <interceptor-ref name="defaultStack">
+            <interceptor-ref name="autenticadorStack">
                 <param name="validation.excludeMethods">mostrar</param>
             </interceptor-ref>
             <result type="tiles">gch.programa.editar</result>

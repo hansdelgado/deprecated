@@ -42,7 +42,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna SUCCESS", ActionSupport.SUCCESS, TIPO_RESULTADO);
 
@@ -58,7 +58,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -75,7 +75,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -92,7 +92,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -108,7 +108,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -124,7 +124,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -140,7 +140,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -156,7 +156,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -172,7 +172,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -188,7 +188,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -204,7 +204,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -219,7 +219,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);
@@ -235,7 +235,7 @@ public class RegistrarActionTest extends StrutsTestCase {
 
         RegistrarAction registrarAction = (RegistrarAction) actionProxy.getAction();
         assertNotNull("la accion no debe ser null", registrarAction);
-
+        actionProxy.setExecuteResult(false);
         String TIPO_RESULTADO = actionProxy.execute();
         assertEquals("el metodo NO retorna INPUT", ActionSupport.INPUT, TIPO_RESULTADO);
         assertEquals("deberia existir un solo error", registrarAction.getFieldErrors().size(), 1);

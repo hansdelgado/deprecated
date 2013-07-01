@@ -28,3 +28,4 @@
         <s:submit value="%{getText('gch.login.registrar')}"/>
     </div>
 </s:form>
+
