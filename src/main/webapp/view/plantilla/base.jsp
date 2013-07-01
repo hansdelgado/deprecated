@@ -24,12 +24,16 @@
 
             <tiles:insertAttribute name="gch.view.plantilla.menu"/>
             <div>
-                <s:a namespace="/login" action="nuevo" id="urls">
-                    <s:text name="gch.app.nuevo.usuario" />
-                </s:a>
-                <s:a namespace="/login" action="acceso" id="urls">
-                    <s:text name="gch.app.iniciar.sesion" />
-                </s:a>
+                <s:if test="%{#session.GCH_SESION_USUARIO  == null}">
+                    <s:a namespace="/login" action="acceso" id="urls">
+                        <s:text name="gch.app.iniciar.sesion" />
+                    </s:a>
+                </s:if>
+                <s:else>
+                    <s:a namespace="/login" action="logout" id="urls">
+                        <s:text name="gch.app.cerrar.sesion" />
+                    </s:a>
+                </s:else>
             </div>
         </header>
 

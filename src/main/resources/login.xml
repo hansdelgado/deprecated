@@ -20,6 +20,10 @@
             <result type="tiles">gch.login.acceso</result>
         </action>
         
+        <action name="logout" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="logout" >
+            <result type="redirectAction">acceso</result>
+        </action>
+        
         <action name="ingresar" class="pe.edu.cibertec.gch.programa.action.LoginAction" method="ingresar">
             <result type="redirectAction">bienvenido</result>           
         </action>
