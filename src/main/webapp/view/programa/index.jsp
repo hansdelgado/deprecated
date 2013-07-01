@@ -23,8 +23,8 @@
         <div>
             <s:label key="gch.programa.busqueda.tipo"/>
             <select name="tipoBusqueda">
-                <option value="0" <c:if test="${tipoBusqueda == 0}">selected</c:if> ><s:text name="gch.programa.busqueda.completa"/></option>
-                <option value="1" <c:if test="${tipoBusqueda == 1}">selected</c:if> ><s:text name="gch.programa.busqueda.parcial"/></option>
+                <option value="0" <s:if test="%{tipoBusqueda == 0}">selected</s:if> ><s:text name="gch.programa.busqueda.completa"/></option>
+                <option value="1" <s:if test="%{tipoBusqueda == 1}">selected</s:if> ><s:text name="gch.programa.busqueda.parcial"/></option>
                 </select>
             </div>            
         </fieldset>
