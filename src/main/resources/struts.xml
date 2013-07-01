@@ -13,7 +13,9 @@
     <constant name="struts.custom.i18n.resources" value="global-messages" /> 	
     <!--retirando marcado de tablas de Struts 2-->
     <constant name="struts.ui.theme" value="simple" />
-
+    <!-- Inclusion de paquetes -->
+    <include file="login.xml"  />
+    <include file="programa.xml"  />   
     <!--Paquete GCH Reutilizable-->
     <package name="gch-struts-default" extends="struts-default">
         <result-types>
@@ -36,8 +38,4 @@
             </result>
         </global-results>  
     </package>   
-    
-    <!-- Inclusion de paquetes -->
-    <include file="login.xml"  />
-    <include file="programa.xml"  />
 </struts>
