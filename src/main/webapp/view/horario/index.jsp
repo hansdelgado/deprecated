@@ -8,22 +8,22 @@
     </div>
     <s:form action="buscarHorarios">
         <fieldset>
-            <legend>Datos de búsqueda</legend>
-                <s:textfield label="Descripción" name="horario.descripcion" />
+            <legend><s:text name="titulo.busqueda" /></legend>
+                <s:textfield key="form.descripcion" name="horario.descripcion" />
         </fieldset>
         <fieldset>
             <div>
-                <s:select label="Tipo de búsqueda" list="tiposBusqueda" required="true" name="tipoBusquedaSeleccionado" />
+                <s:select key="form.tipoBusqueda" list="%{#session.tiposBusqueda}" required="true" name="tipoBusquedaSeleccionado" />
             </div>
         </fieldset>
-        <s:submit value="Buscar" />
+                <s:submit key="form.buscar" />
     </s:form>
     <div>
         <nav>
             <ul>
                 <li>
-                    <s:url action="irRegistroHorario" id="newHorario" />
-                    <s:a href="%{newHorario}">Registrar nuevo horario</s:a>
+                    <s:url action="agregarHorario" id="newHorario" />
+                    <s:a href="%{newHorario}"><s:text name="agregar.horario" /></s:a>
                 </li>
             </ul>
         </nav>
@@ -31,11 +31,11 @@
     <div>
         <ul id="resultadoConsulta">
             <li class="cabeceraConsulta">
-                <span>Codigo</span>
-                <span>Descripción</span>
-                <span>Inicio</span>
-                <span>Fin</span>
-                <span>Estado</span>
+                <span><s:text name="form.codigo" /></span>
+                <span><s:text name="form.descripcion" /></span>
+                <span><s:text name="form.momentoInicio" /></span>
+                <span><s:text name="form.momentoFin" /></span>
+                <span><s:text name="form.estado" /></span>
             </li>
             <s:iterator value="horarios" var="horario">
                 <li>
@@ -44,8 +44,18 @@
                     <span><s:property value="momentoInicio"/></span>
                     <span><s:property value="momentoFin"/></span>
                     <span><s:property value="estado"/></span>
-                    <span><a href="irModificarHorario?codigo=<c:out value="${horario.codigo}"/>">Modificar</a></span>
-                    <span><a href="eliminarHorario?codigo=<c:out value="${horario.codigo}"/>">Eliminar</a></span>
+                    <span>
+                        <s:url action="editarHorario" id="editHorario">
+                            <s:param name="horario.codigo"><s:property value="codigo"/></s:param>
+                        </s:url>
+                        <s:a href="%{editHorario}"><s:text name="editar.horario" /></s:a>
+                    </span>
+                    <span>
+                        <s:url action="eliminarHorario" id="deleteHorario">
+                            <s:param name="horario.codigo"><s:property value="codigo"/></s:param>
+                        </s:url>
+                        <s:a href="%{deleteHorario}"><s:text name="eliminar.horario" /></s:a>
+                    </span>
                 </li>
             </s:iterator>
         </ul>

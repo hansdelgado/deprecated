@@ -71,13 +71,18 @@ public class HorarioAction extends ActionSupport {
         this.tipoBusquedaSeleccionado = tipoBusquedaSeleccionado;
     }
 
-    public String registrar() {
+    public String guardar() {
+        HorarioService horarioService = new HorarioService();
         if ("1".equals(horarioSeleccionado)) {
             horario.setEstado(EstadoActividad.Valido);
         } else {
             horario.setEstado(EstadoActividad.Obsoleto);
         }
-        new HorarioService().registrar(horario);
+        if ( horarioService.consultarPorCodigo(horario.getCodigo()) == null ) {
+            horarioService.registrar(horario);
+        } else {
+            horarioService.modificar(horario);
+        }
         return SUCCESS;
     }
     
@@ -89,6 +94,7 @@ public class HorarioAction extends ActionSupport {
             tiposBusqueda.put(String.valueOf(i), tipoBusqueda);
             i++;
         }
+        ActionContext.getContext().getSession().put("tiposBusqueda", tiposBusqueda);
         return SUCCESS;
     }
     
@@ -103,35 +109,21 @@ public class HorarioAction extends ActionSupport {
         return SUCCESS;
     }
     
-    public String modificar() {
-        if ("1".equals(horarioSeleccionado)) {
-            horario.setEstado(EstadoActividad.Valido);
-        } else {
-            horario.setEstado(EstadoActividad.Obsoleto);
-        }
-        new HorarioService().modificar(horario);
-        return SUCCESS;
-    }
-    
     public String buscar() {
         TipoBusqueda tipoBusquedaEnum = TipoBusqueda.obtenerPorCodigo(Integer.parseInt(tipoBusquedaSeleccionado));
         horarios = new HorarioService().obtenerSegun(horario.getDescripcion(), tipoBusquedaEnum);
-        tiposBusqueda = new HashMap();
-        int i = 0;
-        for (TipoBusqueda tipoBusqueda : TipoBusqueda.values()) {
-            tiposBusqueda.put(String.valueOf(i), tipoBusqueda);
-            i++;
-        }
         return SUCCESS;
     }
     
-    public String inicializarIndex() {
-        tiposBusqueda = new HashMap();
-        int i = 0;
-        for (TipoBusqueda tipoBusqueda : TipoBusqueda.values()) {
-            tiposBusqueda.put(String.valueOf(i), tipoBusqueda);
-            i++;
-        }
+    public String inicializarModificar() {
+        horario = new HorarioService().consultarPorCodigo(horario.getCodigo());
+        horarioSeleccionado = (horario.getEstado() == EstadoActividad.Valido ? "1" : "2");
         return SUCCESS;
     }
+    
+    public String eliminar() {
+        new HorarioService().eliminarPorCodigo(horario.getCodigo());
+        return SUCCESS;
+    }    
+    
 }

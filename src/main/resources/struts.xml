@@ -5,16 +5,17 @@
 
 <struts>
     
-    <constant name="struts.devMode" value="false" />
+    <constant name="struts.action.extension" value="html"/> 
+    <constant name="struts.devMode" value="true" />
     
     <package name="default" extends="struts-default">
         <action name="index">
             <result>/index.jsp</result>
         </action>
-        <action name="irRegistroHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarRegistro">
+        <action name="agregarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarRegistro">
             <result>/view/horario/registro.jsp</result>
         </action>
-        <action name="registrarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="registrar">
+        <action name="guardarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="guardar">
             <result type="redirectAction">listarHorarios</result>
             <result name="input">/view/horario/registro.jsp</result>
         </action>
@@ -24,9 +25,16 @@
         <action name="buscarHorarios" class="pe.edu.cibertec.gch.actions.HorarioAction" method="buscar">
             <result>/view/horario/index.jsp</result>
         </action>
-        <action name="irIndexHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarIndex">
-            <result>/view/horario/index.jsp</result>
+        <action name="editarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarModificar">
+            <result>/view/horario/registro.jsp</result>
         </action>
+        <action name="eliminarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="eliminar">
+            <result type="redirectAction">listarHorarios</result>
+        </action>
+        <!--<action name="modificarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="modificar">
+            <result type="redirectAction">listarHorarios</result>
+            <result name="input">/view/horario/modificar.jsp</result>
+        </action>-->
     </package>
 
 </struts>

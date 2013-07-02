@@ -23,6 +23,9 @@
             <param name="max">22</param>
             <message key="campo.valor" />
         </field-validator>
+        <field-validator type="conversion">
+            <message key="campo.invalido" />
+        </field-validator>
     </field>
     <field name="horario.momentoFin">
         <field-validator type="int">
@@ -30,12 +33,8 @@
             <param name="max">22</param>
             <message key="campo.valor" />
         </field-validator>
-    </field>
-    <field name="horario.estado">
-        <field-validator type="int">
-            <param name="min">1</param>
-            <param name="max">2</param>
-            <message key="lista.requerida" />
+        <field-validator type="conversion">
+            <message key="campo.invalido" />
         </field-validator>
     </field>
 </validators>

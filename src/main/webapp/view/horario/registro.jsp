@@ -3,37 +3,31 @@
 <%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <gch:base titulo="Registro de Horarios">
-    <div class="informacion">
-        <span>${mensaje}</span>
-        <div class="informacion" style="display: ${empty requestScope.errores ? 'none' : 'block'}">
-            <c:if test="${not empty requestScope.errores}">
-                <ul>
-                    <c:forEach var="error" items="${requestScope.errores}">
-                        <li>${error}</li>
-                    </c:forEach>
-                </ul>
-            </c:if>
-        </div>
-    </div>
-    <s:form action="registrarHorario">
+
+    <s:form action="guardarHorario">
         <fieldset>
-            <legend>Datos</legend>
+            <legend><s:text name="form.datos"/></legend>
             <s:div>
-                <s:textfield label="Código" name="horario.codigo" maxLength="3" required="true" />
+                <s:if test="horario==null">
+                    <s:textfield key="form.codigo" name="horario.codigo" maxLength="3" required="true" />
+                </s:if>
+                <s:else>
+                    <s:textfield key="form.codigo" name="horario.codigo" readonly="true" />
+                </s:else>
             </s:div>
             <s:div>
-                <s:textfield label="Descripción" name="horario.descripcion" required="true" maxLength="20" />
+                <s:textfield key="form.descripcion" name="horario.descripcion" required="true" maxLength="20" />
             </s:div>
             <s:div>
-                <s:textfield label="Momento de inicio" name="horario.momentoInicio" required="true" maxLength="2" />
+                <s:textfield key="form.momentoInicio" name="horario.momentoInicio" required="true" maxLength="2" />
             </s:div>
             <s:div>
-                <s:textfield label="Momento de fin" name="horario.momentoFin" required="true" maxLength="2" />
+                <s:textfield key="form.momentoFin" name="horario.momentoFin" required="true" maxLength="2" />
             </s:div>
             <s:div>
-                <s:select label="Estado" list="%{#session.estados}" required="true" headerKey="-1" headerValue="-- Seleccione --" name="horarioSeleccionado" />
-            </s:div>            
+                <s:select key="form.estado" list="%{#session.estados}" required="true" headerKey="" headerValue="-- Seleccione --" name="horarioSeleccionado" />
+            </s:div>
         </fieldset>
-                <s:submit value="Registrar" />
+                <s:submit key="form.guardar" />
     </s:form>
 </gch:base>
