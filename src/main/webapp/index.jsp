@@ -3,23 +3,14 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <gch:base titulo="Bienvenido">
     <p>
-        Accede a cualquiera de las opciones en el men&uacute; para 
-        realizar las operaciones.
-        <s:url var="ingles" includeParams="all" value="">
-                <s:param name="request_locale">en</s:param>
-        </s:url>	
-        <s:url var="espanol" includeParams="all" value="">
-                <s:param name="request_locale">es</s:param>
+        <s:url action="principal" namespace="/" id="mainEnglish">
+            <s:param name="request_locale">en</s:param>
         </s:url>
-
+        <s:a href="%{mainEnglish}">Go to mainpage</s:a>
         <br />
-      
-         <s:a href="%{ingles}">Ingles</s:a> <br />
-         <s:a href="%{espanol}">Español</s:a>
-         
-         <br />
-         
-         <s:url action="principal" namespace="/" id="main" />
-        <s:a href="%{main}">Ir a principal</s:a>
+        <s:url action="principal" namespace="/" id="mainSpanish">
+            <s:param name="request_locale">es</s:param>
+        </s:url>
+        <s:a href="%{mainSpanish}">Ir a la página principal</s:a>
     </p>
 </gch:base>

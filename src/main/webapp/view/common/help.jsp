@@ -1,14 +1,13 @@
+<%@taglib prefix="s" uri="/struts-tags"%>
     <aside>
         <!-- Bloque de comentarios de ayuda para el usuario -->
         <p>
-            Sistema GCH. El sistema permite la gesti&oacute;n 
-            de Profesores, Laboratorios, Frecuencias, Programas y Cursos
+            <s:text name="help.parrafo1" />
         </p>
         <p>
-            Cualquier consulta, comentario, sugerencia escr&iacute;benos al
-            correo 
-            <a href="mailto:info@gch.cibertec.edu.pe?subject=Feedback%20GCH">
-                info@gch.cibertec.edu.pe
+            <s:text name="help.parrafo2" />
+            <a href="mailto:<s:text name="help.email" />?subject=Feedback%20GCH">
+                <s:text name="help.email" />
             </a>.
         </p>
     </aside>

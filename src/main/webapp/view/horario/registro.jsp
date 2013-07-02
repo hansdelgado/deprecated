@@ -1,9 +1,9 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <s:if test="horario==null">
-    <h1>Registrar horario</h1>
+    <h1><s:text name="horario.titulo.agregar" /></h1>
 </s:if>
 <s:else>
-    <h1>Modificar horario</h1>
+    <h1><s:text name="horario.titulo.modificar" /></h1>
 </s:else>
     <s:form action="guardarHorario">
         <fieldset>

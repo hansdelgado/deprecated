@@ -2,26 +2,28 @@
     <header>
         <!-- Bloque de cabecera de la pagina -->
         <hgroup>
-            <h1>GCH</h1>
-            <h2>Sistema de Gesti&oacute;n de Carga Horaria</h2>
+            <s:url action="principal" namespace="/" id="main" />
+            <h1><s:a href="%{main}">GCH</s:a></h1>
+            <h2><s:text name="subtitulo" /></h2>
         </hgroup>
         <nav>
             <ul>
                 <li>
-                    <a href="listarProfesores">Profesores</a>
+                    <a href=""><s:text name="menu.profesores" /></a>
+                    
                 </li>
                 <li>
-                    <a href="listarLaboratorios">Laboratorios</a>
+                    <a href=""><s:text name="menu.laboratorios" /></a>
                 </li>
                 <li>
                     <s:url action="listarHorarios" namespace="/horario" id="showHorarios" />
-                    <s:a href="%{showHorarios}">Horarios</s:a>
+                    <s:a href="%{showHorarios}"><s:text name="menu.horarios" /></s:a>
                 </li>
                 <li>
-                    <a href="listarProgramas">Programas</a>
+                    <a href=""><s:text name="menu.programas" /></a>
                 </li>
                 <li>
-                    <a href="listarCursos">Cursos</a>
+                    <a href=""><s:text name="menu.cursos" /></a>
                 </li>
             </ul>
         </nav>

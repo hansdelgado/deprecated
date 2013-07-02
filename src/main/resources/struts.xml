@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    
+    <constant name="struts.custom.i18n.resources" value="global" /> 
     <constant name="struts.action.extension" value="html"/> 
     <constant name="struts.devMode" value="true" />
     

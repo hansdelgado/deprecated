@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
@@ -5,8 +6,6 @@
     <head>
         <meta charset="UTF-8">
         <title>Sistema de Gesti&oacute;n de Carga Horaria - GCH</title>
-        <!--<link href="../css/reset.css" type="text/css" rel="stylesheet" /> -->
-        <!--<link href="../css/default.css" type="text/css" rel="stylesheet" /> -->
         <link rel="stylesheet" type="text/css" href="<s:url value="/css/reset.css"/>">
         <link rel="stylesheet" type="text/css" href="<s:url value="/css/default.css"/>">
         <s:head />

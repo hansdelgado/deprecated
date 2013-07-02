@@ -1,11 +1,11 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
-<h1>Listado de Horarios</h1>
+<h1><s:text name="horario.titulo.index" /></h1>
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
     <s:form action="buscarHorarios">
         <fieldset>
-            <legend><s:text name="titulo.busqueda" /></legend>
+            <legend><s:text name="buscar.datos" /></legend>
                 <s:textfield key="form.descripcion" name="horario.descripcion" />
         </fieldset>
         <fieldset>
@@ -13,7 +13,7 @@
                 <s:select key="form.tipoBusqueda" list="%{#session.tiposBusqueda}" required="true" name="tipoBusquedaSeleccionado" />
             </div>
         </fieldset>
-                <s:submit key="form.buscar" />
+                <s:submit value="%{getText('form.buscar')}" />
     </s:form>
     <div>
         <nav>
