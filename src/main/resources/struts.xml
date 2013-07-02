@@ -9,32 +9,19 @@
     <constant name="struts.devMode" value="true" />
     
     <package name="default" extends="struts-default">
+        
+        <result-types>  
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+        
         <action name="index">
             <result>/index.jsp</result>
         </action>
-        <action name="agregarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarRegistro">
-            <result>/view/horario/registro.jsp</result>
+        
+        <action name="principal">
+            <result type="tiles">main</result>
         </action>
-        <action name="guardarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="guardar">
-            <result type="redirectAction">listarHorarios</result>
-            <result name="input">/view/horario/registro.jsp</result>
-        </action>
-        <action name="listarHorarios" class="pe.edu.cibertec.gch.actions.HorarioAction" method="listar">
-            <result>/view/horario/index.jsp</result>
-        </action>
-        <action name="buscarHorarios" class="pe.edu.cibertec.gch.actions.HorarioAction" method="buscar">
-            <result>/view/horario/index.jsp</result>
-        </action>
-        <action name="editarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarModificar">
-            <result>/view/horario/registro.jsp</result>
-        </action>
-        <action name="eliminarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="eliminar">
-            <result type="redirectAction">listarHorarios</result>
-        </action>
-        <!--<action name="modificarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="modificar">
-            <result type="redirectAction">listarHorarios</result>
-            <result name="input">/view/horario/modificar.jsp</result>
-        </action>-->
     </package>
-
+    
+    <include file="struts-horario.xml"></include>
 </struts>

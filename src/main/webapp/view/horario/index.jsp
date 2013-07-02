@@ -1,8 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<gch:base titulo="Listado de Horarios">
+<h1>Listado de Horarios</h1>
     <div class="informacion">
         <span>${mensaje}</span>
     </div>
@@ -60,4 +57,3 @@
             </s:iterator>
         </ul>
     </div>
-</gch:base>

@@ -1,9 +1,10 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<gch:base titulo="Registro de Horarios">
-
+<s:if test="horario==null">
+    <h1>Registrar horario</h1>
+</s:if>
+<s:else>
+    <h1>Modificar horario</h1>
+</s:else>
     <s:form action="guardarHorario">
         <fieldset>
             <legend><s:text name="form.datos"/></legend>
@@ -28,6 +29,5 @@
                 <s:select key="form.estado" list="%{#session.estados}" required="true" headerKey="" headerValue="-- Seleccione --" name="horarioSeleccionado" />
             </s:div>
         </fieldset>
-                <s:submit key="form.guardar" />
+                <s:submit value="%{getText('form.guardar')}" />
     </s:form>
-</gch:base>

@@ -1,5 +1,4 @@
-<%@taglib prefix="gch" uri="/WEB-INF/tlds/gch" %>
-<%@taglib prefix="s" uri="/struts-tags"%>
+    <%@taglib prefix="s" uri="/struts-tags"%>
     <header>
         <!-- Bloque de cabecera de la pagina -->
         <hgroup>
@@ -15,7 +14,7 @@
                     <a href="listarLaboratorios">Laboratorios</a>
                 </li>
                 <li>
-                    <s:url action="horario/listarHorarios" id="showHorarios" />
+                    <s:url action="listarHorarios" namespace="/horario" id="showHorarios" />
                     <s:a href="%{showHorarios}">Horarios</s:a>
                 </li>
                 <li>

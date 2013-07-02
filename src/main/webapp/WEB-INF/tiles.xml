@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="main" template="/view/template.jsp">
+        <put-attribute name="header" value="/view/common/header.jsp" />
+        <put-attribute name="help" value="/view/common/help.jsp" />
+        <put-attribute name="body" value="/view/principal.jsp" />
+        <put-attribute name="footer" value="/view/common/footer.jsp" />
+    </definition>
+    
+    <definition name="registroHorario" extends="main">	
+        <put-attribute name="body" value="/view/horario/registro.jsp"/>
+    </definition>
+
+    <definition name="indexHorario" extends="main">
+        <put-attribute name="body" value="/view/horario/index.jsp"/>
+    </definition>
+ 
+</tiles-definitions>
