@@ -15,6 +15,10 @@
     <definition name="registroHorario" extends="main">	
         <put-attribute name="body" value="/view/horario/registro.jsp"/>
     </definition>
+    
+    <definition name="edicionHorario" extends="main">	
+        <put-attribute name="body" value="/view/horario/editar.jsp"/>
+    </definition>
 
     <definition name="indexHorario" extends="main">
         <put-attribute name="body" value="/view/horario/index.jsp"/>

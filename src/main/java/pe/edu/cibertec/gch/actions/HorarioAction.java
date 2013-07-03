@@ -78,11 +78,7 @@ public class HorarioAction extends ActionSupport {
         } else {
             horario.setEstado(EstadoActividad.Obsoleto);
         }
-        if ( horarioService.consultarPorCodigo(horario.getCodigo()) == null ) {
-            horarioService.registrar(horario);
-        } else {
-            horarioService.modificar(horario);
-        }
+        horarioService.registrar(horario);
         return SUCCESS;
     }
     
@@ -124,6 +120,17 @@ public class HorarioAction extends ActionSupport {
     public String eliminar() {
         new HorarioService().eliminarPorCodigo(horario.getCodigo());
         return SUCCESS;
-    }    
+    }
+    
+    public String editar() {
+        HorarioService horarioService = new HorarioService();
+        if ("1".equals(horarioSeleccionado)) {
+            horario.setEstado(EstadoActividad.Valido);
+        } else {
+            horario.setEstado(EstadoActividad.Obsoleto);
+        }
+        horarioService.modificar(horario);
+        return SUCCESS;
+    }
     
 }

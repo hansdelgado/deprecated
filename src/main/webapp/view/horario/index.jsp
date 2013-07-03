@@ -19,7 +19,7 @@
         <nav>
             <ul>
                 <li>
-                    <s:url action="agregarHorario" id="newHorario" />
+                    <s:url action="registro" id="newHorario" />
                     <s:a href="%{newHorario}"><s:text name="agregar.horario" /></s:a>
                 </li>
             </ul>
@@ -42,7 +42,7 @@
                     <span><s:property value="momentoFin"/></span>
                     <span><s:property value="estado"/></span>
                     <span>
-                        <s:url action="editarHorario" id="editHorario">
+                        <s:url action="editar" id="editHorario">
                             <s:param name="horario.codigo"><s:property value="codigo"/></s:param>
                         </s:url>
                         <s:a href="%{editHorario}"><s:text name="editar.horario" /></s:a>

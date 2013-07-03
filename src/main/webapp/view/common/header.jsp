@@ -2,7 +2,7 @@
     <header>
         <!-- Bloque de cabecera de la pagina -->
         <hgroup>
-            <s:url action="principal" namespace="/" id="main" />
+            <s:url action="index" namespace="/" id="main" />
             <h1><s:a href="%{main}">GCH</s:a></h1>
             <h2><s:text name="subtitulo" /></h2>
         </hgroup>

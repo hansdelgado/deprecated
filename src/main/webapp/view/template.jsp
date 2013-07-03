@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Sistema de Gesti&oacute;n de Carga Horaria - GCH</title>
+        <title><s:text name="titulo" /></title>
         <link rel="stylesheet" type="text/css" href="<s:url value="/css/reset.css"/>">
         <link rel="stylesheet" type="text/css" href="<s:url value="/css/default.css"/>">
         <s:head />

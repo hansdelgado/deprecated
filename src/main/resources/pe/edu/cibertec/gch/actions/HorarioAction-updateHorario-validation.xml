@@ -1,0 +1,40 @@
+<!DOCTYPE validators PUBLIC 
+ "-//Apache Struts//XWork Validator 1.0.2//EN" 
+ "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+    <field name="horario.codigo">
+        <field-validator type="requiredstring">
+            <message key="campo.requerido" />
+        </field-validator>
+    </field>
+    <field name="horario.descripcion">
+        <field-validator type="requiredstring">
+            <message key="campo.requerido" />
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">5</param>
+            <message key="campo.longitud.minima" />
+        </field-validator>
+    </field>
+    <field name="horario.momentoInicio">
+        <field-validator type="int">
+            <param name="min">8</param>
+            <param name="max">22</param>
+            <message key="campo.valor" />
+        </field-validator>
+        <field-validator type="conversion">
+            <message key="campo.invalido" />
+        </field-validator>
+    </field>
+    <field name="horario.momentoFin">
+        <field-validator type="int">
+            <param name="min">8</param>
+            <param name="max">22</param>
+            <message key="campo.valor" />
+        </field-validator>
+        <field-validator type="conversion">
+            <message key="campo.invalido" />
+        </field-validator>
+    </field>
+</validators>

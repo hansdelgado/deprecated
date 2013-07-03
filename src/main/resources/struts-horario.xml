@@ -9,7 +9,7 @@
         <result-types>  
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>
-        <action name="agregarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarRegistro">
+        <action name="registro" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarRegistro">
             <result type="tiles">registroHorario</result>
         </action>
         <action name="guardarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="guardar">
@@ -22,8 +22,12 @@
         <action name="buscarHorarios" class="pe.edu.cibertec.gch.actions.HorarioAction" method="buscar">
             <result type="tiles">indexHorario</result>
         </action>
-        <action name="editarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarModificar">
-            <result type="tiles">registroHorario</result>
+        <action name="editar" class="pe.edu.cibertec.gch.actions.HorarioAction" method="inicializarModificar">
+            <result type="tiles">edicionHorario</result>
+        </action>
+        <action name="updateHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="editar">
+            <result type="redirectAction">listarHorarios</result>
+            <result name="input" type="tiles">edicionHorario</result>
         </action>
         <action name="eliminarHorario" class="pe.edu.cibertec.gch.actions.HorarioAction" method="eliminar">
             <result type="redirectAction">listarHorarios</result>
